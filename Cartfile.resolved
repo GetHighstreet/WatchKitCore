@@ -1,0 +1,3 @@
+github "thomvis/BrightFutures" "d8bbe2dad33707b55e2ceeb06e0284051758b473"
+git "/Users/Thomas/Projects/Highstreet/Shared" "399bbfd556e6478ff97e538867278192b6681d94"
+github "SwiftyJSON/SwiftyJSON" "2.2.0"
