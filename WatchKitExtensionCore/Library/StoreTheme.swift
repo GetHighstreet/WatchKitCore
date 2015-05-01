@@ -35,21 +35,7 @@ struct StoreTheme {
         if let path =  NSBundle.mainBundle().pathForResource(resourceName, ofType: "json") {
             if let jsonData = NSData(contentsOfFile: path) {
                 let json = JSON(data: jsonData, options: NSJSONReadingOptions(0), error: nil)
-                if json.type == .Dictionary {
-                    if let
-                        bgColor = UIColor.fromHex(json[StoreThemeJSONProductBackgroundKey].stringValue),
-                        tintColor1 = UIColor.fromHex(json[StoreThemeJSONTintColor1Key].stringValue),
-                        tintColor2 = UIColor.fromHex(json[StoreThemeJSONTintColor2Key].stringValue)
-                    {
-                        return StoreTheme(
-                            productBackgroundColor: bgColor,
-                            tintColor1: tintColor1,
-                            tintColor2: tintColor2
-                        )
-                    }
-                } else {
-                    println("\(resourceName).json seems not to be valid JSON")
-                }
+                return fromJSON(json)
             } else {
                 println("Could not load data from \(resourceName).json")
             }
@@ -57,6 +43,25 @@ struct StoreTheme {
             println("Could not find \(resourceName).json in main bundle")
         }
         
+        return nil
+    }
+    
+    static func fromJSON(json: JSON) -> StoreTheme? {
+        if json.type == .Dictionary {
+            if let
+                bgColor = UIColor.fromHex(json[StoreThemeJSONProductBackgroundKey].stringValue),
+                tintColor1 = UIColor.fromHex(json[StoreThemeJSONTintColor1Key].stringValue),
+                tintColor2 = UIColor.fromHex(json[StoreThemeJSONTintColor2Key].stringValue)
+            {
+                return StoreTheme(
+                    productBackgroundColor: bgColor,
+                    tintColor1: tintColor1,
+                    tintColor2: tintColor2
+                )
+            }
+        }
+        
+        println("Could not create theme from JSON: \(json)")
         return nil
     }
 }
