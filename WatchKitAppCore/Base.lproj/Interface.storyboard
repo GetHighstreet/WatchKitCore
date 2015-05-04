@@ -8,7 +8,7 @@
         <!--launch-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="launch" id="AgC-eL-Hgc" customClass="LaunchInterfaceController">
+                <controller identifier="launch" id="AgC-eL-Hgc" customClass="LaunchInterfaceController" customModule="WatchKitExtensionCore">
                     <items>
                         <button alignment="left" id="dhA-Km-ycn">
                             <group key="contentGroup" width="1" height="0.5" alignment="left" contentMode="center" animationDuration="4.2400000000000002" layout="vertical" id="8oC-HZ-9dH">
