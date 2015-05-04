@@ -12,12 +12,18 @@ import WatchKit
 import SwiftyJSON
 import Shared
 
-protocol ParentAppSession {
+public protocol ParentAppSession {
+    init()
+    
     func execute<R: ParentAppRequest>(request: R) -> Future<R.ResponseType>
     func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType>
 }
 
 class _ParentAppSession : ParentAppSession {
+    
+    required init() {
+        
+    }
     
     func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType> {
         if let cache = cache,cachedResponse = cache.responseForRequest(request)   {

@@ -84,8 +84,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
         let request = NotificationDataRequest(
             category: notification.category,
             deeplink: notification.deeplink,
-            responseDeserializer: deserializeCountAndProducts,
-            dummyResponse: Result.Success(Box(dummyProducts.count, dummyProducts))
+            responseDeserializer: deserializeCountAndProducts
         )
         
         let response = shared.session.execute(request, cache: notification.responseCache)

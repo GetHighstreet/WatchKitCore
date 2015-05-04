@@ -26,10 +26,4 @@ struct WarmUpRequest: ParentAppRequest, Serializable {
             return Result.Success(Box(NSDate(timeIntervalSince1970: NSTimeInterval(int))))
         } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
     }
-    
-    var dummyResponse: Result<NSDate> {
-        get {
-            return Result.Success(Box(NSDate()))
-        }
-    }
 }

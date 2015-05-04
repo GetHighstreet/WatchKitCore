@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--launch-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="launch" id="AgC-eL-Hgc" customClass="LaunchInterfaceController">
+                    <items>
+                        <button alignment="left" id="dhA-Km-ycn">
+                            <group key="contentGroup" width="1" height="0.5" alignment="left" contentMode="center" animationDuration="4.2400000000000002" layout="vertical" id="8oC-HZ-9dH">
+                                <items>
+                                    <group width="52" height="52" alignment="center" verticalAlignment="center" contentMode="scaleAspectFill" id="q50-ez-tuC" userLabel="circle container">
+                                        <items>
+                                            <group width="1" alignment="left" backgroundImage="launchscreen_favorite_gradient" animationDuration="2.52" id="91V-3a-wfV" userLabel="shine">
+                                                <items>
+                                                    <group width="1" alignment="left" backgroundImage="launchscreen_button_mask" contentMode="scaleAspectFill" id="pFk-m4-bqJ" userLabel="mask">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" backgroundImage="launchscreen_offer" contentMode="center" animationDuration="4.2400000000000002" id="YT5-Lm-Ksx" userLabel="icon"/>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <label alignment="center" verticalAlignment="center" alpha="0.80000000000000004" text="Promotions" id="MH4-p8-W8y">
+                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                    </label>
+                                </items>
+                            </group>
+                            <connections>
+                                <segue destination="Rar-fs-u7Z" kind="push" identifier="homePromotions" id="b4g-rS-rHC"/>
+                            </connections>
+                        </button>
+                        <button alignment="left" id="khB-Ou-aN1">
+                            <group key="contentGroup" width="1" height="0.5" alignment="left" contentMode="center" animationDuration="4.2400000000000002" layout="vertical" id="YdN-sE-e3D">
+                                <items>
+                                    <group width="52" height="52" alignment="center" verticalAlignment="center" backgroundImage="launchscreen_favorites_button_shape" contentMode="scaleAspectFill" animationDuration="2.52" id="Ehe-0W-g0y" userLabel="circle container">
+                                        <items>
+                                            <group width="1" alignment="left" backgroundImage="launchscreen_favorite_gradient" animationDuration="2.52" id="Y6N-Sv-udm" userLabel="shine">
+                                                <items>
+                                                    <group width="1" alignment="left" backgroundImage="launchscreen_button_mask" contentMode="scaleAspectFill" id="rgg-IJ-5uJ" userLabel="mask">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" backgroundImage="launchscreen_favorite" contentMode="center" animationDuration="4.2400000000000002" id="68F-NJ-cAA" userLabel="icon"/>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <label alignment="center" verticalAlignment="center" alpha="0.80000000000000004" text="Favorites" id="uov-co-P9E">
+                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                    </label>
+                                </items>
+                            </group>
+                            <connections>
+                                <segue destination="s34-ES-cpW" kind="push" identifier="favorites" id="n4z-mT-Kj4"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="favoritesButton" destination="khB-Ou-aN1" id="dSn-Qo-Q1O"/>
+                        <outlet property="favoritesButtonGroup" destination="YdN-sE-e3D" id="WFP-py-7Oc"/>
+                        <outlet property="favoritesButtonLabel" destination="uov-co-P9E" id="CW7-oZ-svc"/>
+                        <outlet property="homePromotionsButton" destination="dhA-Km-ycn" id="tXE-s2-GgR"/>
+                        <outlet property="homePromotionsButtonBackgroundGroup" destination="q50-ez-tuC" id="OV7-xz-kXr"/>
+                        <outlet property="homePromotionsButtonGroup" destination="8oC-HZ-9dH" id="hM9-NX-J8h"/>
+                        <outlet property="homePromotionsButtonLabel" destination="MH4-p8-W8y" id="5HN-Ew-TST"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="204" y="221"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="OQm-ol-0t3">
+            <objects>
+                <controller identifier="favorites" title="Favorites" id="s34-ES-cpW" customClass="ProductListInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <group width="1" height="1" alignment="left" hidden="YES" layout="vertical" id="LII-Ah-AaM" userLabel="Empty State">
+                            <items>
+                                <group width="45" height="45" alignment="center" verticalAlignment="center" id="OPi-k1-GSp">
+                                    <items>
+                                        <group width="1" height="1" alignment="left" backgroundImage="launchscreen_favorite" contentMode="center" animationDuration="4.2400000000000002" id="YFt-J3-bws" userLabel="icon"/>
+                                    </items>
+                                </group>
+                                <label alignment="center" verticalAlignment="center" alpha="0.80000000000000004" text="Nothing yet!" id="qg6-4R-f72">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <group width="1" height="22" alignment="center" verticalAlignment="center" id="vCU-Fj-RFr"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" hidden="YES" layout="vertical" id="8Sa-Yr-J5R" userLabel="Header">
+                            <items>
+                                <imageView alignment="center" verticalAlignment="center" image="favorites_header_icon" id="bFx-qM-PhQ"/>
+                                <group width="1" alignment="center" verticalAlignment="center" id="amT-lZ-iMy">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="bottom" text="#favcount" id="bdI-XI-eAO">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="bottom" alpha="0.80000000000000004" text="#favorites" id="Ppi-2E-NRY">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="10"/>
+                        </group>
+                        <table alignment="left" id="0or-ML-Iuq">
+                            <items>
+                                <tableRow identifier="dualcolumn" selectable="NO" id="sGj-bu-3dE" customClass="DualColumnRowController" customModule="WatchKitExtensionCore">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="HjG-qs-5Ty">
+                                        <items>
+                                            <button alignment="left" id="9Dy-oU-711">
+                                                <group key="contentGroup" width="65" height="65" alignment="left" hidden="YES" contentMode="scaleAspectFit" radius="2" id="yKQ-PR-iWs">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="device=watch42mm" height="75" radius="3" width="75"/>
+                                                </group>
+                                                <connections>
+                                                    <action selector="selectLeftColumn" destination="sGj-bu-3dE" id="38G-tF-e6o"/>
+                                                </connections>
+                                            </button>
+                                            <button alignment="right" id="WKq-EX-Cop">
+                                                <group key="contentGroup" width="65" height="65" alignment="left" hidden="YES" contentMode="scaleAspectFit" radius="2" id="HJK-2q-pMU">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="device=watch42mm" height="75" radius="3" width="75"/>
+                                                </group>
+                                                <connections>
+                                                    <action selector="selectRightColumn" destination="sGj-bu-3dE" id="ofp-du-Q6N"/>
+                                                </connections>
+                                            </button>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="leftButton" destination="9Dy-oU-711" id="mH3-SQ-l4U"/>
+                                        <outlet property="leftButtonGroup" destination="yKQ-PR-iWs" id="UcF-lJ-Gce"/>
+                                        <outlet property="rightButton" destination="WKq-EX-Cop" id="aFm-rg-vjK"/>
+                                        <outlet property="rightButtonGroup" destination="HJK-2q-pMU" id="XDU-Jc-ebn"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" height="42" alignment="left" hidden="YES" layout="vertical" id="MeP-jJ-9bk" userLabel="load more group">
+                            <items>
+                                <button width="1" height="40" alignment="center" verticalAlignment="center" title="More" id="QPL-bW-E5r">
+                                    <connections>
+                                        <action selector="loadMoreProducts" destination="s34-ES-cpW" id="HX3-Cu-1yi"/>
+                                    </connections>
+                                </button>
+                                <imageView width="100" height="20" alignment="center" verticalAlignment="center" contentMode="center" id="B5u-sB-qhd"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="emptyStateGroup" destination="LII-Ah-AaM" id="vpW-Yq-nlA"/>
+                        <outlet property="headerGroup" destination="8Sa-Yr-J5R" id="0WF-zh-zuu"/>
+                        <outlet property="headerLeftLabel" destination="bdI-XI-eAO" id="6y5-PO-lwt"/>
+                        <outlet property="headerRightLabel" destination="Ppi-2E-NRY" id="T7O-jS-tM2"/>
+                        <outlet property="loadMoreButton" destination="QPL-bW-E5r" id="PXF-HH-6zA"/>
+                        <outlet property="loadMoreGroup" destination="MeP-jJ-9bk" id="bCv-NL-qfY"/>
+                        <outlet property="loadMoreIndicator" destination="B5u-sB-qhd" id="Wg1-b7-RMq"/>
+                        <outlet property="table" destination="0or-ML-Iuq" id="8IQ-kb-iLv"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="204" y="717.5"/>
+        </scene>
+        <!--Promotions-->
+        <scene sceneID="yjP-0k-Y2F">
+            <objects>
+                <controller identifier="promotions" title="Promotions" hidesWhenLoading="NO" id="Rar-fs-u7Z" customClass="HomePromotionsInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <group width="1" alignment="left" id="9Ns-Px-FNa">
+                            <items>
+                                <table alignment="left" id="P5b-vf-xYH">
+                                    <items>
+                                        <tableRow identifier="homePromotion" id="3wk-NT-xyO" customClass="HomePromotionsRowController" customModule="WatchKitExtensionCore">
+                                            <group key="rootItem" width="1" height="148" alignment="left" contentMode="scaleAspectFill" layout="vertical" spacing="0.0" id="bEu-Ig-guP" userLabel="container">
+                                                <items>
+                                                    <group width="1" height="139" alignment="left" contentMode="center" radius="5" id="KSI-Nf-T9N" userLabel="placeholder">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" contentMode="scaleAspectFill" spacing="0.0" id="SuI-Hx-3yW" userLabel="image">
+                                                                <items>
+                                                                    <group width="1" height="1" alignment="left" contentMode="center" id="cgK-X9-adA" userLabel="revealAnimationContainer"/>
+                                                                </items>
+                                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                            </group>
+                                                        </items>
+                                                        <variation key="device=watch42mm" height="161"/>
+                                                    </group>
+                                                    <imageView width="1" height="13" alignment="left" hidden="YES" image="arrow" contentMode="center" animationDuration="1.8" id="Lsx-mM-XHW"/>
+                                                </items>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                <variation key="device=watch42mm" height="171"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="downArrowImage" destination="Lsx-mM-XHW" id="fv6-dU-58g"/>
+                                                <outlet property="imageGroup" destination="SuI-Hx-3yW" id="3e4-6f-SDa"/>
+                                                <outlet property="placeholderGroup" destination="KSI-Nf-T9N" id="6We-MM-grE"/>
+                                                <outlet property="revealGroup" destination="cgK-X9-adA" id="F7u-oG-LfH"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="P5b-vf-xYH" id="Bfb-RL-vkz"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="632" y="221"/>
+        </scene>
+        <!--Products-->
+        <scene sceneID="vLf-7y-GMu">
+            <objects>
+                <controller identifier="categoryProductList" title="Products" spacing="13" hidesWhenLoading="NO" id="Eb4-WQ-ZLd" customClass="ProductListInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <group width="1" height="161" alignment="left" hidden="YES" id="mhW-HW-mIl">
+                            <items>
+                                <group width="1" height="45" alignment="center" verticalAlignment="bottom" backgroundImage="gradient-promotion" id="eBp-vQ-qWe" userLabel="gradient">
+                                    <items>
+                                        <imageView height="25" alignment="center" verticalAlignment="bottom" image="arrow" contentMode="center" animationDuration="1.8" id="B7T-xd-44I"/>
+                                    </items>
+                                </group>
+                            </items>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="device=watch38mm" height="140"/>
+                        </group>
+                        <table alignment="left" id="7e5-18-5cK">
+                            <items>
+                                <tableRow identifier="singlecolumn" id="1bg-vR-9mn" customClass="SingleColumnRowController" customModule="WatchKitExtensionCore">
+                                    <group key="rootItem" width="1" height="1" heightAdjustment="5" alignment="left" layout="vertical" spacing="1" id="qsB-4H-I3o">
+                                        <items>
+                                            <group width="1" height="128" alignment="left" contentMode="scaleAspectFit" radius="5" id="pg2-Mm-2KT" userLabel="image group">
+                                                <items>
+                                                    <group width="1" widthAdjustment="1" alignment="left" contentMode="center" id="nDX-3Q-Cgt" userLabel="placeholder group">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" contentMode="center" id="aKq-k0-dYD" userLabel="reveal group">
+                                                                <items>
+                                                                    <imageView width="1" height="1" alignment="right" contentMode="topRight" id="ZXe-or-Ksk" userLabel="favorite icon">
+                                                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </imageView>
+                                                                </items>
+                                                            </group>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <variation key="device=watch42mm" height="150"/>
+                                            </group>
+                                            <group width="1" alignment="left" id="bz6-8G-Aex">
+                                                <items>
+                                                    <label alignment="left" text="#price" id="KqO-61-5UQ">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    </label>
+                                                    <label alignment="right" verticalAlignment="bottom" alpha="0.80000000000000004" text="#secondary" id="q9S-iV-cZB">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                        <variation key="device=watch42mm" heightAdjustment="10"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="brandLabel" destination="q9S-iV-cZB" id="QWO-3t-tKw"/>
+                                        <outlet property="favoriteImage" destination="ZXe-or-Ksk" id="vYI-Xo-brE"/>
+                                        <outlet property="placeholderImageGroup" destination="nDX-3Q-Cgt" id="0bC-fY-1RA"/>
+                                        <outlet property="priceLabel" destination="KqO-61-5UQ" id="kAM-QI-eFi"/>
+                                        <outlet property="productImageGroup" destination="pg2-Mm-2KT" id="mFY-Qp-sgZ"/>
+                                        <outlet property="revealGroup" destination="aKq-k0-dYD" id="pQS-y8-YGm"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" height="42" alignment="left" hidden="YES" layout="vertical" id="fJJ-AU-eux" userLabel="load more group">
+                            <items>
+                                <button width="1" height="40" alignment="center" verticalAlignment="center" title="More" id="pHe-gK-Hty">
+                                    <connections>
+                                        <action selector="loadMoreProducts" destination="Eb4-WQ-ZLd" id="MpX-Ax-yYY"/>
+                                    </connections>
+                                </button>
+                                <imageView width="100" height="20" alignment="center" verticalAlignment="center" contentMode="center" id="yU4-88-IyH"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="loadMoreButton" destination="pHe-gK-Hty" id="RnG-19-k6c"/>
+                        <outlet property="loadMoreGroup" destination="fJJ-AU-eux" id="UAc-RH-0DH"/>
+                        <outlet property="loadMoreIndicator" destination="yU4-88-IyH" id="u7V-TB-wQi"/>
+                        <outlet property="promotionHeaderImage" destination="mhW-HW-mIl" id="DRJ-ZA-1mB"/>
+                        <outlet property="table" destination="7e5-18-5cK" id="FMy-Ve-LVg"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="544" y="627.5"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="JSD-c9-zpQ">
+            <objects>
+                <controller identifier="productDetails" title="Details" spacing="0.0" hidesWhenLoading="NO" id="ErA-js-gqd" customClass="ProductDetailsInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <group width="90" height="90" alignment="center" contentMode="scaleAspectFit" id="RG0-g2-Dl5" userLabel="productImageGroup">
+                            <items>
+                                <group width="1" alignment="left" id="kan-ur-zKU" userLabel="revealGroup">
+                                    <items>
+                                        <imageView width="1" height="1" alignment="right" contentMode="topRight" id="5Bf-xe-aAR" userLabel="favoriteIcon"/>
+                                    </items>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </group>
+                            </items>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <variation key="device=watch42mm" height="102" width="102"/>
+                        </group>
+                        <group width="1" alignment="left" hidden="YES" layout="vertical" spacing="0.0" id="Vew-BA-NEd">
+                            <items>
+                                <group width="1" alignment="left" layout="vertical" spacing="0.0" id="CxP-PK-61C">
+                                    <items>
+                                        <label alignment="left" text="#price" id="urd-xZ-Vzb"/>
+                                        <label alignment="left" text="#name" numberOfLines="0" id="ebW-hg-eqR">
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                        <label alignment="left" text="#brand" id="ldh-d0-Ui2">
+                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        </label>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="9" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="left" id="u7w-lv-ocg">
+                                    <items>
+                                        <label alignment="left" alpha="0.80000000000000004" text="#description" numberOfLines="0" id="Erl-DN-W0V"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="0.0"/>
+                                </group>
+                                <group width="1" height="100" alignment="left" id="Gdr-Gu-h9E">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" id="OKO-1n-qf8">
+                                            <group key="contentGroup" width="65" height="65" alignment="left" backgroundImage="detail_view_favorite_button" id="l2d-gO-gEv"/>
+                                            <connections>
+                                                <action selector="toggleFavoriteState" destination="ErA-js-gqd" id="hyW-4w-W9P"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="brandLabel" destination="ldh-d0-Ui2" id="YcG-79-Abe"/>
+                        <outlet property="descriptionLabel" destination="Erl-DN-W0V" id="G61-Po-zrn"/>
+                        <outlet property="favoriteButton" destination="OKO-1n-qf8" id="oJH-J3-y5Z"/>
+                        <outlet property="favoriteButtonGroup" destination="l2d-gO-gEv" id="lvh-Pd-TrO"/>
+                        <outlet property="favoriteImage" destination="5Bf-xe-aAR" id="WTF-Ld-l7N"/>
+                        <outlet property="imageGroup" destination="RG0-g2-Dl5" id="xpb-um-DWR"/>
+                        <outlet property="infoGroup" destination="Vew-BA-NEd" id="5vl-bx-qpE"/>
+                        <outlet property="nameLabel" destination="ebW-hg-eqR" id="yYP-4W-ye4"/>
+                        <outlet property="priceLabel" destination="urd-xZ-Vzb" id="drx-uq-LY8"/>
+                        <outlet property="revealGroup" destination="kan-ur-zKU" id="1aY-85-WLp"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="838" y="520.5"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="#Alert Label" numberOfLines="0" id="XkS-y5-khE">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="product" id="JfB-70-Muf">
+                        <color key="sashColor" red="0.31764705882352939" green="0.31372549019607843" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1001"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="03Y-4k-6YP">
+            <objects>
+                <notificationController id="y5S-84-1GY">
+                    <items>
+                        <label alignment="left" text="#Alert Label" numberOfLines="0" id="a34-81-VrZ">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="category" id="6R4-fw-VaT">
+                        <color key="sashColor" red="0.31764705879999999" green="0.31372549020000001" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="a34-81-VrZ" id="8HL-Ap-U9O"/>
+                        <segue destination="Qno-Gm-kXs" kind="relationship" relationship="dynamicNotificationInterface" id="ejm-xS-4ET"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1355"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="k8p-ty-bwn">
+            <objects>
+                <notificationController id="3EK-7N-Ek6">
+                    <items>
+                        <label alignment="left" text="#Alert Label" numberOfLines="0" id="uCk-9r-fWW">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="lookbook" id="Z06-MC-fgj">
+                        <color key="sashColor" red="0.31764705879999999" green="0.31372549020000001" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="uCk-9r-fWW" id="WLV-53-cXZ"/>
+                        <segue destination="rJl-q7-Rcm" kind="relationship" relationship="dynamicNotificationInterface" id="Z4x-FV-l1U"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1717"/>
+        </scene>
+        <!--Product Notification Interface Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="ProductNotificationInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <label alignment="left" text="#alert" numberOfLines="0" id="INv-90-Waq">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <group width="1" alignment="left" layout="vertical" spacing="1" id="gR4-tw-2PU">
+                            <items>
+                                <group width="1" height="128" alignment="left" contentMode="scaleAspectFit" radius="5" id="K0S-b2-VqY" userLabel="image group">
+                                    <items>
+                                        <group width="1" widthAdjustment="1" alignment="left" contentMode="center" id="QtG-vD-5fj" userLabel="placeholder group">
+                                            <items>
+                                                <group width="1" height="1" alignment="left" contentMode="center" id="Xsx-pc-wZB" userLabel="reveal group">
+                                                    <items>
+                                                        <imageView width="1" height="1" alignment="right" contentMode="topRight" id="61p-Vb-LK6" userLabel="favorite icon">
+                                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </imageView>
+                                                    </items>
+                                                </group>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <variation key="device=watch42mm" height="154"/>
+                                </group>
+                                <group width="1" alignment="left" id="DFv-9c-UIQ">
+                                    <items>
+                                        <label alignment="left" text="#price" id="GYk-GG-egL">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                        </label>
+                                        <label alignment="right" verticalAlignment="bottom" alpha="0.80000000000000004" text="#secondary" id="sxy-Wo-3qR">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="brandLabel" destination="sxy-Wo-3qR" id="YCO-cv-QLC"/>
+                        <outlet property="favoriteImage" destination="61p-Vb-LK6" id="5Ef-sj-bwz"/>
+                        <outlet property="placeholderImageGroup" destination="QtG-vD-5fj" id="6X6-2I-Zcz"/>
+                        <outlet property="priceLabel" destination="GYk-GG-egL" id="EWl-aZ-lzZ"/>
+                        <outlet property="productImageGroup" destination="K0S-b2-VqY" id="EKQ-Ja-R9G"/>
+                        <outlet property="titleLabel" destination="INv-90-Waq" id="mfn-2x-fbm"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+        <!--Category Notification Interface Controller-->
+        <scene sceneID="eaQ-BR-4mp">
+            <objects>
+                <controller id="Qno-Gm-kXs" customClass="CategoryNotificationInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <label alignment="left" text="#alert" numberOfLines="0" id="GTt-YJ-dbz">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <table alignment="left" id="HsJ-Zs-Ja6">
+                            <items>
+                                <tableRow identifier="singlecolumn" selectable="NO" id="cKt-ss-cZm" customClass="SingleColumnRowController" customModule="WatchKitExtensionCore">
+                                    <group key="rootItem" width="1" height="1" heightAdjustment="5" alignment="left" layout="vertical" spacing="1" id="su0-O0-3OJ">
+                                        <items>
+                                            <group width="1" height="128" alignment="left" contentMode="scaleAspectFit" radius="5" id="nUn-0D-xPQ" userLabel="image group">
+                                                <items>
+                                                    <group width="1" widthAdjustment="1" alignment="left" contentMode="center" id="KJg-PZ-N8c" userLabel="placeholder group">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" contentMode="center" id="CDG-Iu-aoc" userLabel="reveal group">
+                                                                <items>
+                                                                    <imageView width="1" height="1" alignment="right" contentMode="topRight" id="Blm-0t-BhB" userLabel="favorite icon">
+                                                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </imageView>
+                                                                </items>
+                                                            </group>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <variation key="device=watch42mm" height="150"/>
+                                            </group>
+                                            <group width="1" alignment="left" id="LQw-2l-cEN">
+                                                <items>
+                                                    <label alignment="left" text="#price" id="Sm9-m3-Eod">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    </label>
+                                                    <label alignment="right" verticalAlignment="bottom" alpha="0.80000000000000004" text="#secondary" id="erz-EZ-zmb">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                        <variation key="device=watch42mm" heightAdjustment="10"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="brandLabel" destination="erz-EZ-zmb" id="dh1-ft-GOt"/>
+                                        <outlet property="favoriteImage" destination="Blm-0t-BhB" id="IZR-eQ-lKj"/>
+                                        <outlet property="placeholderImageGroup" destination="KJg-PZ-N8c" id="4gH-XT-9HX"/>
+                                        <outlet property="priceLabel" destination="Sm9-m3-Eod" id="jBZ-fb-Mwz"/>
+                                        <outlet property="productImageGroup" destination="nUn-0D-xPQ" id="WuJ-wR-uQf"/>
+                                        <outlet property="revealGroup" destination="CDG-Iu-aoc" id="xfD-EM-fBT"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="table" destination="HsJ-Zs-Ja6" id="Scw-f0-qCE"/>
+                        <outlet property="titleLabel" destination="GTt-YJ-dbz" id="Wag-aq-LtV"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="535" y="1355"/>
+        </scene>
+        <!--Lookbook Notification Interface Controller-->
+        <scene sceneID="Lxh-bp-p07">
+            <objects>
+                <controller id="rJl-q7-Rcm" customClass="LookbookNotificationInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <label alignment="left" text="#alert" numberOfLines="0" id="iGP-2A-pYO">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <group width="1" alignment="left" layout="vertical" id="jOc-4g-6uo">
+                            <items>
+                                <group width="1" height="154" alignment="left" contentMode="scaleAspectFill" radius="8" id="yUg-Py-PY5" userLabel="image group">
+                                    <items>
+                                        <group width="1" height="1" alignment="left" contentMode="center" id="ccj-fT-l5g" userLabel="placeholder group"/>
+                                    </items>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <variation key="device=watch38mm" height="134"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="lookbookImageGroup" destination="yUg-Py-PY5" id="4bz-G7-1cL"/>
+                        <outlet property="placeholderImageGroup" destination="ccj-fT-l5g" id="5p5-v9-oXd"/>
+                        <outlet property="titleLabel" destination="iGP-2A-pYO" id="A6e-0c-y6j"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="535" y="1717"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="ZPX-ja-VMM">
+            <objects>
+                <notificationController id="anj-Lq-1bX">
+                    <items>
+                        <label alignment="left" text="#Alert Label" numberOfLines="0" id="yeN-2l-wHe">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="promotion" id="yPC-j1-dUZ">
+                        <color key="sashColor" red="0.31764705879999999" green="0.31372549020000001" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="yeN-2l-wHe" id="cxV-qE-5sI"/>
+                        <segue destination="AFZ-4c-cBz" kind="relationship" relationship="dynamicNotificationInterface" id="Zdd-Yc-pHN"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="240" y="2152"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="zpw-l4-cDL">
+            <objects>
+                <notificationController id="XFk-rn-GJZ">
+                    <items>
+                        <label alignment="left" text="#Alert Label" numberOfLines="0" id="qP5-Xf-KbF">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="default" id="Ce7-cA-eot">
+                        <color key="sashColor" red="0.31764705879999999" green="0.31372549020000001" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </notificationCategory>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="qP5-Xf-KbF" id="Ce7-yj-6fI"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="269" y="2513"/>
+        </scene>
+        <!--Home Promotion Notification Interface Controller-->
+        <scene sceneID="uZP-Q5-aQD">
+            <objects>
+                <controller spacing="5" id="AFZ-4c-cBz" customClass="HomePromotionNotificationInterfaceController" customModule="WatchKitExtensionCore">
+                    <items>
+                        <label alignment="left" text="#alert" numberOfLines="0" id="xP3-v1-7Gq">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <group width="1" alignment="left" id="GXV-um-tUO">
+                            <items>
+                                <group width="1" height="1" alignment="left" contentMode="center" id="EAR-bS-rFB" userLabel="Placeholder"/>
+                                <group width="1" height="161" alignment="left" layout="vertical" id="sfS-QU-NQC" userLabel="Promotion image">
+                                    <items>
+                                        <group width="1" height="45" alignment="center" verticalAlignment="bottom" backgroundImage="gradient-promotion" id="hE5-Zb-ygL" userLabel="gradient"/>
+                                    </items>
+                                    <variation key="device=watch38mm" height="140"/>
+                                </group>
+                            </items>
+                        </group>
+                        <table alignment="left" id="tze-YF-kKh">
+                            <items>
+                                <tableRow identifier="singlecolumn" selectable="NO" id="LS8-2l-teB" customClass="SingleColumnRowController" customModule="WatchKitExtensionCore">
+                                    <group key="rootItem" width="1" height="1" heightAdjustment="5" alignment="left" layout="vertical" spacing="1" id="ZHX-32-toF">
+                                        <items>
+                                            <group width="1" height="128" alignment="left" contentMode="scaleAspectFit" radius="5" id="9nA-7f-SHD" userLabel="image group">
+                                                <items>
+                                                    <group width="1" widthAdjustment="1" alignment="left" contentMode="center" id="8zk-22-5go" userLabel="placeholder group">
+                                                        <items>
+                                                            <group width="1" height="1" alignment="left" contentMode="center" id="X9j-aD-WYS" userLabel="reveal group">
+                                                                <items>
+                                                                    <imageView width="1" height="1" alignment="right" contentMode="topRight" id="Ip0-3H-gUm" userLabel="favorite icon">
+                                                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </imageView>
+                                                                </items>
+                                                            </group>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <variation key="device=watch42mm" height="150"/>
+                                            </group>
+                                            <group width="1" alignment="left" id="eFn-lD-D0f">
+                                                <items>
+                                                    <label alignment="left" text="#price" id="rHy-HX-hQ7">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    </label>
+                                                    <label alignment="right" verticalAlignment="bottom" alpha="0.80000000000000004" text="#secondary" id="1SD-Qh-1eE">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                        <variation key="device=watch42mm" heightAdjustment="10"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="brandLabel" destination="1SD-Qh-1eE" id="BaZ-mS-Ca3"/>
+                                        <outlet property="favoriteImage" destination="Ip0-3H-gUm" id="yIk-Dw-EYl"/>
+                                        <outlet property="placeholderImageGroup" destination="8zk-22-5go" id="1cw-Xu-VVg"/>
+                                        <outlet property="priceLabel" destination="rHy-HX-hQ7" id="6pe-Gf-Bq2"/>
+                                        <outlet property="productImageGroup" destination="9nA-7f-SHD" id="VYi-dp-vdw"/>
+                                        <outlet property="revealGroup" destination="X9j-aD-WYS" id="JRJ-jS-Ki6"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="headerImage" destination="sfS-QU-NQC" id="LO9-5N-WZ6"/>
+                        <outlet property="headerImageContainerGroup" destination="GXV-um-tUO" id="dKs-oe-Jd2"/>
+                        <outlet property="headerPlaceholder" destination="EAR-bS-rFB" id="p66-EI-z6T"/>
+                        <outlet property="table" destination="tze-YF-kKh" id="YV1-hg-BwF"/>
+                        <outlet property="titleLabel" destination="xP3-v1-7Gq" id="HXC-iV-a9E"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="535" y="2151.5"/>
+        </scene>
+    </scenes>
+</document>

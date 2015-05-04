@@ -16,7 +16,6 @@ struct NotificationDataRequest<R>: ParentAppRequest {
     let category: String
     let deeplink: String
     let responseDeserializer: JSON -> Result<R>
-    let dummyResponse: Result<R>
 
     var identifier: String {
         return HSWatchKitNotificationRequestIdentifierPrefix + category

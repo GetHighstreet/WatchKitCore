@@ -1,0 +1,99 @@
+
+/* Class = "WKInterfaceLabel"; text = "#secondary"; ObjectID = "1SD-Qh-1eE"; */
+"1SD-Qh-1eE.text" = "#secondary";
+
+/* Class = "WKInterfaceController"; title = "Products"; ObjectID = "Eb4-WQ-ZLd"; */
+"Eb4-WQ-ZLd.title" = "Produkten";
+
+/* Class = "WKInterfaceController"; title = "Details"; ObjectID = "ErA-js-gqd"; */
+"ErA-js-gqd.title" = "Details";
+
+/* Class = "WKInterfaceLabel"; text = "#description"; ObjectID = "Erl-DN-W0V"; */
+"Erl-DN-W0V.text" = "#description";
+
+/* Class = "WKInterfaceLabel"; text = "#alert"; ObjectID = "GTt-YJ-dbz"; */
+"GTt-YJ-dbz.text" = "#alert";
+
+/* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "GYk-GG-egL"; */
+"GYk-GG-egL.text" = "#price";
+
+/* Class = "WKInterfaceLabel"; text = "#alert"; ObjectID = "INv-90-Waq"; */
+"INv-90-Waq.text" = "#alert";
+
+/* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "KqO-61-5UQ"; */
+"KqO-61-5UQ.text" = "#price";
+
+/* Class = "WKInterfaceLabel"; text = "Promotions"; ObjectID = "MH4-p8-W8y"; */
+"MH4-p8-W8y.text" = "Promotionen";
+
+/* Class = "WKInterfaceButton"; title = "#favoButton"; ObjectID = "OKO-1n-qf8"; */
+"OKO-1n-qf8.title" = "#favoButton";
+
+/* Class = "WKInterfaceLabel"; text = "#favorites"; ObjectID = "Ppi-2E-NRY"; */
+"Ppi-2E-NRY.text" = "#favorites";
+
+/* Class = "WKInterfaceButton"; title = "More"; ObjectID = "QPL-bW-E5r"; */
+"QPL-bW-E5r.title" = "Mehr";
+
+/* Class = "WKInterfaceController"; title = "Promotions"; ObjectID = "Rar-fs-u7Z"; */
+"Rar-fs-u7Z.title" = "Promotionen";
+
+/* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "Sm9-m3-Eod"; */
+"Sm9-m3-Eod.text" = "#price";
+
+/* Class = "WKInterfaceLabel"; text = "#Alert Label"; ObjectID = "XkS-y5-khE"; */
+"XkS-y5-khE.text" = "#Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "#Alert Label"; ObjectID = "a34-81-VrZ"; */
+"a34-81-VrZ.text" = "#Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "#favcount"; ObjectID = "bdI-XI-eAO"; */
+"bdI-XI-eAO.text" = "#favcount";
+
+/* Class = "WKInterfaceLabel"; text = "#name"; ObjectID = "ebW-hg-eqR"; */
+"ebW-hg-eqR.text" = "#name";
+
+/* Class = "WKInterfaceLabel"; text = "#secondary"; ObjectID = "erz-EZ-zmb"; */
+"erz-EZ-zmb.text" = "#secondary";
+
+/* Class = "WKInterfaceLabel"; text = "#alert"; ObjectID = "iGP-2A-pYO"; */
+"iGP-2A-pYO.text" = "#alert";
+
+/* Class = "WKInterfaceLabel"; text = "#brand"; ObjectID = "ldh-d0-Ui2"; */
+"ldh-d0-Ui2.text" = "#brand";
+
+/* Class = "WKInterfaceButton"; title = "More"; ObjectID = "pHe-gK-Hty"; */
+"pHe-gK-Hty.title" = "Mehr";
+
+/* Class = "WKInterfaceLabel"; text = "#secondary"; ObjectID = "q9S-iV-cZB"; */
+"q9S-iV-cZB.text" = "#secondary";
+
+/* Class = "WKInterfaceLabel"; text = "Alert Label"; ObjectID = "qP5-Xf-KbF"; */
+"qP5-Xf-KbF.text" = "#Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "Keine Favoriten"; ObjectID = "qg6-4R-f72"; */
+"qg6-4R-f72.text" = "Keine Favoriten";
+
+/* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "rHy-HX-hQ7"; */
+"rHy-HX-hQ7.text" = "#price";
+
+/* Class = "WKInterfaceController"; title = "Favoriten"; ObjectID = "s34-ES-cpW"; */
+"s34-ES-cpW.title" = "Favoriten";
+
+/* Class = "WKInterfaceLabel"; text = "#secondary"; ObjectID = "sxy-Wo-3qR"; */
+"sxy-Wo-3qR.text" = "#secondary";
+
+/* Class = "WKInterfaceLabel"; text = "#Alert Label"; ObjectID = "uCk-9r-fWW"; */
+"uCk-9r-fWW.text" = "#Alert Label";
+
+/* Class = "WKInterfaceLabel"; text = "Favoriten"; ObjectID = "uov-co-P9E"; */
+"uov-co-P9E.text" = "Favoriten";
+
+/* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "urd-xZ-Vzb"; */
+"urd-xZ-Vzb.text" = "#price";
+
+/* Class = "WKInterfaceLabel"; text = "#alert"; ObjectID = "xP3-v1-7Gq"; */
+"xP3-v1-7Gq.text" = "#alert";
+
+/* Class = "WKInterfaceLabel"; text = "#Alert Label"; ObjectID = "yeN-2l-wHe"; */
+"yeN-2l-wHe.text" = "#Alert Label";

@@ -10,12 +10,10 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 
-protocol ParentAppRequest: Serializable {
+public protocol ParentAppRequest: Serializable {
     typealias ResponseType
     
     var identifier: String { get }
     
     var responseDeserializer: (JSON) -> Result<ResponseType> { get }
-    
-    var dummyResponse: Result<ResponseType> { get }
 }

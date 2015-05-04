@@ -51,10 +51,4 @@ struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable {
             Result.Success(Box($0 == 1))
         } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
     }
-    
-    var dummyResponse: Result<Bool> {
-        get {
-            return Result.Success(Box(action == .Add))
-        }
-    }
 }

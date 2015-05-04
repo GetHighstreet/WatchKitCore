@@ -10,8 +10,7 @@ import Foundation
 import SwiftyJSON
 
 let SharedContextJSONSessionKey = "session"
-let SharedContextJSONDummySessionValue = "dummy"
-let SharedContextJSONDefaultSessionValue = "default"
+let SharedContextJSONDefaultSessionValue = "__default"
 let SharedContextJSONThemeKey = "theme"
 
 protocol InterfaceControllerContext {
@@ -59,14 +58,23 @@ struct SharedContext: SharedContextType {
             let session: ParentAppSession
             
             switch json[SharedContextJSONSessionKey].stringValue {
+            case "": // no value
+                fallthrough
             case SharedContextJSONDefaultSessionValue:
                 session = _ParentAppSession()
-            case SharedContextJSONDummySessionValue:
-                session = DummyParentAppSession()
-            default:
-                println("Value for key \(SharedContextJSONSessionKey) should be \(SharedContextJSONDefaultSessionValue) or \(SharedContextJSONDummySessionValue)")
+            case let s: // the default
+                if let customSession = NSClassFromString(s) as? NSObject.Type {
+                    if let s = customSession() as? ParentAppSession {
+                        session = s
+                        break
+                    }
+                }
+                
+                println("Value for key \(SharedContextJSONSessionKey) should be \(SharedContextJSONDefaultSessionValue) or or a class name that implements ParentAppSession and NSObject")
                 return nil
             }
+            
+            
             
             return SharedContext(session: session, imageCache: ImageCache(), theme: theme)
         } else {

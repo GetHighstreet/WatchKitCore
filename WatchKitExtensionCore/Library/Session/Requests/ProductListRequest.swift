@@ -32,15 +32,6 @@ struct ProductListRequest: ParentAppRequest, Serializable {
     }
     
     let responseDeserializer = deserializeCountAndProducts
-    
-    var dummyResponse: Result<(Int,[Product])> {
-        get {
-            let productSlice = dummyProducts[range.startIndex..<min(range.endIndex,dummyProducts.count)]
-            
-            let res = (10, Array(productSlice))
-            return Result.Success(Box(res))
-        }
-    }
 }
 
 func deserializeProducts(json: JSON) -> Result<[Product]> {
@@ -60,18 +51,3 @@ func deserializeCountAndProducts(json: JSON) -> Result<(Int, [Product])> {
         return Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
     }
 }
-
-let dummyProducts = [
-    Product(id: 1, name: "Amp Lamp hanglamp small", secondaryAttribute: "Normann Copenhagen", price: "€ 107", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/n/o/normann-copenhagen-amp-lamp-hanglamp-small-groen-goud-600x600.jpg"), isFavorite: false),
-    Product(id: 2, name: "Eames DSR stoel met verchroomd onderstel", secondaryAttribute: "Vitra", price: "€ 229", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/v/i/vit-dsr-stoel-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 3, name: "About a Chair AAC22 stoel", secondaryAttribute: "Hay", price: "€ 236", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-aac22-eiken-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 4, name: "Pinocchio vloerkleed multi colour", secondaryAttribute: "Hay", price: "€ 244", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-pinocchio-multi-600x600.jpg"), isFavorite: false),
-    Product(id: 5, name: "Amp Lamp hanglamp small", secondaryAttribute: "Normann Copenhagen", price: "€ 107", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/n/o/normann-copenhagen-amp-lamp-hanglamp-small-groen-goud-600x600.jpg"), isFavorite: false),
-    Product(id: 6, name: "Eames DSR stoel met verchroomd onderstel", secondaryAttribute: "Vitra", price: "€ 229", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/v/i/vit-dsr-stoel-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 7, name: "About a Chair AAC22 stoel", secondaryAttribute: "Hay", price: "€ 236", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-aac22-eiken-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 8, name: "Pinocchio vloerkleed multi colour", secondaryAttribute: "Hay", price: "€ 244", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-pinocchio-multi-600x600.jpg"), isFavorite: false),
-    Product(id: 9, name: "Amp Lamp hanglamp small", secondaryAttribute: "Normann Copenhagen", price: "€ 107", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/n/o/normann-copenhagen-amp-lamp-hanglamp-small-groen-goud-600x600.jpg"), isFavorite: false),
-    Product(id: 10, name: "Eames DSR stoel met verchroomd onderstel", secondaryAttribute: "Vitra", price: "€ 229", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/v/i/vit-dsr-stoel-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 11, name: "About a Chair AAC22 stoel", secondaryAttribute: "Hay", price: "€ 236", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-aac22-eiken-wit-600x600.jpg"), isFavorite: false),
-    Product(id: 12, name: "Pinocchio vloerkleed multi colour", secondaryAttribute: "Hay", price: "€ 244", image: .RemoteImage(url: "http://www.flinders.nl/media/catalog/product/cache/1/image/471x/9df78eab33525d08d6e5fb8d27136e95/h/a/hay-pinocchio-multi-600x600.jpg"), isFavorite: false),
-]

@@ -93,8 +93,7 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
         let request = NotificationDataRequest(
             category: notification.category,
             deeplink: notification.deeplink,
-            responseDeserializer: deserializeHomePromotionWithData,
-            dummyResponse: Result.Failure(InfrastructureError.MissingDataSource.NSErrorRepresentation)
+            responseDeserializer: deserializeHomePromotionWithData
         )
         
         let response = shared.session.execute(request, cache: notification.responseCache)

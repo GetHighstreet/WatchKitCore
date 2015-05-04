@@ -61,8 +61,7 @@ class LookbookNotificationInterfaceController: WKUserNotificationInterfaceContro
         let request = NotificationDataRequest(
             category: notification.category,
             deeplink: notification.deeplink,
-            responseDeserializer: deserializeImage,
-            dummyResponse: Result.Failure(InfrastructureError.MissingDataSource.NSErrorRepresentation)
+            responseDeserializer: deserializeImage
         )
         
         let response = shared.session.execute(request, cache: notification.responseCache)

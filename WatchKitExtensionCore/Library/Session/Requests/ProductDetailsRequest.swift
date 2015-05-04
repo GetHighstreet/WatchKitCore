@@ -29,10 +29,4 @@ struct ProductDetailsRequest: ParentAppRequest, Serializable {
     }
     
     let responseDeserializer = deserializeProductDetails
-    
-    var dummyResponse: Result<ProductDetails> {
-        get {
-            return Result.Success(Box(ProductDetails(product: dummyProducts[productId-1], description: "Wie kent de DSW stoel van Vitra niet... DSW staat voor Dining Height Side Chair Wooden Base. Maar deze stoel laat zich liever DSW noemen. Dat zit wat makkelijker. Zijn organisch gevormde zitschaal van kunststof zorgt ervoor dat je ontspannen en comfortabel op de DSW stoel zit. Kortom, de Vitra Eames DSW stoel is de ideale eetkamerstoel, met een prachtig houten onderstel van esdoorn.")))
-        }
-    }
 }

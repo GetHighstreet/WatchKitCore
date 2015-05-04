@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-protocol Serializable {
+public protocol Serializable {
     
     func jsonRepresentation() -> JSON
     

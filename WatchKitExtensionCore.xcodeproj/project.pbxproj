@@ -19,7 +19,6 @@
 		E91AF4891AE8E7BB0076739B /* InterfaceControllerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF44D1AE8E7BB0076739B /* InterfaceControllerContext.swift */; };
 		E91AF48A1AE8E7BB0076739B /* ProductListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF44E1AE8E7BB0076739B /* ProductListType.swift */; };
 		E91AF48B1AE8E7BB0076739B /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF44F1AE8E7BB0076739B /* Serialization.swift */; };
-		E91AF48C1AE8E7BB0076739B /* DummyParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4511AE8E7BB0076739B /* DummyParentAppSession.swift */; };
 		E91AF48D1AE8E7BB0076739B /* ParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4521AE8E7BB0076739B /* ParentAppSession.swift */; };
 		E91AF48E1AE8E7BB0076739B /* ChangeProductFavoriteStateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4541AE8E7BB0076739B /* ChangeProductFavoriteStateRequest.swift */; };
 		E91AF48F1AE8E7BB0076739B /* HomePromotionsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4551AE8E7BB0076739B /* HomePromotionsListRequest.swift */; };
@@ -78,7 +77,6 @@
 		E91AF44D1AE8E7BB0076739B /* InterfaceControllerContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceControllerContext.swift; sourceTree = "<group>"; };
 		E91AF44E1AE8E7BB0076739B /* ProductListType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListType.swift; sourceTree = "<group>"; };
 		E91AF44F1AE8E7BB0076739B /* Serialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
-		E91AF4511AE8E7BB0076739B /* DummyParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyParentAppSession.swift; sourceTree = "<group>"; };
 		E91AF4521AE8E7BB0076739B /* ParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentAppSession.swift; sourceTree = "<group>"; };
 		E91AF4541AE8E7BB0076739B /* ChangeProductFavoriteStateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeProductFavoriteStateRequest.swift; sourceTree = "<group>"; };
 		E91AF4551AE8E7BB0076739B /* HomePromotionsListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePromotionsListRequest.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 		E91AF4501AE8E7BB0076739B /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				E91AF4511AE8E7BB0076739B /* DummyParentAppSession.swift */,
 				E91AF4521AE8E7BB0076739B /* ParentAppSession.swift */,
 				E91AF4531AE8E7BB0076739B /* Requests */,
 				E91AF45B1AE8E7BB0076739B /* ResponseCache.swift */,
@@ -414,7 +411,6 @@
 				E91AF4851AE8E7BB0076739B /* ProductDetails.swift in Sources */,
 				E91AF4A91AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift in Sources */,
 				E91AF4951AE8E7BB0076739B /* ResponseCache.swift in Sources */,
-				E91AF48C1AE8E7BB0076739B /* DummyParentAppSession.swift in Sources */,
 				E91AF4A81AE8E7BB0076739B /* RowRevealFragment.swift in Sources */,
 				E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */,
 				E91AF4AC1AE8E7BB0076739B /* Notifications.swift in Sources */,

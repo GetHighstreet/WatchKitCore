@@ -97,8 +97,7 @@ extension LaunchInterfaceController {
             let request = NotificationDataRequest(
                 category: note.category,
                 deeplink: note.deeplink,
-                responseDeserializer: deserializeHomePromotionWithData,
-                dummyResponse: Result.Failure(InfrastructureError.MissingDataSource.NSErrorRepresentation)
+                responseDeserializer: deserializeHomePromotionWithData
             )
             
             context.shared.session.execute(request, cache: note.responseCache).onSuccess { [unowned self] (promotion,_) in

@@ -11,7 +11,7 @@ import BrightFutures
 import SwiftyJSON
 import Shared
 
-struct ResponseCache {
+public struct ResponseCache {
     
     typealias CacheEntry = (request: Request, response: JSON)
     
