@@ -11,11 +11,11 @@ import BrightFutures
 import SwiftyJSON
 import Shared
 
-struct ProductDetails {
+public struct ProductDetails {
     var product: Product
     let description: String?
     
-    init(product: Product, description: String? = nil) {
+    public init(product: Product, description: String? = nil) {
         self.product = product
         self.description = description
     }

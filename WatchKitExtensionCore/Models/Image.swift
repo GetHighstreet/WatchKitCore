@@ -12,7 +12,7 @@ import BrightFutures
 import SwiftyJSON
 import Shared
 
-enum Image {
+public enum Image {
     case LocalImage(ref: LocalImageReference)
     case RemoteImage(url: String)
     
@@ -33,7 +33,7 @@ enum Image {
     }
 }
 
-enum LocalImageReference {
+public enum LocalImageReference {
     case InMemory(name: String, image: UIImage)
     case Extension(name: String, bundle: NSBundle?)
     case Watch(name: String)
@@ -49,12 +49,6 @@ enum LocalImageReference {
         }
     }
 }
-
-enum DisplayImage {
-    case StillImage(ref: LocalImageReference)
-    case AnimatedImage(ref: LocalImageReference, range: NSRange, duration: NSTimeInterval, repeat: Int)
-}
-
 
 func deserializeImage(json: JSON) -> Result<Image> {
     switch json.type {
