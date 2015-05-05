@@ -11,16 +11,16 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 
-struct HomePromotion: Identifiable {
+public struct HomePromotion: Identifiable {
     let id: Int
     let categoryId: Int
     let image: Image?
     
-    var identifier: Int {
+    public var identifier: Int {
         return id
     }
     
-    init(id: Int, categoryId: Int, image: Image) {
+    public init(id: Int, categoryId: Int, image: Image) {
         self.id = id
         self.categoryId = categoryId
         self.image = image

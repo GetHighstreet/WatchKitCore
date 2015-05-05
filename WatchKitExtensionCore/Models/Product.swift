@@ -11,13 +11,13 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 
-protocol Identifiable {
+public protocol Identifiable {
     typealias Identifier: Equatable
     
     var identifier: Identifier { get }
 }
 
-struct Product: Identifiable {
+public struct Product: Identifiable {
     let id: Int
     let name: String?
     let secondaryAttribute: String?
@@ -40,7 +40,7 @@ struct Product: Identifiable {
         }
     }
     
-    init(id: Int, name: String? = nil, secondaryAttribute: String? = nil, price: String? = nil, image: Image? = nil, isFavorite: Bool = false) {
+    public init(id: Int, name: String? = nil, secondaryAttribute: String? = nil, price: String? = nil, image: Image? = nil, isFavorite: Bool = false) {
         self.id = id
         self.name = name
         self.secondaryAttribute = secondaryAttribute
@@ -57,7 +57,7 @@ struct Product: Identifiable {
         return .Add
     }
 
-    var identifier: Int {
+    public var identifier: Int {
         return id
     }
 }
