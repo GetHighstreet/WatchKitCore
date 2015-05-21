@@ -11,7 +11,7 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 
-enum ProductFavoriteAction: Int {
+public enum ProductFavoriteAction: Int {
     case Add = 1
     case Remove = 0
     
@@ -26,27 +26,27 @@ enum ProductFavoriteAction: Int {
 }
 
 
-struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable {
+public struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable {
     typealias ResponseType = Bool
     
-    let action: ProductFavoriteAction
-    let productId: Int
+    public let action: ProductFavoriteAction
+    public let productId: Int
     
-    let identifier = HSWatchKitChangeProductFavoriteStateRequestIdentifier
+    public let identifier = HSWatchKitChangeProductFavoriteStateRequestIdentifier
     
     init(productId: Int, action: ProductFavoriteAction) {
         self.productId = productId
         self.action = action
     }
     
-    func jsonRepresentation() -> JSON {
+    public func jsonRepresentation() -> JSON {
         return JSON([
             HSWatchKitRequestIdKey: productId,
             HSWatchKitRequestActionKey: action.rawValue
             ])
     }
     
-    let responseDeserializer = { (json:JSON) -> Result<Bool> in
+    public let responseDeserializer = { (json:JSON) -> Result<Bool> in
         return json.int.map {
             Result.Success(Box($0 == 1))
         } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)

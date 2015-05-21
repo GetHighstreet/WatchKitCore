@@ -18,7 +18,7 @@ public protocol Identifiable {
 }
 
 public struct Product: Identifiable {
-    let id: Int
+    public let id: Int
     let name: String?
     let secondaryAttribute: String?
     let price: String?

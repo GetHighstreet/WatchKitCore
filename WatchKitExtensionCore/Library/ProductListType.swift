@@ -9,7 +9,7 @@
 import Foundation
 import Shared
 
-enum ProductListType {
+public enum ProductListType {
     case Category(id: Int)
     case Favorites
 }

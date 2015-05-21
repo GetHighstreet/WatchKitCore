@@ -11,20 +11,20 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 
-struct HomePromotionsListRequest: ParentAppRequest {
+public struct HomePromotionsListRequest: ParentAppRequest {
     typealias ResponseType = [HomePromotion]
     
-    let identifier = HSWatchKitHomePromotionsListRequestIdentifier
+    public let identifier = HSWatchKitHomePromotionsListRequestIdentifier
     
     init() {
         
     }
     
-    func jsonRepresentation() -> JSON {
+    public func jsonRepresentation() -> JSON {
         return JSON([:])
     }
     
-    let responseDeserializer = { (json:JSON) -> Result<[HomePromotion]> in
+    public let responseDeserializer = { (json:JSON) -> Result<[HomePromotion]> in
         if let promotionsArray = json.array {
             return sequence(promotionsArray.map(deserializeHomePromotion))
         }
