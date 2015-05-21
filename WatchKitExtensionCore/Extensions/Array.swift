@@ -9,6 +9,10 @@
 import Foundation
 import SwiftyJSON
 
+public func validRange<E>(array: [E]) -> Range<Int> {
+    return array.startIndex..<array.endIndex
+}
+
 func +<T>(var lhs: [T], rhs: T) -> [T] {
     lhs.append(rhs)
     return lhs
