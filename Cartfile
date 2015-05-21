@@ -1,3 +1,3 @@
 github "SwiftyJSON/SwiftyJSON" == 2.2.0
-github "thomvis/BrightFutures" "documentation"
+github "thomvis/BrightFutures" ~> 1.0
 git "/Users/Thomas/Projects/Highstreet/Shared" "master"
