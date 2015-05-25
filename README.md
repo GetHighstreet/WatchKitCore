@@ -3,7 +3,7 @@ The core logic &amp; assets for Highstreet WatchKit Apps
 
 This repository consists of two parts: the code for `WatchKitExtensionCore.framework`, built using the `WatchkitExtensionCore.xcworkspace` and the assets for the WatchKit App target (storyboard, PNG sequences and other assets). 
 
-To see this code in action, check out [https://github.com/GetHighstreet/HighstreetWatchApp](the example project).
+To see this code in action, check out https://github.com/GetHighstreet/HighstreetWatchApp.
 
 # Project Outline
 With Highstreet, we’re building a platform for shopping apps. There is what we call the ‘Highstreet iOS Core’, containing all business logic and interface code for the iPhone & iPad app. The core is imported in each client project, where it is configured for that specific client. As a result, our customers all get an app that looks and feels like their brand, but the app shared 99% of the code with other Highstreet apps.
