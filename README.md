@@ -17,6 +17,14 @@ The following diagram shows the relation between the components of the Highstree
 ![Highstreet platform architecture](Documentation/Assets/highstreet_platform_arch.png)
 
 # Installation
+After cloning this repository, the dependencies need to be set-up:
+
+```
+git submodule init
+git submodule update --recursive
+```
+
+Alternatively, you can also run `carthage checkout`.
 
 # License
 All code is available under the MIT License. All other assets are available under the CC BY 4.0 License.
