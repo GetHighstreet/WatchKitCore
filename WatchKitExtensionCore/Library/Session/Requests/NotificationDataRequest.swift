@@ -10,12 +10,13 @@ import Foundation
 import BrightFutures
 import SwiftyJSON
 import Shared
+import Result
 
 struct NotificationDataRequest<R>: ParentAppRequest {
     
     let category: String
     let deeplink: String
-    let responseDeserializer: JSON -> Result<R>
+    let responseDeserializer: JSON -> Result<R, Error>
 
     var identifier: String {
         return HSWatchKitNotificationRequestIdentifierPrefix + category

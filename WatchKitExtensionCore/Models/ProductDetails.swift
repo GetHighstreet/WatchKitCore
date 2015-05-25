@@ -10,6 +10,7 @@ import Foundation
 import BrightFutures
 import SwiftyJSON
 import Shared
+import Result
 
 public struct ProductDetails {
     var product: Product
@@ -30,8 +31,8 @@ public struct ProductDetails {
     }
 }
 
-func deserializeProductDetails(json: JSON) -> Result<ProductDetails> {
+func deserializeProductDetails(json: JSON) -> Result<ProductDetails, Error> {
     return ProductDetails(json: json).map {
-        Result.Success(Box($0))
-    } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        Result(value: $0)
+    } ?? Result(error: .DeserializationFailed(object: json))
 }

@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 import Shared
+import Result
 
 public struct HomePromotionsListRequest: ParentAppRequest {
     typealias ResponseType = [HomePromotion]
@@ -24,10 +25,10 @@ public struct HomePromotionsListRequest: ParentAppRequest {
         return JSON([:])
     }
     
-    public let responseDeserializer = { (json:JSON) -> Result<[HomePromotion]> in
+    public let responseDeserializer = { (json:JSON) -> Result<[HomePromotion], Error> in
         if let promotionsArray = json.array {
             return sequence(promotionsArray.map(deserializeHomePromotion))
         }
-        return Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        return Result(error: .DeserializationFailed(object: json))
     }
 }

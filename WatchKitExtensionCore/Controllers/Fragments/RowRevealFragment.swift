@@ -20,11 +20,11 @@ class RowRevealFragment: Revealing {
     
     let revealGroup: WKInterfaceGroup
     
-    var imageSet: Promise<Void>? = nil
-    var revealDone: Future<Void>? = nil
-    var looping: Future<Void>? = nil
+    var imageSet: Promise<Void, Error>? = nil
+    var revealDone: Future<Void, Error>? = nil
+    var looping: Future<Void, Error>? = nil
     
-    var onReveal: Future<Void> {
+    var onReveal: Future<Void, Error> {
         if let rev = revealDone {
             return rev
         }
@@ -32,7 +32,7 @@ class RowRevealFragment: Revealing {
         return Future.succeeded()
     }
     
-    var onLooping: Future<Void> {
+    var onLooping: Future<Void, Error> {
         if let looping = looping {
             return looping
         }
@@ -61,11 +61,11 @@ class RowRevealFragment: Revealing {
             repeatCount: 1
         )
         
-        let imageSet = Promise<Void>()
+        let imageSet = Promise<Void, Error>()
         
-        let buildUpDelay = Future.completeAfter((NSTimeInterval(buildUpRange.length)/fps)*1.5, withValue: ())
+        let buildUpDelay = Future<Void, Error>.completeAfter((NSTimeInterval(buildUpRange.length)/fps)*1.5, withValue: ())
         
-        looping = buildUpDelay.flatMap { [weak self] _ -> Future<Void> in
+        looping = buildUpDelay.flatMap { [weak self] _ -> Future<Void, Error> in
             if !imageSet.future.isCompleted {
                 self?.revealGroup.startAnimatingWithImagesInRange(
                     loopRange,
@@ -81,7 +81,7 @@ class RowRevealFragment: Revealing {
         
         self.imageSet = imageSet
         
-        revealDone = buildUpDelay.zip(imageSet.future).flatMap { _ -> Future<Void> in
+        revealDone = buildUpDelay.zip(imageSet.future).flatMap { _ -> Future<Void, Error> in
             let duration = NSTimeInterval(revealRange.length)/fps
             
             self.revealGroup.startAnimatingWithImagesInRange(
@@ -94,7 +94,7 @@ class RowRevealFragment: Revealing {
         }
     }
     
-    func willSetImage(image: Image) -> Future<Void> {
+    func willSetImage(image: Image) -> Future<Void, Error> {
         if let context = context {
             if context.imageCache.cachedImageName(image) == nil {
                 return onLooping

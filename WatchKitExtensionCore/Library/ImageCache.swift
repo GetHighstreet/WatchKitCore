@@ -9,6 +9,7 @@
 import Foundation
 import WatchKit
 import BrightFutures
+import Result
 
 typealias ImageAccessLog = [String]
 
@@ -40,24 +41,24 @@ class ImageCache {
         }
     }
     
-    func ensureCacheImage(image: Image) -> Future<String> {
+    func ensureCacheImage(image: Image) -> Future<String, Error> {
         accessLog = add(image, accessLog)
         scheduleSafeAccessLog()
         return cachedImageName(image).map { Future.succeeded($0) } ?? cacheImage(image)
     }
     
-    private func cacheImage(image: Image) -> Future<String> {
+    private func cacheImage(image: Image) -> Future<String, Error> {
         switch image {
         case .RemoteImage(let url):
             return fetcher.fetchImage(url).flatMap {
                 self.cacheImage(image.name, localImageReference: $0)
             }
         case .LocalImage(let ref):
-            return Future<String>.completed(cacheImage(image.name, localImageReference: ref))
+            return Future<String, Error>.completed(cacheImage(image.name, localImageReference: ref))
         }
     }
     
-    private func cacheImage(name: String, localImageReference ref: LocalImageReference) -> Result<String> {
+    private func cacheImage(name: String, localImageReference ref: LocalImageReference) -> Result<String, Error> {
         if let img = ref.imageObject {
             while !self.device.addCachedImage(img, name: name) {
                 if let imageToEvict = self.evictionPolicy(accessLog, self.cachedImages) {
@@ -65,13 +66,13 @@ class ImageCache {
                     accessLog = remove(.LocalImage(ref: .Watch(name: imageToEvict)), accessLog)
                     scheduleSafeAccessLog()
                 } else {
-                    return Result.Failure(InfrastructureError.WatchImageCacheAddingFailed(image: nil).NSErrorRepresentation)
+                    return Result(error: .WatchImageCacheAddingFailed(image: nil))
                 }
             }
         
-            return Result.Success(Box(name))
+            return Result(value: name)
         } else {
-            return Result.Failure(InfrastructureError.ImageLoadingFailed(image: nil).NSErrorRepresentation)
+            return Result(error: .ImageLoadingFailed(image: nil))
         }
     }
     
@@ -92,7 +93,7 @@ class ImageCache {
         scheduleSafeAccessLogToken?.invalidate()
         scheduleSafeAccessLogToken = InvalidationToken()
         
-        Future<Void>.completeAfter(AccessLogSaveDelay, withValue: ()).onComplete(token: scheduleSafeAccessLogToken!) { [weak self] _ in
+        Future<Void, NoError>.completeAfter(AccessLogSaveDelay, withValue: ()).onComplete(token: scheduleSafeAccessLogToken!) { [weak self] _ in
             self?.saveAccessLog()
         }
     }

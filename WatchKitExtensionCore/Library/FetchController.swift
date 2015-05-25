@@ -16,7 +16,7 @@ class FetchController<T: Identifiable> {
     
     // internals
     var data = [T?]()
-    var dataSource: (Range<Int> -> Future<(Int, [T])>)?
+    var dataSource: (Range<Int> -> Future<(Int, [T]), Error>)?
     
     var insertionListeners = Array<((T,Int) -> Void)>()
     var updateListeners = Array<((T,Int) -> Void)>()
@@ -53,11 +53,11 @@ class FetchController<T: Identifiable> {
     
     /// Loads the next batch. If the next batch has already been loaded partially,
     /// that batch will be the next batch and its remaining objects will be loaded
-    func loadNextBatch() -> Future<Void> {
+    func loadNextBatch() -> Future<Void, Error> {
         return loadRange(rangeToLoadForNextBatch())
     }
     
-    func loadNextObjects(count: Int) -> Future<Void> {
+    func loadNextObjects(count: Int) -> Future<Void, Error> {
         return loadRange(loadingRange.endIndex..<loadingRange.endIndex+count)
     }
     
@@ -70,12 +70,12 @@ class FetchController<T: Identifiable> {
         return loadingRange.endIndex..<loadingRange.endIndex+batchSize-objectsLoadedOfNextBatch
     }
     
-    private func loadRange(range: Range<Int>) -> Future<Void> {
+    private func loadRange(range: Range<Int>) -> Future<Void, Error> {
         if let dataSource = dataSource {
             assert(adjacent(loadingRange, range), "The newly requested objects should be adjacent to the once already loading/loaded")
             loadingRange = union(loadingRange, range)
             
-            return dataSource(range).flatMap { [weak self] (count, objects) -> Future<Void> in
+            return dataSource(range).flatMap { [weak self] (count, objects) -> Future<Void, Error> in
                 if let controller = self {
                     if adjacent(controller.loadedRange, range) {
                         controller.didReceiveObjects(objects, forRange: range)
@@ -86,13 +86,13 @@ class FetchController<T: Identifiable> {
                     }
                 }
                 
-                return Future.failed(LazyError)
+                return Future.failed(.Unspecified)
             }.onFailure { [weak self] err in
                 self?.loadingRange = loadingRange.startIndex..<range.startIndex
             }
         }
         
-        return Future<Void>.failed(InfrastructureError.MissingDataSource.NSErrorRepresentation)
+        return Future.failed(.MissingDataSource)
     }
     
     var isLoading: Bool {

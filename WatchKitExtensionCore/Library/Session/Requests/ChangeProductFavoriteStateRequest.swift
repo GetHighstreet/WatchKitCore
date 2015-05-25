@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 import Shared
+import Result
 
 public enum ProductFavoriteAction: Int {
     case Add = 1
@@ -46,9 +47,9 @@ public struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable 
             ])
     }
     
-    public let responseDeserializer = { (json:JSON) -> Result<Bool> in
+    public let responseDeserializer = { (json:JSON) -> Result<Bool, Error> in
         return json.int.map {
-            Result.Success(Box($0 == 1))
-        } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+            Result(value: $0 == 1)
+        } ?? Result(error: .DeserializationFailed(object: json))
     }
 }

@@ -56,7 +56,7 @@ class HomePromotionsRowController: NSObject, ListRowController, Revealing {
         }
     }
     
-    func revealDidSetImage(image: Image) -> Future<Void> {
+    func revealDidSetImage(image: Image) -> Future<Void, Error> {
         if let f = revealFragment {
             return f.willSetImage(image)
         }

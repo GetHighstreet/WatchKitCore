@@ -11,6 +11,7 @@ import UIKit
 import BrightFutures
 import SwiftyJSON
 import Shared
+import Result
 
 public enum Image {
     case LocalImage(ref: LocalImageReference)
@@ -50,10 +51,10 @@ public enum LocalImageReference {
     }
 }
 
-func deserializeImage(json: JSON) -> Result<Image> {
+func deserializeImage(json: JSON) -> Result<Image, Error> {
     switch json.type {
     case .String:
-        return Result<Image>.Success(Box(Image.RemoteImage(url: json.stringValue)))
+        return Result(value: Image.RemoteImage(url: json.stringValue))
     case .Dictionary:
         if
             let name = json[HSWatchKitResponseNameKey].string,
@@ -61,10 +62,10 @@ func deserializeImage(json: JSON) -> Result<Image> {
             let data = NSData(base64EncodedString: dataString, options: NSDataBase64DecodingOptions(0)),
             let image = UIImage(data: data)
         {
-            return Result<Image>.Success(Box(.LocalImage(ref: LocalImageReference.InMemory(name: name, image: image))))
+            return Result(value: .LocalImage(ref: LocalImageReference.InMemory(name: name, image: image)))
         }
         fallthrough
     default:
-        return Result<Image>.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        return Result(error: .DeserializationFailed(object: json))
     }
 }

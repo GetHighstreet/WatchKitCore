@@ -21,7 +21,7 @@ class HomePromotionsInterfaceController: WKInterfaceController {
     var tableController: TableController<HomePromotion>!
     var fetchController: FetchController<HomePromotion>!
     
-    var promotionsPromise = Promise<[HomePromotion]>()
+    var promotionsPromise = Promise<[HomePromotion], Error>()
 
     
     override init() {

@@ -81,7 +81,7 @@ class ProductOutlineFragment: InterfaceFragment, Revealing {
         revealFragment?.startRevealAnimation(context)
     }
     
-    func revealDidSetImage(image: Image) -> Future<Void> {
+    func revealDidSetImage(image: Image) -> Future<Void, Error> {
         if let f = revealFragment {
             return f.willSetImage(image)
         }

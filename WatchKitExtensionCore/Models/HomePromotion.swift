@@ -10,6 +10,8 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 import Shared
+import Result
+import Box
 
 public struct HomePromotion: Identifiable {
     let id: Int
@@ -38,13 +40,13 @@ public struct HomePromotion: Identifiable {
     }
 }
 
-func deserializeHomePromotion(json: JSON) -> Result<HomePromotion> {
+func deserializeHomePromotion(json: JSON) -> Result<HomePromotion, Error> {
     return HomePromotion(json: json).map{
         Result.Success(Box($0))
-        } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        } ?? Result(error: .DeserializationFailed(object: json))
 }
 
-func deserializeHomePromotionWithData(json: JSON) -> Result<(HomePromotion,(Int, [Product]))> {
+func deserializeHomePromotionWithData(json: JSON) -> Result<(HomePromotion,(Int, [Product])), Error> {
     
     return deserializeCountAndProducts(json[HSWatchKitResponseProductsKey]).flatMap { productsAndCount in
         deserializeHomePromotion(json[HSWatchKitResponseHomePromotionKey]).map { (homePromotion) in

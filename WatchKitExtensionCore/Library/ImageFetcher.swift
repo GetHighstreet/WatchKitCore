@@ -18,26 +18,26 @@ class ImageFetcher {
         urlSession = NSURLSession.sharedSession()
     }
     
-    func fetchImage(urlString: String) -> Future<LocalImageReference> {
+    func fetchImage(urlString: String) -> Future<LocalImageReference, Error> {
         if let url = NSURL(string: urlString) {
             return fetchImageFromURL(url).map {
                 return .InMemory(name: urlString, image: $0)
             }
         } else {
-            return Future.failed(InfrastructureError.CFNetworkError(error: CFNetworkErrors.CFErrorHTTPBadURL).NSErrorRepresentation)
+            return Future.failed(.CFNetworkError(error: CFNetworkErrors.CFErrorHTTPBadURL))
         }
     }
     
-    private func fetchImageFromURL(url: NSURL) -> Future<UIImage> {
-        let p = Promise<UIImage>()
+    private func fetchImageFromURL(url: NSURL) -> Future<UIImage, Error> {
+        let p = Promise<UIImage, Error>()
         
         let task = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             if let error = error {
-                p.failure(error)
+                p.failure(.External(error: error))
             } else if let img = UIImage(data: data) {
                 p.success(img)
             } else {
-                p.failure(InfrastructureError.DeserializationFailed(object:data).NSErrorRepresentation)
+                p.failure(.DeserializationFailed(object:data))
             }
         })
         

@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 import Shared
+import Result
 
 public struct ProductListRequest: ParentAppRequest, Serializable {
     typealias ResponseType = (Int, [Product])
@@ -34,20 +35,20 @@ public struct ProductListRequest: ParentAppRequest, Serializable {
     public let responseDeserializer = deserializeCountAndProducts
 }
 
-func deserializeProducts(json: JSON) -> Result<[Product]> {
+func deserializeProducts(json: JSON) -> Result<[Product], Error> {
     if let productArray = json.array,
         products = sequence(productArray.map(deserializeProduct)).value  {
             
-        return Result.Success(Box(products))
+        return Result(value: products)
     }
-    return Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+    return Result(error: .DeserializationFailed(object: json))
 }
 
-func deserializeCountAndProducts(json: JSON) -> Result<(Int, [Product])> {
+func deserializeCountAndProducts(json: JSON) -> Result<(Int, [Product]), Error> {
     return deserializeProducts(json[HSWatchKitResponseItemsKey]).flatMap { (products:[Product]) in
         if let count = json[HSWatchKitResponseCountKey].int {
-            return Result.Success(Box(count, products))
+            return Result(value: (count, products))
         }
-        return Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        return Result(error: .DeserializationFailed(object: json))
     }
 }

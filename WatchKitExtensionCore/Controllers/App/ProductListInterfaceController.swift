@@ -164,7 +164,7 @@ class ProductListInterfaceController: WKInterfaceController {
             let token = InvalidationToken()
             
             // show the loading indicator after 0.5 seconds
-            Future<Void>.completeAfter(0.5, withValue: ()).onComplete(token: token) { [weak self] _ in
+            Future<Void, Error>.completeAfter(0.5, withValue: ()).onComplete(token: token) { [weak self] _ in
                 self?.loadMoreIndicator.setImageNamed("loading_indicator")
                 let range = NSMakeRange(0, 50)
                 self?.loadMoreIndicator.startAnimatingWithImagesInRange(range, duration: NSTimeInterval(range.length)/25.0, repeatCount: Int.max)
@@ -277,7 +277,7 @@ protocol ProductListInterfaceControllerConfiguration {
     
     var rowAndColumnForProductAtIndex: (Int) -> (Int, Int) { get }
     
-    var fetchProductsInRange: SharedContextType -> Range<Int> -> Future<(Int, [Product])> { get }
+    var fetchProductsInRange: SharedContextType -> Range<Int> -> Future<(Int, [Product]), Error> { get }
     
     var activity: UserActivity { get }
 }
@@ -306,8 +306,8 @@ struct FavoritesConfiguration: ProductListInterfaceControllerConfiguration {
         return (row, column)
     }
     
-    let fetchProductsInRange = { (context:SharedContextType) -> Range<Int> -> Future<(Int, [Product])> in
-        return { range -> Future<(Int, [Product])> in
+    let fetchProductsInRange = { (context:SharedContextType) -> Range<Int> -> Future<(Int, [Product]), Error> in
+        return { range -> Future<(Int, [Product]), Error> in
             let request = ProductListRequest(type: .Favorites, range: range)
             return context.session.execute(request)
         }
@@ -326,13 +326,13 @@ struct CategoryProductsConfiguration: ProductListInterfaceControllerConfiguratio
     }
     
     let rowType = SingleColumnRowController.Identifier
-    let fetchProductsInRange: SharedContextType -> Range<Int> -> Future<(Int, [Product])>
+    let fetchProductsInRange: SharedContextType -> Range<Int> -> Future<(Int, [Product]), Error>
     
     let activity: UserActivity
     
     init(categoryId: Int) {
-        self.fetchProductsInRange = { (context:SharedContextType) -> Range<Int> -> Future<(Int, [Product])> in
-                return { range -> Future<(Int, [Product])> in
+        self.fetchProductsInRange = { (context:SharedContextType) -> Range<Int> -> Future<(Int, [Product]), Error> in
+                return { range -> Future<(Int, [Product]), Error> in
                     let request = ProductListRequest(type: .Category(id: categoryId), range: range)
                     return context.session.execute(request)
                 }

@@ -8,17 +8,18 @@
 
 import Foundation
 import BrightFutures
+import Result
 
-func sequence<T>(seq: [Result<T>]) -> Result<[T]> {
-    return seq.reduce(Result<[T]>.Success(Box([])), combine: { (res, elem) -> Result<[T]> in
+func sequence<T, E>(seq: [Result<T, E>]) -> Result<[T], E> {
+    return seq.reduce(Result(value: []), combine: { (res, elem) -> Result<[T], E> in
         switch res {
             case .Success(let boxedResultSequence):
                 switch elem {
                     case .Success(let boxedElemValue):
                         let newSeq = boxedResultSequence.value + [boxedElemValue.value]
-                        return Result<[T]>.Success(Box(newSeq))
-                    case .Failure(let elemError):
-                        return Result<[T]>.Failure(elemError)
+                        return Result(value: newSeq)
+                    case .Failure(let boxedElemError):
+                        return Result<[T], E>(error: boxedElemError.value)
                 }
             case .Failure(let err):
                 return res

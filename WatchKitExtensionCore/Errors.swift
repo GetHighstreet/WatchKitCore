@@ -7,21 +7,16 @@
 //
 
 import Foundation
-
-protocol Error {
-    var NSErrorRepresentation: NSError { get }
-}
+import BrightFutures
 
 enum ErrorDomains: String {
     case InfrastructureErrorDomain = "HSWatchKitExtensionCoreInfrastructureErrorDomain"
 }
 
-let LazyError = NSError(domain: "HumanError", code: 42, userInfo: [NSLocalizedDescriptionKey: "There should be a better error here but the human was lazy"])
-
 /**
  * All errors that can happen in the infrastructure layer
  */
-enum InfrastructureError {
+public enum Error {
     case ParentAppCommunicationFailure
     case UnexpectedParentAppResponse(response: Any?)
     case DeserializationFailed(object: Any?)
@@ -34,11 +29,15 @@ enum InfrastructureError {
     case CFNetworkError(error: CFNetworkErrors)
     
     case ParentAppResponseError(code: Int, description: String?)
+    
+    case External(error: NSError)
+
+    case Unspecified
 }
 
-extension InfrastructureError : Error {
+extension Error: ErrorType {
     
-    var NSErrorRepresentation: NSError {
+    public var nsError: NSError {
         switch self {
         case .UnexpectedParentAppResponse(let response):
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 1, userInfo: [
@@ -72,6 +71,10 @@ extension InfrastructureError : Error {
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 7, userInfo: [
                 NSLocalizedDescriptionKey: "Parent app returned error with code \(code), description: \(description)"
                 ])
+        case .External(let err):
+            return err
+        case .Unspecified:
+            return NSError(domain:ErrorDomains.InfrastructureErrorDomain.rawValue, code: 8, userInfo: nil)
         }
     }
     

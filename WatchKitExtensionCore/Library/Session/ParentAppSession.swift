@@ -11,12 +11,13 @@ import BrightFutures
 import WatchKit
 import SwiftyJSON
 import Shared
+import Result
 
 public protocol ParentAppSession {
     init()
     
-    func execute<R: ParentAppRequest>(request: R) -> Future<R.ResponseType>
-    func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType>
+    func execute<R: ParentAppRequest>(request: R) -> Future<R.ResponseType, Error>
+    func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType, Error>
 }
 
 class _ParentAppSession : ParentAppSession {
@@ -25,20 +26,20 @@ class _ParentAppSession : ParentAppSession {
         
     }
     
-    func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType> {
+    func execute<R: ParentAppRequest>(request: R, cache: ResponseCache?) -> Future<R.ResponseType, Error> {
         if let cache = cache,cachedResponse = cache.responseForRequest(request)   {
-            return Future<R.ResponseType>.completed(flatten(parseResponse(cachedResponse, forRequest: request)))
+            return Future<R.ResponseType, Error>.completed(flatten(parseResponse(cachedResponse, forRequest: request)))
         } else {
             return execute(request)
         }
     }
     
-    func execute<R: ParentAppRequest>(request: R) -> Future<R.ResponseType> {
+    func execute<R: ParentAppRequest>(request: R) -> Future<R.ResponseType, Error> {
         return _execute(request, retry: true)
     }
     
-    func _execute<R: ParentAppRequest>(request: R, retry: Bool) -> Future<R.ResponseType> {
-        let p = Promise<R.ResponseType>()
+    func _execute<R: ParentAppRequest>(request: R, retry: Bool) -> Future<R.ResponseType, Error> {
+        let p = Promise<R.ResponseType, Error>()
 
         let userInfo: [NSObject:AnyObject] = [
             HSWatchKitRequestIdentifierKey: request.identifier,
@@ -47,7 +48,7 @@ class _ParentAppSession : ParentAppSession {
         
         let sent = WKInterfaceController.openParentApplication(userInfo, reply: { (response, error) -> Void in
             if let error = error {
-                p.failure(error)
+                p.failure(.External(error: error))
             } else if let response = response {
                 p.complete(flatten(self.parseResponse(JSON(response), forRequest: request)))
             } else {
@@ -55,7 +56,7 @@ class _ParentAppSession : ParentAppSession {
                     println("retrying request")
                     p.completeWith(self._execute(request, retry: false))
                 } else {
-                    p.failure(InfrastructureError.UnexpectedParentAppResponse(response: nil).NSErrorRepresentation)
+                    p.failure(.UnexpectedParentAppResponse(response: nil))
                 }
             }
         })
@@ -65,7 +66,7 @@ class _ParentAppSession : ParentAppSession {
                 println("retrying request")
                 p.completeWith(_execute(request, retry: false))
             } else {
-                p.failure(InfrastructureError.ParentAppCommunicationFailure.NSErrorRepresentation)
+                p.failure(.ParentAppCommunicationFailure)
             }
         }
         
@@ -77,14 +78,14 @@ class _ParentAppSession : ParentAppSession {
     }
     
     // The outer Result represents the parsing, the inner result the contents of the response
-    func parseResponse<R: ParentAppRequest>(response: JSON, forRequest request: R) -> Result<Result<R.ResponseType>> {
+    func parseResponse<R: ParentAppRequest>(response: JSON, forRequest request: R) -> Result<Result<R.ResponseType, Error>, Error> {
         let success = response[HSWatchKitResponseSuccessKey]
         if success.error == nil {
             if success.boolValue || success.intValue == 1 {
                 let value = response[HSWatchKitResponseValueKey]
                 if value.error == nil {
                     return request.responseDeserializer(value).map { response in
-                        return Result.Success(Box(response))
+                        return Result(value: response)
                     }
                 }
             } else {
@@ -92,12 +93,12 @@ class _ParentAppSession : ParentAppSession {
                     let errorJSON = JSON(error)
                     if let code = errorJSON[HSWatchKitResponseErrorCodeKey].int {
                         let description = errorJSON[HSWatchKitResponseErrorDescriptionKey].string
-                        return Result.Success(Box(Result.Failure(InfrastructureError.ParentAppResponseError(code: code, description: description).NSErrorRepresentation)))
+                        return Result(value: Result(error: .ParentAppResponseError(code: code, description: description)))
                     }
                 }
             }
         }
         
-        return Result.Failure(InfrastructureError.UnexpectedParentAppResponse(response: response).NSErrorRepresentation)
+        return Result(error: .UnexpectedParentAppResponse(response: response))
     }
 }

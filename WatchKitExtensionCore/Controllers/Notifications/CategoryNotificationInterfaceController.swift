@@ -17,7 +17,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
     @IBOutlet weak var table: WKInterfaceTable!
     
     let shared: SharedContextType
-    let productsPromise = Promise<(Int, [Product])>()
+    let productsPromise = Promise<(Int, [Product]), Error>()
     
     let fetchController: FetchController<Product>
     var tableController: TableController<Product>!

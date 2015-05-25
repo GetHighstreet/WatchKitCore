@@ -37,13 +37,13 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     
     var favoriteButtonDisplayingAction: ProductFavoriteAction?
     
-    var productDetailsAvailablePromise = Promise<ProductDetails>()
+    var productDetailsAvailablePromise = Promise<ProductDetails, Error>()
     
     var changeFavoriteStateToken: InvalidationToken?
     
-    var imageSetPromise: Promise<Void>!
-    var revealedFuture: Future<Void>!
-    var onReveal: Future<Void> {
+    var imageSetPromise: Promise<Void, Error>!
+    var revealedFuture: Future<Void, Error>!
+    var onReveal: Future<Void, Error> {
         if let f = revealedFuture {
             return f
         }
@@ -51,7 +51,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         return Future.succeeded()
     }
     
-    var productDetailsAvailable: Future<ProductDetails> {
+    var productDetailsAvailable: Future<ProductDetails, Error> {
         if let details = productDetails {
             return Future.succeeded(details)
         }
@@ -83,7 +83,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         self.context = context as! ProductDetailsInterfaceControllerContext
         
         // reveal procedure
-        imageSetPromise = Promise<Void>()
+        imageSetPromise = Promise<Void, Error>()
         self.revealedImage().onComplete(context: ImmediateOnMainExecutionContext) { [weak self] _ in
             self?.infoGroup.setHidden(false)
         }
@@ -238,8 +238,8 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     }
     
     
-    func revealedImage() -> Future<Void> {
-        revealedFuture = imageSetPromise.future.flatMap { [weak self] _ -> Future<Void> in
+    func revealedImage() -> Future<Void, Error> {
+        revealedFuture = imageSetPromise.future.flatMap { [weak self] _ -> Future<Void, Error> in
             if let controller = self {
                 controller.revealGroup.setBackgroundColor(UIColor.clearColor())
                 controller.revealGroup.setBackgroundImageNamed("detail_view_image_reveal")
@@ -247,7 +247,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
                 controller.revealGroup.startAnimatingWithImagesInRange(NSMakeRange(0, 8), duration: duration, repeatCount: 1)
                 return Future.completeAfter(duration*0.9, withValue: ())
             } else {
-                return Future.failed(LazyError)
+                return Future.failed(Error.Unspecified)
             }
         }
         

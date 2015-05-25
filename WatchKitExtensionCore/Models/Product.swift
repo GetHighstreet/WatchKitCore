@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import BrightFutures
 import Shared
+import Result
 
 public protocol Identifiable {
     typealias Identifier: Equatable
@@ -62,8 +63,8 @@ public struct Product: Identifiable {
     }
 }
 
-func deserializeProduct(json: JSON) -> Result<Product> {
+func deserializeProduct(json: JSON) -> Result<Product, Error> {
     return Product(json: json).map{
-        Result.Success(Box($0))
-    } ?? Result.Failure(InfrastructureError.DeserializationFailed(object: json).NSErrorRepresentation)
+        Result(value: $0)
+    } ?? Result(error: .DeserializationFailed(object: json))
 }
