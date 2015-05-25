@@ -12,7 +12,7 @@ With the introduction of Apple Watch, the Highstreet platform now has a second '
 
 WatchKitCore on itself cannot run. It needs to be linked into a client project. A regular client project contains branded iPhone & iPad apps, in addition to the WatchKit App. Since we're not Open Sourcing the 'iOS core', we've created an example project that only contains the WatchKit app: https://github.com/GetHighstreet/HighstreetWatchApp.
 
-The following diagram shows the relation between the components of the Highstreet platform:
+The following diagram gives a broad impression of the Highstreet platform set-up:
 
 ![Highstreet platform architecture](Documentation/Assets/highstreet_platform_arch.png)
 
