@@ -19,4 +19,4 @@ Podfile.lock
 Pods
 *.xcworkspace
 Documentation/Generated
-Carthage/
+Carthage/Build
