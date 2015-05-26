@@ -14,9 +14,9 @@ import Result
 import Box
 
 public struct HomePromotion: Identifiable {
-    let id: Int
-    let categoryId: Int
-    let image: Image?
+    public let id: Int
+    public let categoryId: Int
+    public let image: Image?
     
     public var identifier: Int {
         return id
