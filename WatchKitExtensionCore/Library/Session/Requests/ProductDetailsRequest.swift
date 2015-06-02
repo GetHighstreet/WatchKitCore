@@ -11,22 +11,22 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 
-struct ProductDetailsRequest: ParentAppRequest, Serializable {
+public struct ProductDetailsRequest: ParentAppRequest, Serializable {
     typealias ResponseType = ProductDetails
     
-    let productId: Int
+    public let productId: Int
     
-    let identifier = HSWatchKitProductDetailsRequestIdentifier
+    public let identifier = HSWatchKitProductDetailsRequestIdentifier
     
     init(productId: Int) {
         self.productId = productId
     }
     
-    func jsonRepresentation() -> JSON {
+    public func jsonRepresentation() -> JSON {
         return JSON([
             HSWatchKitRequestIdKey: self.productId
         ])
     }
     
-    let responseDeserializer = deserializeProductDetails
+    public let responseDeserializer = deserializeProductDetails
 }

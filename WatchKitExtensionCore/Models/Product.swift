@@ -20,10 +20,10 @@ public protocol Identifiable {
 
 public struct Product: Identifiable {
     public let id: Int
-    let name: String?
-    let secondaryAttribute: String?
-    let price: String?
-    var isFavorite: Bool
+    public let name: String?
+    public let secondaryAttribute: String?
+    public let price: String?
+    public var isFavorite: Bool
     
     let image: Image?
     

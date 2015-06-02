@@ -12,17 +12,17 @@ import SwiftyJSON
 import Shared
 import Result
 
-struct NotificationDataRequest<R>: ParentAppRequest {
+public struct NotificationDataRequest<R>: ParentAppRequest {
     
-    let category: String
-    let deeplink: String
-    let responseDeserializer: JSON -> Result<R, Error>
+    public let category: String
+    public let deeplink: String
+    public let responseDeserializer: JSON -> Result<R, Error>
 
-    var identifier: String {
+    public var identifier: String {
         return HSWatchKitNotificationRequestIdentifierPrefix + category
     }
     
-    func jsonRepresentation() -> JSON {
+    public func jsonRepresentation() -> JSON {
         return JSON([
             HSWatchKitRequestDeeplinkKey: self.deeplink,
         ])
