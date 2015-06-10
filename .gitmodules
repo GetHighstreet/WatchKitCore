@@ -1,6 +1,3 @@
-[submodule "Carthage/Checkouts/SwiftyJSON"]
-	path = Carthage/Checkouts/SwiftyJSON
-	url = https://github.com/Thomvis/SwiftyJSON.git
 [submodule "Carthage/Checkouts/BrightFutures"]
 	path = Carthage/Checkouts/BrightFutures
 	url = https://github.com/thomvis/BrightFutures.git
