@@ -24,7 +24,6 @@ public enum Error {
     case MissingDataSource
     
     case ImageLoadingFailed(image: Image?)
-    case WatchImageCacheAddingFailed(image: Image?)
     
     case ParentAppResponseError(code: Int, description: String?)
     
@@ -56,10 +55,6 @@ extension Error: ErrorType {
         case .ImageLoadingFailed(let image):
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 5, userInfo: [
                 NSLocalizedDescriptionKey: "Could not load image \(image?.name)"
-            ])
-        case .WatchImageCacheAddingFailed(let image):
-            return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 6, userInfo: [
-                NSLocalizedDescriptionKey: "Could not add image \(image?.name) to cache"
             ])
         case .ParentAppResponseError(let code, let description):
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 7, userInfo: [

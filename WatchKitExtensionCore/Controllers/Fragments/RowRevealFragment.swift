@@ -96,7 +96,7 @@ class RowRevealFragment: Revealing {
     
     func willSetImage(image: Image) -> Future<Void, Error> {
         if let context = context {
-            if context.imageCache.cachedImage(image) == nil {
+            if !context.imageCache.hasCachedImage(image) {
                 return onLooping
             }
         }

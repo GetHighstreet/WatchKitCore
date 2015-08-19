@@ -41,7 +41,8 @@ extension ExtensionDelegate: WKExtensionDelegate {
     }
     
     public func applicationWillResignActive() {
-        print("will resign active")
+        sharedContext.imageCache.clearMemoryCache()
+        sharedContext.imageCache.cleanExpiredDiskCache()
     }
     
     public func didReceiveLocalNotification(notification: UILocalNotification) {
