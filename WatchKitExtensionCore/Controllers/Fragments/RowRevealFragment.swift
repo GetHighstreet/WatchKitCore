@@ -29,7 +29,7 @@ class RowRevealFragment: Revealing {
             return rev
         }
         
-        return Future.succeeded()
+        return Future(value: ())
     }
     
     var onLooping: Future<Void, Error> {
@@ -37,7 +37,7 @@ class RowRevealFragment: Revealing {
             return looping
         }
         
-        return Future.succeeded()
+        return Future(value: ())
     }
     
     init(revealGroup: WKInterfaceGroup) {
@@ -63,7 +63,7 @@ class RowRevealFragment: Revealing {
         
         let imageSet = Promise<Void, Error>()
         
-        let buildUpDelay = Future<Void, Error>.completeAfter((NSTimeInterval(buildUpRange.length)/fps)*1.5, withValue: ())
+        let buildUpDelay = Future<Void, Error>(value: (), delay: (NSTimeInterval(buildUpRange.length)/fps)*1.5)
         
         looping = buildUpDelay.flatMap { [weak self] _ -> Future<Void, Error> in
             if !imageSet.future.isCompleted {
@@ -73,10 +73,10 @@ class RowRevealFragment: Revealing {
                     repeatCount: Int.max
                 )
                 
-                return Future.succeeded()
+                return Future(value: ())
             }
             
-            return Future.succeeded()
+            return Future(value: ())
         }
         
         self.imageSet = imageSet
@@ -90,7 +90,7 @@ class RowRevealFragment: Revealing {
             )
             self.imageSet = nil
             
-            return Future.completeAfter(duration, withValue: ())
+            return Future(value: (), delay: duration)
         }
     }
     
@@ -101,11 +101,11 @@ class RowRevealFragment: Revealing {
             }
         }
         
-        return Future.succeeded()
+        return Future(value: ())
     }
     
     func didFinishLoading() {
-        self.imageSet?.success()
+        try! self.imageSet?.success()
     }
     
     

@@ -94,7 +94,7 @@ class ProductListInterfaceController: WKInterfaceController {
                 self?.loadRemainingProducts()
             }
         } else {
-            if var rowController = tableController.controllerForRowAtIndex(0) as? SingleColumnRowController {
+            if let rowController = tableController.controllerForRowAtIndex(0) as? SingleColumnRowController {
                 rowController.setUp(self.context.shared)
                 rowController.startRevealAnimation(self.context.shared)
                 
@@ -164,7 +164,7 @@ class ProductListInterfaceController: WKInterfaceController {
             let token = InvalidationToken()
             
             // show the loading indicator after 0.5 seconds
-            Future<Void, Error>.completeAfter(0.5, withValue: ()).onComplete(token: token) { [weak self] _ in
+            Future<Void, Error>(value: (), delay: 0.5).onComplete(token: token) { [weak self] _ in
                 self?.loadMoreIndicator.setImageNamed("loading_indicator")
                 let range = NSMakeRange(0, 50)
                 self?.loadMoreIndicator.startAnimatingWithImagesInRange(range, duration: NSTimeInterval(range.length)/25.0, repeatCount: Int.max)
@@ -172,7 +172,7 @@ class ProductListInterfaceController: WKInterfaceController {
             }
             
             fetchController.loadNextBatch().onComplete { [weak self] _ in
-                token.invalidate()
+                try! token.invalidate()
                 self?.loadMoreIndicator.setHidden(true)
                 self?.loadMoreIndicator.stopAnimating()
                 self?.showMoreButtonIfNeeded()
@@ -203,7 +203,7 @@ class ProductListInterfaceController: WKInterfaceController {
     }
     
     func updateHeader() {
-        var headerState = context.configuration.header(contentState)
+        let headerState = context.configuration.header(contentState)
         let visible = headerState.visible && contentState.receivedFirstProducts && contentState.numberOfProducts > 0
         let numberFormatter = NSNumberFormatter()
         

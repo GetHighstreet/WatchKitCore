@@ -30,7 +30,7 @@ class LaunchInterfaceController: WKInterfaceController {
         context = LaunchInterfaceControllerContext()
         
         context.shared.session.execute(WarmUpRequest()).onComplete { _ in
-            println("Warmed up!")
+            print("Warmed up!")
         }
     }
     
@@ -59,65 +59,20 @@ class LaunchInterfaceController: WKInterfaceController {
         }
     }
     
+    func showProductDetails(productId: Int, actionIdentifier: String?) {
+        let context = ProductDetailsInterfaceControllerContext(context: self.context, productId:productId, action: actionIdentifier)
+        self.pushControllerWithName("productDetails", context: context)
+    }
+    
+    func showCategory(categoryId: Int, promotionHeaderImage: Image? = nil) {
+        let configuration = CategoryProductsConfiguration(categoryId: categoryId)
+        self.pushControllerWithName(
+            ProductListInterfaceController.Identifier,
+            context: ProductListInterfaceControllerContext(context: self.context, configuration: configuration, promotionHeaderImage: promotionHeaderImage)
+        )
+    }
+    
 }
-
-extension LaunchInterfaceController {
-    override func handleActionWithIdentifier(identifier: String?, forLocalNotification localNotification: UILocalNotification) {
-        if let note = PushNotification(localNotification: localNotification) {
-            handleActionWithIdentifier(identifier, forPushNotification: note)
-        }
-    }
-    
-    override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject]) {
-        
-        if let note = PushNotification(remoteNotification: remoteNotification) {
-            handleActionWithIdentifier(identifier, forPushNotification: note)
-        }
-    }
-    
-    func handleActionWithIdentifier(identifier: String?, forPushNotification note: PushNotification) {
-        switch note.category {
-        case HSPushCategoryProduct:
-            if let productId = note.subjectId {
-                let context = ProductDetailsInterfaceControllerContext(context: self.context, productId:productId, action: identifier)
-                self.pushControllerWithName("productDetails", context: context)
-            }
-        case HSPushCategoryCategory:
-            if let categoryId = note.subjectId {
-                let configuration = CategoryProductsConfiguration(categoryId: categoryId)
-                self.pushControllerWithName(
-                    ProductListInterfaceController.Identifier,
-                    context: ProductListInterfaceControllerContext(context: self.context, configuration: configuration)
-                )
-            }
-            return
-        case HSPushCategoryLookbook:
-            return
-        case HSPushCategoryPromotion:
-            let request = NotificationDataRequest(
-                category: note.category,
-                deeplink: note.deeplink,
-                responseDeserializer: deserializeHomePromotionWithData
-            )
-            
-            context.shared.session.execute(request, cache: note.responseCache).onSuccess { [unowned self] (promotion,_) in
-                let configuration = CategoryProductsConfiguration(categoryId: promotion.categoryId)
-                self.pushControllerWithName(
-                    ProductListInterfaceController.Identifier,
-                    context: ProductListInterfaceControllerContext(context: self.context, configuration: configuration, promotionHeaderImage: promotion.image)
-                )
-            }
-            
-        default:
-            println("Could not handle action with identifier \(identifier) for push notification with category \(note.category)")
-        }
-    }
-    
-    override func handleUserActivity(userInfo: [NSObject : AnyObject]?) {
-        // this is only needed for the transition from a glance to the app, so not implemented right now
-    }
-}
-
 
 class LaunchInterfaceControllerContext: InterfaceControllerContext {
     

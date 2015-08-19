@@ -56,11 +56,12 @@
 		E91AF4AF1AE8E7BB0076739B /* HomePromotionsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47B1AE8E7BB0076739B /* HomePromotionsRowController.swift */; };
 		E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47C1AE8E7BB0076739B /* ListRowController.swift */; };
 		E91AF4B11AE8E7BB0076739B /* SingleColumnRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */; };
-		E94726451B285D910038464B /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94726411B285D8B0038464B /* BrightFutures.framework */; };
-		E94726461B285D910038464B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94726421B285D8B0038464B /* Result.framework */; };
-		E94726471B285D910038464B /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94726431B285D8B0038464B /* Shared.framework */; };
-		E94726481B285D910038464B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94726441B285D8B0038464B /* SwiftyJSON.framework */; };
-		E947264A1B285DC60038464B /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94726491B285DC60038464B /* Box.framework */; };
+		E923C06C1B847267003DE5B9 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06B1B847267003DE5B9 /* Shared.framework */; };
+		E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */; };
+		E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06F1B847281003DE5B9 /* BrightFutures.framework */; };
+		E923C0911B847393003DE5B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C0901B847393003DE5B9 /* Result.framework */; };
+		E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */; };
+		E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,11 +118,14 @@
 		E91AF47C1AE8E7BB0076739B /* ListRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowController.swift; sourceTree = "<group>"; };
 		E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleColumnRowController.swift; sourceTree = "<group>"; };
 		E91AF4B41AE8E9E30076739B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E94726411B285D8B0038464B /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/iOS/BrightFutures.framework; sourceTree = "<group>"; };
-		E94726421B285D8B0038464B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		E94726431B285D8B0038464B /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = Carthage/Build/iOS/Shared.framework; sourceTree = "<group>"; };
-		E94726441B285D8B0038464B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		E94726491B285DC60038464B /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		E923C06B1B847267003DE5B9 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = "../../../Shared/build/Debug-watchos/Shared.framework"; sourceTree = "<group>"; };
+		E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../Development/Projects/SwiftyJSON/build/Debug-watchos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		E923C06F1B847281003DE5B9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../../../../Development/Playground/BrightFutures/build/Debug-watchos/BrightFutures.framework"; sourceTree = "<group>"; };
+		E923C0901B847393003DE5B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Carthage/Checkouts/Result/build/Debug-watchos/Result.framework"; sourceTree = "<group>"; };
+		E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityParentAppSession.swift; sourceTree = "<group>"; };
+		E9D522A81B827086009DD847 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E9D522AA1B827093009DD847 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,11 +133,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94726451B285D910038464B /* BrightFutures.framework in Frameworks */,
-				E94726461B285D910038464B /* Result.framework in Frameworks */,
-				E94726471B285D910038464B /* Shared.framework in Frameworks */,
-				E947264A1B285DC60038464B /* Box.framework in Frameworks */,
-				E94726481B285D910038464B /* SwiftyJSON.framework in Frameworks */,
+				E923C0911B847393003DE5B9 /* Result.framework in Frameworks */,
+				E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */,
+				E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */,
+				E923C06C1B847267003DE5B9 /* Shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +163,7 @@
 		E91AF4221AE8E70E0076739B /* WatchKitExtensionCore */ = {
 			isa = PBXGroup;
 			children = (
+				E9CF2E811B8271F0009E3CBD /* Application */,
 				E91AF4B41AE8E9E30076739B /* Info.plist */,
 				E91AF43C1AE8E7BB0076739B /* Resources */,
 				E91AF4431AE8E7BB0076739B /* Models */,
@@ -214,6 +218,7 @@
 				E91AF4521AE8E7BB0076739B /* ParentAppSession.swift */,
 				E91AF4531AE8E7BB0076739B /* Requests */,
 				E91AF45B1AE8E7BB0076739B /* ResponseCache.swift */,
+				E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -305,13 +310,22 @@
 		E949B32B1AEFA99400CA274E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E94726491B285DC60038464B /* Box.framework */,
-				E94726411B285D8B0038464B /* BrightFutures.framework */,
-				E94726421B285D8B0038464B /* Result.framework */,
-				E94726431B285D8B0038464B /* Shared.framework */,
-				E94726441B285D8B0038464B /* SwiftyJSON.framework */,
+				E923C0901B847393003DE5B9 /* Result.framework */,
+				E923C06F1B847281003DE5B9 /* BrightFutures.framework */,
+				E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */,
+				E923C06B1B847267003DE5B9 /* Shared.framework */,
+				E9D522AA1B827093009DD847 /* CoreFoundation.framework */,
+				E9D522A81B827086009DD847 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9CF2E811B8271F0009E3CBD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +365,8 @@
 		E91AF4171AE8E70E0076739B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Highstreet;
 				TargetAttributes = {
 					E91AF41F1AE8E70E0076739B = {
@@ -395,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91AF49D1AE8E7BB0076739B /* String.swift in Sources */,
+				E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */,
 				E91AF4811AE8E7BB0076739B /* HomePromotion.swift in Sources */,
 				E91AF4981AE8E7BB0076739B /* UserActivity.swift in Sources */,
 				E91AF4AA1AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift in Sources */,
@@ -422,6 +438,7 @@
 				E91AF4A81AE8E7BB0076739B /* RowRevealFragment.swift in Sources */,
 				E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */,
 				E91AF4AC1AE8E7BB0076739B /* Notifications.swift in Sources */,
+				E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */,
 				E91AF49A1AE8E7BB0076739B /* Future.swift in Sources */,
 				E91AF48F1AE8E7BB0076739B /* HomePromotionsListRequest.swift in Sources */,
 				E91AF4821AE8E7BB0076739B /* Image.swift in Sources */,
@@ -483,6 +500,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -559,14 +577,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WatchKitExtensionCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.touchwonders.highstreet.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -581,14 +598,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WatchKitExtensionCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.touchwonders.highstreet.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

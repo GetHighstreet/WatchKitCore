@@ -12,4 +12,4 @@
 	url = https://github.com/robrix/Box.git
 [submodule "Carthage/Checkouts/SwiftyJSON"]
 	path = Carthage/Checkouts/SwiftyJSON
-	url = https://github.com/Thomvis/SwiftyJSON.git
+	url = https://github.com/SwiftyJSON/SwiftyJSON.git

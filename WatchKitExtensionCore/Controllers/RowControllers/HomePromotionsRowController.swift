@@ -51,7 +51,7 @@ class HomePromotionsRowController: NSObject, ListRowController, Revealing {
     }
     
     func showDownArrow() {
-        revealFragment?.onReveal.onComplete(context: ImmediateOnMainExecutionContext) { [weak self]_ in
+        revealFragment?.onReveal.onComplete(ImmediateOnMainExecutionContext) { [weak self]_ in
             self?.downArrowImage.setHidden(false)
         }
     }
@@ -60,7 +60,7 @@ class HomePromotionsRowController: NSObject, ListRowController, Revealing {
         if let f = revealFragment {
             return f.willSetImage(image)
         }
-        return Future.succeeded()
+        return Future(value: ())
     }
     
 }

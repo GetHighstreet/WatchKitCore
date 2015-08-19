@@ -59,8 +59,6 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
     override func didReceiveLocalNotification(localNotification: UILocalNotification, withCompletion completionHandler: (WKUserNotificationInterfaceType) -> Void) {
         setUp()
         
-        let userInfo = localNotification.userInfo.map { JSON($0) }
-        
         if let notification = PushNotification(localNotification: localNotification) {
             didReceiveHomePromotionNotification(notification)
             Queue.main.after(NotificationCompletionHandlerDelay) {
@@ -73,8 +71,6 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
     
     override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: (WKUserNotificationInterfaceType) -> Void) {
         setUp()
-        
-        let userInfo = JSON(remoteNotification)
         
         if let notification = PushNotification(remoteNotification: remoteNotification) {
             didReceiveHomePromotionNotification(notification)

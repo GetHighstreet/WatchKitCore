@@ -23,8 +23,6 @@ public enum Image {
             switch ref {
             case .InMemory(let name, _):
                 return name
-            case .Extension(let name, let bundle):
-                return bundle?.bundleIdentifier + name
             case .Watch(let name):
                 return name
             }
@@ -36,16 +34,13 @@ public enum Image {
 
 public enum LocalImageReference {
     case InMemory(name: String, image: UIImage)
-    case Extension(name: String, bundle: NSBundle?)
     case Watch(name: String)
     
     var imageObject: UIImage? {
         switch self {
         case .InMemory(_, let image):
             return image
-        case .Extension(let name, let bundle):
-            return UIImage(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
-        case .Watch(let name):
+        case .Watch(_):
             return nil
         }
     }
@@ -59,7 +54,7 @@ func deserializeImage(json: JSON) -> Result<Image, Error> {
         if
             let name = json[HSWatchKitResponseNameKey].string,
             let dataString = json[HSWatchKitResponseImageDataKey].string,
-            let data = NSData(base64EncodedString: dataString, options: NSDataBase64DecodingOptions(0)),
+            let data = NSData(base64EncodedString: dataString, options: NSDataBase64DecodingOptions(rawValue: 0)),
             let image = UIImage(data: data)
         {
             return Result(value: .LocalImage(ref: LocalImageReference.InMemory(name: name, image: image)))

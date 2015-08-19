@@ -13,15 +13,15 @@ import Result
 func sequence<T, E>(seq: [Result<T, E>]) -> Result<[T], E> {
     return seq.reduce(Result(value: []), combine: { (res, elem) -> Result<[T], E> in
         switch res {
-            case .Success(let boxedResultSequence):
+            case .Success(let resultSequence):
                 switch elem {
-                    case .Success(let boxedElemValue):
-                        let newSeq = boxedResultSequence.value + [boxedElemValue.value]
+                    case .Success(let elemValue):
+                        let newSeq = resultSequence + [elemValue]
                         return Result(value: newSeq)
-                    case .Failure(let boxedElemError):
-                        return Result<[T], E>(error: boxedElemError.value)
+                    case .Failure(let elemError):
+                        return Result<[T], E>(error: elemError)
                 }
-            case .Failure(let err):
+            case .Failure(_):
                 return res
         }
     })

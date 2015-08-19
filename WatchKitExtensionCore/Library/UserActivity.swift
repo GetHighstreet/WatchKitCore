@@ -55,7 +55,7 @@ enum BrowsingLocation {
         case .HomePromotion(let id):
             return "\(scheme)://home/promotions/\(id)"
         case .Lookbook(let id):
-            return "\(scheme)://"
+            return "\(scheme)://lookbooks/\(id)"
         case .Other(let path):
             return "\(scheme)://\(path)"
         }

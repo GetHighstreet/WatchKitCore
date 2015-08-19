@@ -85,6 +85,6 @@ class ProductOutlineFragment: InterfaceFragment, Revealing {
         if let f = revealFragment {
             return f.willSetImage(image)
         }
-        return Future.succeeded()
+        return Future(value: ())
     }
 }

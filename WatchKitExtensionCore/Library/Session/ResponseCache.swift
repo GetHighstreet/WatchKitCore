@@ -11,7 +11,13 @@ import BrightFutures
 import SwiftyJSON
 import Shared
 
-public struct ResponseCache {
+protocol ResponseCacheType {
+    typealias CacheValueType
+    
+    func responseForRequest<R: ParentAppRequest>(request: R) -> CacheValueType?
+}
+
+struct JSONResponseCache: ResponseCacheType {
     
     typealias CacheEntry = (request: Request, response: JSON)
     
@@ -72,10 +78,10 @@ public struct ResponseCache {
     
 }
 
-func ==(lhs: ResponseCache.Request, rhs: ResponseCache.Request) -> Bool {
+func ==(lhs: JSONResponseCache.Request, rhs: JSONResponseCache.Request) -> Bool {
     return lhs.identifier == rhs.identifier && lhs.parameters == rhs.parameters
 }
 
-func ==<R: ParentAppRequest>(lhs: ResponseCache.Request, rhs: R) -> Bool {
+func ==<R: ParentAppRequest>(lhs: JSONResponseCache.Request, rhs: R) -> Bool {
     return lhs.identifier == rhs.identifier && lhs.parameters == rhs.jsonRepresentation()
 }

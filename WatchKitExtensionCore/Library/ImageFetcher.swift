@@ -24,7 +24,7 @@ class ImageFetcher {
                 return .InMemory(name: urlString, image: $0)
             }
         } else {
-            return Future.failed(.CFNetworkError(error: CFNetworkErrors.CFErrorHTTPBadURL))
+            return Future(error: .ImageLoadingFailed(image: nil))
         }
     }
     
@@ -33,11 +33,11 @@ class ImageFetcher {
         
         let task = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             if let error = error {
-                p.failure(.External(error: error))
-            } else if let img = UIImage(data: data) {
-                p.success(img)
+                try! p.failure(.External(error: error))
+            } else if let data = data, img = UIImage(data: data) {
+                try! p.success(img)
             } else {
-                p.failure(.DeserializationFailed(object:data))
+                try! p.failure(.DeserializationFailed(object:data))
             }
         })
         

@@ -28,7 +28,7 @@ public enum ProductFavoriteAction: Int {
 
 
 public struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable {
-    typealias ResponseType = Bool
+    public typealias ResponseType = Bool
     
     public let action: ProductFavoriteAction
     public let productId: Int

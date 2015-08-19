@@ -29,29 +29,27 @@ struct SharedContext: SharedContextType {
     let theme: StoreTheme
     
     static func defaultContext() -> SharedContext {
-        if let context = fromJSON() {
-            return context
-        }
+        let json = fromJSON()
         
-        fatalError("Cannot create the default context, check your configuration.json")
+        return SharedContext(session: json.0 ?? WatchConnectivityParentAppSession(), imageCache: ImageCache(), theme: json.1 ?? StoreTheme.developmentTheme())
     }
     
-    static func fromJSON(resourceName: String = "configuration") -> SharedContext? {
+    static func fromJSON(resourceName: String = "configuration") -> (ParentAppSession?, StoreTheme?) {
         if let path =  NSBundle.mainBundle().pathForResource(resourceName, ofType: "json") {
             if let jsonData = NSData(contentsOfFile: path) {
-                let json = JSON(data: jsonData, options: NSJSONReadingOptions(0), error: nil)
+                let json = JSON(data: jsonData, options: NSJSONReadingOptions(rawValue: 0), error: nil)
                 return self.fromJSON(json)
             } else {
-                println("Could not load data from \(resourceName).json")
+                print("Could not load data from \(resourceName).json")
             }
         } else {
-            println("Could not find \(resourceName).json in main bundle")
+            print("Could not find \(resourceName).json in main bundle")
         }
         
-        return nil
+        return (nil, nil)
     }
     
-    static func fromJSON(json: JSON) -> SharedContext? {
+    static func fromJSON(json: JSON) -> (ParentAppSession?, StoreTheme?) {
         if json.type == .Dictionary {
             let theme = StoreTheme.fromJSON(json[SharedContextJSONThemeKey]) ?? StoreTheme.developmentTheme()
             
@@ -61,25 +59,23 @@ struct SharedContext: SharedContextType {
             case "": // no value
                 fallthrough
             case SharedContextJSONDefaultSessionValue:
-                session = _ParentAppSession()
+                session = WatchConnectivityParentAppSession()
             case let s: // the default
                 if let customSession = NSClassFromString(s) as? NSObject.Type {
-                    if let s = customSession() as? ParentAppSession {
+                    if let s = customSession.init() as? ParentAppSession {
                         session = s
                         break
                     }
                 }
                 
-                println("Value for key \(SharedContextJSONSessionKey) should be \(SharedContextJSONDefaultSessionValue) or or a class name that implements ParentAppSession and NSObject")
-                return nil
+                print("Value for key \(SharedContextJSONSessionKey) should be \(SharedContextJSONDefaultSessionValue) or or a class name that implements ParentAppSession and NSObject")
+                return (nil, theme)
             }
             
-            
-            
-            return SharedContext(session: session, imageCache: ImageCache(), theme: theme)
+            return (session, theme)
         } else {
-            println("Could not create context from JSON: \(json)")
-            return nil
+            print("Could not create context from JSON: \(json)")
+            return (nil, nil)
         }
     }
 }

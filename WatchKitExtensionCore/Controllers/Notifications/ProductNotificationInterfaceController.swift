@@ -84,12 +84,12 @@ class ProductNotificationInterfaceController: WKUserNotificationInterfaceControl
         
         let response = shared.session.execute(request, cache: notification.responseCache)
         
-        response.onSuccess(context: ImmediateOnMainExecutionContext) { [weak self] (product: Product) in
+        response.onSuccess(ImmediateOnMainExecutionContext) { [weak self] (product: Product) in
             if let controller = self {
                 controller.productOutlineFragment.update(controller.shared, data: product)
             }
         }.onFailure { err in
-            println(err)
+            print(err)
         }
         
         if let location = BrowsingLocation.fromDeeplink(notification.deeplink) {

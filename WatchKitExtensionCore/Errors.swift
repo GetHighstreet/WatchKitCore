@@ -26,8 +26,6 @@ public enum Error {
     case ImageLoadingFailed(image: Image?)
     case WatchImageCacheAddingFailed(image: Image?)
     
-    case CFNetworkError(error: CFNetworkErrors)
-    
     case ParentAppResponseError(code: Int, description: String?)
     
     case External(error: NSError)
@@ -62,10 +60,6 @@ extension Error: ErrorType {
         case .WatchImageCacheAddingFailed(let image):
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 6, userInfo: [
                 NSLocalizedDescriptionKey: "Could not add image \(image?.name) to cache"
-            ])
-        case .CFNetworkError(let error):
-            return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 7, userInfo: [
-                NSLocalizedDescriptionKey: "CFNetworkError: \(error.rawValue)"
             ])
         case .ParentAppResponseError(let code, let description):
             return NSError(domain: ErrorDomains.InfrastructureErrorDomain.rawValue, code: 7, userInfo: [

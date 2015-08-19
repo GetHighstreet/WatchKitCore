@@ -68,13 +68,13 @@ class LookbookNotificationInterfaceController: WKUserNotificationInterfaceContro
 
 
         
-        response.onSuccess(context: ImmediateOnMainExecutionContext) { [weak self] (image: Image) in
+        response.onSuccess(ImmediateOnMainExecutionContext) { [weak self] (image: Image) in
                         self?.shared.imageCache.ensureCacheImage(image).onSuccess { name in
                         self?.placeholderImageGroup.setBackgroundImageNamed(nil)
                         self?.lookbookImageGroup.setBackgroundImageNamed(name)
             }
         }.onFailure { err in
-            println(err)
+            print(err)
         }
         
         if let location = BrowsingLocation.fromDeeplink(notification.deeplink) {

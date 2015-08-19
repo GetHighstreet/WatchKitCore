@@ -14,7 +14,7 @@ import Result
 
 // Returns the local time of the phone, which is just a (lame) excuse to wake up the main app
 public struct WarmUpRequest: ParentAppRequest, Serializable {
-    typealias ResponseType = NSDate
+    public typealias ResponseType = NSDate
     
     public let identifier = HSWatchKitWarmUpRequestIdentifier
     

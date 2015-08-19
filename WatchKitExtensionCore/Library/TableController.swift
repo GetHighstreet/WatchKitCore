@@ -47,7 +47,7 @@ class TableController<T: Identifiable> {
         ensureRowAvailabilityForIndex(index)
      
         // set-up
-        let (row, column) = configuration.rowAndColumnForObjectAtIndex(index)
+        let (row, _) = configuration.rowAndColumnForObjectAtIndex(index)
         let rowController = configuration.table.rowControllerAtIndex(row) as! ListRowController
         let context = contextForObjectAtIndex(object, index)
         rowController.setUp(context.shared)

@@ -12,7 +12,7 @@ import BrightFutures
 import Shared
 
 public struct ProductDetailsRequest: ParentAppRequest, Serializable {
-    typealias ResponseType = ProductDetails
+    public typealias ResponseType = ProductDetails
     
     public let productId: Int
     

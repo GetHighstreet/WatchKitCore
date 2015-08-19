@@ -13,7 +13,7 @@ import Shared
 import Result
 
 public struct ProductListRequest: ParentAppRequest, Serializable {
-    typealias ResponseType = (Int, [Product])
+    public typealias ResponseType = (Int, [Product])
 
     public let type: ProductListType
     public let range: Range<Int>

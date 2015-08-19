@@ -36,15 +36,15 @@ class ImageCache {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let storedAccessLog = userDefaults.objectForKey(UserDefaultsImageAccessLogKey) as? ImageAccessLog {
             // filter out the images that are not in the Watch' cache anymore & add the ones that are missing
-            accessLog = sync(storedAccessLog, cachedImages)
+            accessLog = sync(storedAccessLog, cachedImages: cachedImages)
             scheduleSafeAccessLog()
         }
     }
     
     func ensureCacheImage(image: Image) -> Future<String, Error> {
-        accessLog = add(image, accessLog)
+        accessLog = add(image, log: accessLog)
         scheduleSafeAccessLog()
-        return cachedImageName(image).map { Future.succeeded($0) } ?? cacheImage(image)
+        return cachedImageName(image).map { Future(value: $0) } ?? cacheImage(image)
     }
     
     private func cacheImage(image: Image) -> Future<String, Error> {
@@ -54,21 +54,21 @@ class ImageCache {
                 self.cacheImage(image.name, localImageReference: $0)
             }
         case .LocalImage(let ref):
-            return Future<String, Error>.completed(cacheImage(image.name, localImageReference: ref))
+            return Future<String, Error>(result: cacheImage(image.name, localImageReference: ref))
         }
     }
     
     private func cacheImage(name: String, localImageReference ref: LocalImageReference) -> Result<String, Error> {
-        if let img = ref.imageObject {
-            while !self.device.addCachedImage(img, name: name) {
-                if let imageToEvict = self.evictionPolicy(accessLog, self.cachedImages) {
-                    self.device.removeCachedImageWithName(imageToEvict)
-                    accessLog = remove(.LocalImage(ref: .Watch(name: imageToEvict)), accessLog)
-                    scheduleSafeAccessLog()
-                } else {
-                    return Result(error: .WatchImageCacheAddingFailed(image: nil))
-                }
-            }
+        if let _ = ref.imageObject {
+//            while !self.device.addCachedImage(img, name: name) {
+//                if let imageToEvict = self.evictionPolicy(accessLog, self.cachedImages) {
+//                    self.device.removeCachedImageWithName(imageToEvict)
+//                    accessLog = remove(.LocalImage(ref: .Watch(name: imageToEvict)), log: accessLog)
+//                    scheduleSafeAccessLog()
+//                } else {
+//                    return Result(error: .WatchImageCacheAddingFailed(image: nil))
+//                }
+//            }
         
             return Result(value: name)
         } else {
@@ -82,18 +82,18 @@ class ImageCache {
     }
     
     func clearCache() {
-        self.device.removeAllCachedImages()
+        //self.device.removeAllCachedImages()
     }
     
     var cachedImages: [String:Int] {
-        return self.device.cachedImages as! [String:Int]
+        return [:];//self.device.cachedImages as! [String:Int]
     }
     
     func scheduleSafeAccessLog() {
-        scheduleSafeAccessLogToken?.invalidate()
+        try! scheduleSafeAccessLogToken?.invalidate()
         scheduleSafeAccessLogToken = InvalidationToken()
         
-        Future<Void, NoError>.completeAfter(AccessLogSaveDelay, withValue: ()).onComplete(token: scheduleSafeAccessLogToken!) { [weak self] _ in
+        Future<Void, NoError>(value: (), delay: AccessLogSaveDelay).onComplete(token: scheduleSafeAccessLogToken!) { [weak self] _ in
             self?.saveAccessLog()
         }
     }
@@ -131,7 +131,7 @@ let DefaultEvictionPolicy: EvictionPolicy = { log, images in
 func sync(accessLog: ImageAccessLog, cachedImages: [String:Int]) -> ImageAccessLog {
     let filteredLog = accessLog.filter { cachedImages.indexForKey($0) != nil }
     
-    return cachedImages.keys.filter { find(filteredLog, $0) == nil} + filteredLog
+    return cachedImages.keys.filter { filteredLog.indexOf($0) == nil} + filteredLog
 }
 
 func remove(image: Image, log: ImageAccessLog) -> ImageAccessLog {
@@ -139,5 +139,5 @@ func remove(image: Image, log: ImageAccessLog) -> ImageAccessLog {
 }
 
 func add(image: Image, log: ImageAccessLog) -> ImageAccessLog {
-    return remove(image, log) + image.name
+    return remove(image, log: log) + image.name
 }

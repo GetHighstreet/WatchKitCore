@@ -13,15 +13,15 @@ public func serialize(range: Range<Int>) -> String {
     return NSStringFromRange(NSMakeRange(range.startIndex, range.endIndex-range.startIndex))
 }
 
-public func adjacent<T>(rangeA: Range<T>, rangeB: Range<T>) -> Bool {
+public func adjacent<T>(rangeA: Range<T>, _ rangeB: Range<T>) -> Bool {
     return rangeA.startIndex == rangeB.endIndex || rangeA.endIndex == rangeB.startIndex
 }
 
-public func union<T: RandomAccessIndexType>(rangeA: Range<T>, rangeB: Range<T>) -> Range<T> {
+public func union<T: RandomAccessIndexType>(rangeA: Range<T>, _ rangeB: Range<T>) -> Range<T> {
     return min(rangeA.startIndex, rangeB.startIndex)..<max(rangeA.endIndex,rangeB.endIndex)
 }
 
-public func intersection(rangeA: Range<Int>, rangeB: Range<Int>) -> Range<Int>? {
+public func intersection(rangeA: Range<Int>, _ rangeB: Range<Int>) -> Range<Int>? {
     if max(rangeA.startIndex, rangeA.endIndex) < rangeB.startIndex
         || max(rangeB.startIndex, rangeB.endIndex) < rangeA.startIndex {
         return nil

@@ -48,12 +48,12 @@ class ProductDetailsInterfaceController: WKInterfaceController {
             return f
         }
         
-        return Future.succeeded()
+        return Future(value: ())
     }
     
     var productDetailsAvailable: Future<ProductDetails, Error> {
         if let details = productDetails {
-            return Future.succeeded(details)
+            return Future(value: details)
         }
         
         return productDetailsAvailablePromise.future
@@ -63,7 +63,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     var productDetails: ProductDetails? {
         didSet {
             if let token = detailsChangeInvalidationToken {
-                token.invalidate()
+                try! token.invalidate()
             }
             detailsChangeInvalidationToken = InvalidationToken()
             
@@ -84,7 +84,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         
         // reveal procedure
         imageSetPromise = Promise<Void, Error>()
-        self.revealedImage().onComplete(context: ImmediateOnMainExecutionContext) { [weak self] _ in
+        self.revealedImage().onComplete(ImmediateOnMainExecutionContext) { [weak self] _ in
             self?.infoGroup.setHidden(false)
         }
         
@@ -160,7 +160,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
             addMenuItemWithImageNamed("menu_item_icon_favorite", title: "ProductDetails.menu.addFavorite".localizedInWatchKitExtension, action: Selector("addProductToFavorites"))
         }
         
-        imageSetPromise.future.onComplete(context:ImmediateOnMainExecutionContext, token:detailsChangeInvalidationToken) { [weak self] _ in
+        imageSetPromise.future.onComplete(ImmediateOnMainExecutionContext, token:detailsChangeInvalidationToken) { [weak self] _ in
             if let controller = self {
                 controller.favoriteIconFragment.update(
                     controller.context.shared,
@@ -186,7 +186,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     func performProductFavoriteAction(action: ProductFavoriteAction) {
         updateProductDetailsSetFavorited(action == .Add)
         
-        changeFavoriteStateToken?.invalidate()
+        try! changeFavoriteStateToken?.invalidate()
         changeFavoriteStateToken = InvalidationToken()
         
         productDetailsAvailable.onSuccess(token: changeFavoriteStateToken!) { [weak self] details in
@@ -245,9 +245,9 @@ class ProductDetailsInterfaceController: WKInterfaceController {
                 controller.revealGroup.setBackgroundImageNamed("detail_view_image_reveal")
                 let duration: NSTimeInterval = 8.0 / 25.0
                 controller.revealGroup.startAnimatingWithImagesInRange(NSMakeRange(0, 8), duration: duration, repeatCount: 1)
-                return Future.completeAfter(duration*0.9, withValue: ())
+                return Future(value: (), delay: duration*0.9)
             } else {
-                return Future.failed(Error.Unspecified)
+                return Future(error: .Unspecified)
             }
         }
         

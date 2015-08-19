@@ -13,7 +13,7 @@ import Shared
 import Result
 
 public struct HomePromotionsListRequest: ParentAppRequest {
-    typealias ResponseType = [HomePromotion]
+    public typealias ResponseType = [HomePromotion]
     
     public let identifier = HSWatchKitHomePromotionsListRequestIdentifier
     

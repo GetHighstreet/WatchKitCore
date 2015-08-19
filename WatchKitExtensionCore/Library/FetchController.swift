@@ -82,17 +82,17 @@ class FetchController<T: Identifiable> {
                         if controller.dataSourceCount != count {
                             controller.dataSourceCount = count
                         }
-                        return Future.succeeded()
+                        return Future(value: ())
                     }
                 }
                 
-                return Future.failed(.Unspecified)
+                return Future(error: .Unspecified)
             }.onFailure { [weak self] err in
                 self?.loadingRange = loadingRange.startIndex..<range.startIndex
             }
         }
         
-        return Future.failed(.MissingDataSource)
+        return Future(error: .MissingDataSource)
     }
     
     var isLoading: Bool {
@@ -102,7 +102,7 @@ class FetchController<T: Identifiable> {
     func didReceiveObjects(objects: [T], forRange range: Range<Int>) {
         assert(adjacent(loadedRange, range), "The newly received objects should be adjacent to the once already loaded")
         
-        for (i, object) in enumerate(objects) {
+        for (i, object) in objects.enumerate() {
             setObject(object, atIndex: i + range.startIndex)
         }
         
@@ -110,7 +110,7 @@ class FetchController<T: Identifiable> {
     }
     
     func setObject(object: T, atIndex index: Int) {
-        if let currentObjectAtIndex = objectAtIndex(index) {
+        if let _ = objectAtIndex(index) {
             // todo: check if object is the same
             data[index] = object
             didUpdateObject(object, atIndex: index)
@@ -123,7 +123,7 @@ class FetchController<T: Identifiable> {
     
     func ensureCapacityOfDataArrayForIndex(index: Int) {
         if index >= data.count {
-            for i in data.count...index {
+            for _ in data.count...index {
                 data.append(nil)
             }
         }
@@ -137,7 +137,7 @@ class FetchController<T: Identifiable> {
     }
     
     func indexOfObjectWithIdentifier(identifier: T.Identifier) -> Int? {
-        for (index,object) in enumerate(data) {
+        for (index,object) in data.enumerate() {
             if object?.identifier == identifier {
                 return index
             }

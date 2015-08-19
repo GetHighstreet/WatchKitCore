@@ -34,13 +34,13 @@ struct StoreTheme {
     static func fromJSON(resourceName: String = "theme") -> StoreTheme? {
         if let path =  NSBundle.mainBundle().pathForResource(resourceName, ofType: "json") {
             if let jsonData = NSData(contentsOfFile: path) {
-                let json = JSON(data: jsonData, options: NSJSONReadingOptions(0), error: nil)
+                let json = JSON(data: jsonData, options: NSJSONReadingOptions(rawValue: 0), error: nil)
                 return fromJSON(json)
             } else {
-                println("Could not load data from \(resourceName).json")
+                print("Could not load data from \(resourceName).json")
             }
         } else {
-            println("Could not find \(resourceName).json in main bundle")
+            print("Could not find \(resourceName).json in main bundle")
         }
         
         return nil
@@ -61,7 +61,7 @@ struct StoreTheme {
             }
         }
         
-        println("Could not create theme from JSON: \(json)")
+        print("Could not create theme from JSON: \(json)")
         return nil
     }
 }

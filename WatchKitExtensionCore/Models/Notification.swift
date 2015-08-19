@@ -17,15 +17,15 @@ let NotificationPayloadAlertKey = "alert"
 let NotificationPayloadHighstreetKey = "hs"
 let NotificationPayloadDeeplinkKey = "d"
 
-struct PushNotification {
+public struct PushNotification {
     let title: String?
     let category: String
     let deeplink: String
-    let responseCache: ResponseCache?
+    let responseCache: JSONResponseCache?
     
     // the id of the subject (often the last part of the deeplink)
     var subjectId: Int? {
-        return deeplink.lastPathComponent.toInt()
+        return Int((deeplink as NSString).lastPathComponent)
     }
     
     init?(localNotification: UILocalNotification) {
@@ -37,7 +37,7 @@ struct PushNotification {
                 self.title = localNotification.alertBody
                 self.category = category
                 self.deeplink = deeplink
-                self.responseCache = ResponseCache(json: userInfo[NotificationPayloadHighstreetKey][HSWatchKitPushNotificationEmbeddedResponses])
+                self.responseCache = JSONResponseCache(json: userInfo[NotificationPayloadHighstreetKey][HSWatchKitPushNotificationEmbeddedResponses])
                 return
             }
         }
@@ -55,7 +55,7 @@ struct PushNotification {
             self.title = userInfo[NotificationPayloadAppleKey][NotificationPayloadAlertKey].string
             self.category = category
             self.deeplink = deeplink
-            self.responseCache = ResponseCache(json: userInfo[NotificationPayloadHighstreetKey][HSWatchKitPushNotificationEmbeddedResponses])
+            self.responseCache = JSONResponseCache(json: userInfo[NotificationPayloadHighstreetKey][HSWatchKitPushNotificationEmbeddedResponses])
             return
         }
         

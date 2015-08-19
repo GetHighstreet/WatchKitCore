@@ -11,7 +11,6 @@ import SwiftyJSON
 import BrightFutures
 import Shared
 import Result
-import Box
 
 public struct HomePromotion: Identifiable {
     public let id: Int
@@ -42,8 +41,8 @@ public struct HomePromotion: Identifiable {
 
 func deserializeHomePromotion(json: JSON) -> Result<HomePromotion, Error> {
     return HomePromotion(json: json).map{
-        Result.Success(Box($0))
-        } ?? Result(error: .DeserializationFailed(object: json))
+        Result(value: $0)
+    } ?? Result(error: .DeserializationFailed(object: json))
 }
 
 func deserializeHomePromotionWithData(json: JSON) -> Result<(HomePromotion,(Int, [Product])), Error> {

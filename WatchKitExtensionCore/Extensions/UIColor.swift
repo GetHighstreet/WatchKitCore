@@ -17,7 +17,7 @@ extension UIColor {
         characterSet.formUnionWithCharacterSet(NSCharacterSet(charactersInString: "#"))
         var cString = hex.stringByTrimmingCharactersInSet(characterSet).uppercaseString
         
-        if (count(cString) != 6) {
+        if (cString.characters.count != 6) {
             return nil
         } else {
             var rgbValue: UInt32 = 0

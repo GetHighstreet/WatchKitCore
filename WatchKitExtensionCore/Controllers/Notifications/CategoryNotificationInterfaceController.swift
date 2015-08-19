@@ -51,8 +51,6 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
     override func didReceiveLocalNotification(localNotification: UILocalNotification, withCompletion completionHandler: (WKUserNotificationInterfaceType) -> Void) {
         setUp()
         
-        let userInfo = localNotification.userInfo.map { JSON($0) }
-        
         if let note = PushNotification(localNotification: localNotification) {
             didReceiveCategoryNotification(note)
             Queue.main.after(NotificationCompletionHandlerDelay) {
@@ -65,8 +63,6 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
     
     override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: (WKUserNotificationInterfaceType) -> Void) {
         setUp()
-        
-        let userInfo = JSON(remoteNotification)
         
         if let note = PushNotification(remoteNotification: remoteNotification) {
             didReceiveCategoryNotification(note)
