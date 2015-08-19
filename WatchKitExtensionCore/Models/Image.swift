@@ -20,12 +20,7 @@ public enum Image {
     var name: String {
         switch self {
         case .LocalImage(let ref):
-            switch ref {
-            case .InMemory(let name, _):
-                return name
-            case .Watch(let name):
-                return name
-            }
+            return ref.name
         case .RemoteImage(let url):
             return url
         }
@@ -35,6 +30,7 @@ public enum Image {
 public enum LocalImageReference {
     case InMemory(name: String, image: UIImage)
     case Watch(name: String)
+    case Extension(name: String)
     
     var imageObject: UIImage? {
         switch self {
@@ -42,6 +38,19 @@ public enum LocalImageReference {
             return image
         case .Watch(_):
             return nil
+        case .Extension(let name):
+            return UIImage(named: name)
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .InMemory(let name, _):
+            return name
+        case .Watch(let name):
+            return name
+        case .Extension(let name):
+            return name
         }
     }
 }

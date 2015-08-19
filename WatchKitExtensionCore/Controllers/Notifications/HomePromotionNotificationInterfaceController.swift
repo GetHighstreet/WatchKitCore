@@ -107,7 +107,7 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
         response.onSuccess { [weak self] (promotion,_) in
             if let image = promotion.image {
                 self?.shared.imageCache.ensureCacheImage(image).onSuccess {
-                    self?.headerImage.setBackgroundImageNamed($0)
+                    self?.headerImage.setBackgroundImage($0)
                     self?.headerImage.setHidden(false)
                     self?.headerPlaceholder.setHidden(true)
                 }

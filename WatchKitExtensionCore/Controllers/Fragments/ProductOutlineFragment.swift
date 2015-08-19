@@ -48,9 +48,9 @@ class ProductOutlineFragment: InterfaceFragment, Revealing {
         if let image = data.image {
             revealDidSetImage(image).flatMap { _ in
                 context.imageCache.ensureCacheImage(image)
-            }.onSuccess { name in
+            }.onSuccess { image in
                 self.placeholderImageGroup.setBackgroundImageNamed(nil)
-                self.productImageGroup.setBackgroundImageNamed(name)
+                self.productImageGroup.setBackgroundImage(image)
             }.onComplete { _ in
                 self.revealFragment?.didFinishLoading()
             }

@@ -145,8 +145,8 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         }
         
         if let image = productDetails?.product.image {
-            context.shared.imageCache.ensureCacheImage(image).onSuccess { [weak self] name in
-                self?.imageGroup.setBackgroundImageNamed(name)
+            context.shared.imageCache.ensureCacheImage(image).onSuccess { [weak self] imageRef in
+                self?.imageGroup.setBackgroundImage(imageRef)
             }.onComplete { [weak self] _ in
                 self?.imageSetPromise.trySuccess()
             }

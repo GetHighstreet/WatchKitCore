@@ -87,7 +87,7 @@ class ProductListInterfaceController: WKInterfaceController {
             
             self.context.shared.imageCache.ensureCacheImage(promotionHeaderImage).onSuccess { [weak self] in
                 self?.promotionHeaderImage.setHidden(false)
-                self?.promotionHeaderImage.setBackgroundImageNamed($0)
+                self?.promotionHeaderImage.setBackgroundImage($0)
             }
             
             firstProductFuture.onComplete { [weak self] _ in

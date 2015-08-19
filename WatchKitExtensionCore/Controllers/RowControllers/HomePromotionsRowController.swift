@@ -32,8 +32,8 @@ class HomePromotionsRowController: NSObject, ListRowController, Revealing {
         if let image = promotion.image {
             revealDidSetImage(image).flatMap { _ in
                 context.shared.imageCache.ensureCacheImage(image)
-            }.onSuccess { [weak self] imageName in
-                self?.imageGroup.setBackgroundImageNamed(imageName)
+            }.onSuccess { [weak self] imageRef in
+                self?.imageGroup.setBackgroundImage(imageRef)
             }.onComplete { [weak self] _ in
                 self?.revealFragment?.didFinishLoading()
             }

@@ -51,7 +51,7 @@ class DualColumnRowController: NSObject, ListRowController {
         let group = groups[column]
         
         if let img = product.image {
-            let imageWillBeQuick = context.shared.imageCache.cachedImageName(img) != nil
+            let imageWillBeQuick = context.shared.imageCache.hasCachedImage(img)
             
             if !imageWillBeQuick { // image will take a while, set background & placeholder
                 group.setBackgroundColor(context.shared.theme.productBackgroundColor)
@@ -59,8 +59,8 @@ class DualColumnRowController: NSObject, ListRowController {
                 group.setHidden(false)
             }
             
-            context.shared.imageCache.ensureCacheImage(img).onSuccess { [weak group] name in
-                group?.setBackgroundImageNamed(name)
+            context.shared.imageCache.ensureCacheImage(img).onSuccess { [weak group] imageRef in
+                group?.setBackgroundImage(imageRef)
             }.onComplete { [weak group] _ in
                 if imageWillBeQuick {
                     group?.setBackgroundColor(context.shared.theme.productBackgroundColor)

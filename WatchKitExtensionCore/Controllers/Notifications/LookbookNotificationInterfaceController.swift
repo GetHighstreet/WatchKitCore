@@ -69,9 +69,9 @@ class LookbookNotificationInterfaceController: WKUserNotificationInterfaceContro
 
         
         response.onSuccess(ImmediateOnMainExecutionContext) { [weak self] (image: Image) in
-                        self?.shared.imageCache.ensureCacheImage(image).onSuccess { name in
+                        self?.shared.imageCache.ensureCacheImage(image).onSuccess { imageRef in
                         self?.placeholderImageGroup.setBackgroundImageNamed(nil)
-                        self?.lookbookImageGroup.setBackgroundImageNamed(name)
+                        self?.lookbookImageGroup.setBackgroundImage(imageRef)
             }
         }.onFailure { err in
             print(err)

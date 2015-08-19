@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E91AF47E1AE8E7BB0076739B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E91AF43D1AE8E7BB0076739B /* Localizable.strings */; };
 		E91AF4811AE8E7BB0076739B /* HomePromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4441AE8E7BB0076739B /* HomePromotion.swift */; };
-		E91AF4821AE8E7BB0076739B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4451AE8E7BB0076739B /* Image.swift */; };
 		E91AF4831AE8E7BB0076739B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4461AE8E7BB0076739B /* Notification.swift */; };
 		E91AF4841AE8E7BB0076739B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4471AE8E7BB0076739B /* Product.swift */; };
 		E91AF4851AE8E7BB0076739B /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4481AE8E7BB0076739B /* ProductDetails.swift */; };
@@ -60,6 +59,8 @@
 		E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */; };
 		E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06F1B847281003DE5B9 /* BrightFutures.framework */; };
 		E923C0911B847393003DE5B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C0901B847393003DE5B9 /* Result.framework */; };
+		E923C0931B84820A003DE5B9 /* WKInterfaceObject+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */; };
+		E92FB6EA1B8483AC001DB90D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4451AE8E7BB0076739B /* Image.swift */; };
 		E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */; };
 		E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../Development/Projects/SwiftyJSON/build/Debug-watchos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		E923C06F1B847281003DE5B9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../../../../Development/Playground/BrightFutures/build/Debug-watchos/BrightFutures.framework"; sourceTree = "<group>"; };
 		E923C0901B847393003DE5B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Carthage/Checkouts/Result/build/Debug-watchos/Result.framework"; sourceTree = "<group>"; };
+		E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKInterfaceObject+Image.swift"; sourceTree = "<group>"; };
 		E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityParentAppSession.swift; sourceTree = "<group>"; };
 		E9D522A81B827086009DD847 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -247,6 +249,7 @@
 				E91AF4641AE8E7BB0076739B /* String.swift */,
 				E91AF4651AE8E7BB0076739B /* UIColor.swift */,
 				E91AF4661AE8E7BB0076739B /* WKInterfaceController.swift */,
+				E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91AF49D1AE8E7BB0076739B /* String.swift in Sources */,
+				E923C0931B84820A003DE5B9 /* WKInterfaceObject+Image.swift in Sources */,
 				E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */,
 				E91AF4811AE8E7BB0076739B /* HomePromotion.swift in Sources */,
 				E91AF4981AE8E7BB0076739B /* UserActivity.swift in Sources */,
@@ -436,12 +440,12 @@
 				E91AF4A91AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift in Sources */,
 				E91AF4951AE8E7BB0076739B /* ResponseCache.swift in Sources */,
 				E91AF4A81AE8E7BB0076739B /* RowRevealFragment.swift in Sources */,
+				E92FB6EA1B8483AC001DB90D /* Image.swift in Sources */,
 				E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */,
 				E91AF4AC1AE8E7BB0076739B /* Notifications.swift in Sources */,
 				E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */,
 				E91AF49A1AE8E7BB0076739B /* Future.swift in Sources */,
 				E91AF48F1AE8E7BB0076739B /* HomePromotionsListRequest.swift in Sources */,
-				E91AF4821AE8E7BB0076739B /* Image.swift in Sources */,
 				E91AF4AB1AE8E7BB0076739B /* LookbookNotificationInterfaceController.swift in Sources */,
 				E91AF4891AE8E7BB0076739B /* InterfaceControllerContext.swift in Sources */,
 				E91AF49E1AE8E7BB0076739B /* UIColor.swift in Sources */,

@@ -41,24 +41,24 @@ class ImageCache {
         }
     }
     
-    func ensureCacheImage(image: Image) -> Future<String, Error> {
+    func ensureCacheImage(image: Image) -> Future<LocalImageReference, Error> {
         accessLog = add(image, log: accessLog)
         scheduleSafeAccessLog()
-        return cachedImageName(image).map { Future(value: $0) } ?? cacheImage(image)
+        return cachedImage(image).map { Future(value: $0) } ?? cacheImage(image)
     }
     
-    private func cacheImage(image: Image) -> Future<String, Error> {
+    private func cacheImage(image: Image) -> Future<LocalImageReference, Error> {
         switch image {
         case .RemoteImage(let url):
             return fetcher.fetchImage(url).flatMap {
                 self.cacheImage(image.name, localImageReference: $0)
             }
         case .LocalImage(let ref):
-            return Future<String, Error>(result: cacheImage(image.name, localImageReference: ref))
+            return Future<LocalImageReference, Error>(result: cacheImage(image.name, localImageReference: ref))
         }
     }
     
-    private func cacheImage(name: String, localImageReference ref: LocalImageReference) -> Result<String, Error> {
+    private func cacheImage(name: String, localImageReference ref: LocalImageReference) -> Result<LocalImageReference, Error> {
         if let _ = ref.imageObject {
 //            while !self.device.addCachedImage(img, name: name) {
 //                if let imageToEvict = self.evictionPolicy(accessLog, self.cachedImages) {
@@ -70,15 +70,19 @@ class ImageCache {
 //                }
 //            }
         
-            return Result(value: name)
+            return Result(value: ref)
         } else {
             return Result(error: .ImageLoadingFailed(image: nil))
         }
     }
     
     // Returns the name to use for the given image if it is cached
-    func cachedImageName(image: Image) -> String? {
-        return self.cachedImages[image.name].map { _ in image.name }
+    func cachedImage(image: Image) -> LocalImageReference? {
+        return nil // TODO
+    }
+    
+    func hasCachedImage(image: Image) -> Bool {
+        return false
     }
     
     func clearCache() {
