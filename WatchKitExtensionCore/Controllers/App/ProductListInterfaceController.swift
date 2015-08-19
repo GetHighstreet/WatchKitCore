@@ -56,8 +56,8 @@ class ProductListInterfaceController: WKInterfaceController {
         
         fetchController = FetchController<Product>(batchSize: self.context.configuration.batchSize)
         fetchController.dataSource = self.context.configuration.fetchProductsInRange(self.context.shared)
-        fetchController.addDataSourceCountListener { count in
-            self.contentState = ContentState(numberOfProducts: count, receivedFirstProducts: true)
+        fetchController.addDataSourceCountListener { [weak self] count in
+            self?.contentState = ContentState(numberOfProducts: count, receivedFirstProducts: true)
         }
         
         let tableConf = TableControllerConfiguration(
@@ -67,8 +67,8 @@ class ProductListInterfaceController: WKInterfaceController {
             rowType: self.context.configuration.rowType
         )
         
-        tableController = TableController<Product>(configuration: tableConf, contextForObjectAtIndex: { (product: Product, index: Int) -> ListRowControllerContext in
-            return ListRowControllerContext(shared: self.context.shared) {
+        tableController = TableController<Product>(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (product: Product, index: Int) -> ListRowControllerContext in
+            return ListRowControllerContext(shared: self.context.shared) { [unowned self] in
                 self.pushProductDetailsForProduct(product)
             }
         })

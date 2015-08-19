@@ -47,7 +47,7 @@ class HomePromotionsInterfaceController: WKInterfaceController {
             rowType: HomePromotionsRowController.Identifier
         )
         
-        tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { (promotion, index) -> ListRowControllerContext in
+        tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (promotion, index) -> ListRowControllerContext in
             return ListRowControllerContext(shared: self.context.shared, didSelectColumn: nil)
         })
         
