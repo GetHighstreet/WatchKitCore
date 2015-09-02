@@ -63,7 +63,7 @@ enum BrowsingLocation {
     
     static func fromDeeplink(link: String) -> BrowsingLocation? {
         if let schemeEnd = link.rangeOfString("//") {
-            let path = link.substringFromIndex(advance(schemeEnd.endIndex, 1))
+            let path = link.substringFromIndex(schemeEnd.endIndex.advancedBy(1))
             return .Other(path: path)
         }
         return nil

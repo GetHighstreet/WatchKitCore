@@ -126,6 +126,7 @@
 		E923C0901B847393003DE5B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Carthage/Checkouts/Result/build/Debug-watchos/Result.framework"; sourceTree = "<group>"; };
 		E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKInterfaceObject+Image.swift"; sourceTree = "<group>"; };
 		E92FB7161B84918E001DB90D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../../../../Development/Projects/Kingfisher/build/Debug-iphoneos/Kingfisher.framework"; sourceTree = "<group>"; };
+		E953DC9C1B924A9A001D4814 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityParentAppSession.swift; sourceTree = "<group>"; };
 		E9D522A81B827086009DD847 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -389,6 +390,7 @@
 				en,
 				de,
 				nl,
+				fr,
 			);
 			mainGroup = E91AF4161AE8E70E0076739B;
 			productRefGroup = E91AF4211AE8E70E0076739B /* Products */;
@@ -479,6 +481,7 @@
 				E91AF43E1AE8E7BB0076739B /* de */,
 				E91AF43F1AE8E7BB0076739B /* en */,
 				E91AF4411AE8E7BB0076739B /* nl */,
+				E953DC9C1B924A9A001D4814 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

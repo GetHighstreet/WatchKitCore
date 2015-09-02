@@ -24,7 +24,7 @@ public protocol ParentAppSession {
 extension ParentAppSession {
     func execute<R: ParentAppRequest, C: ResponseCacheType where C.CacheValueType == JSON>(request: R, cache: C?) -> Future<R.ResponseType, Error> {
         if let cache = cache, cachedResponse = cache.responseForRequest(request)   {
-            return Future<R.ResponseType, Error>(result: flatten(parseResponse(cachedResponse, forRequest: request)))
+            return Future<R.ResponseType, Error>(result: parseResponse(cachedResponse, forRequest: request).flatten())
         } else {
             return execute(request)
         }

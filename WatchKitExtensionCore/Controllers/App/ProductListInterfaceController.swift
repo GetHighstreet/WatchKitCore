@@ -164,7 +164,7 @@ class ProductListInterfaceController: WKInterfaceController {
             let token = InvalidationToken()
             
             // show the loading indicator after 0.5 seconds
-            Future<Void, Error>(value: (), delay: 0.5).onComplete(token: token) { [weak self] _ in
+            Future<Void, Error>(value: (), delay: 0.5).onComplete(token.validContext) { [weak self] _ in
                 self?.loadMoreIndicator.setImageNamed("loading_indicator")
                 let range = NSMakeRange(0, 50)
                 self?.loadMoreIndicator.startAnimatingWithImagesInRange(range, duration: NSTimeInterval(range.length)/25.0, repeatCount: Int.max)

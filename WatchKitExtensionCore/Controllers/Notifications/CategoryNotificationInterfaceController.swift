@@ -23,7 +23,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
     var tableController: TableController<Product>!
     
     override init() {
-        shared = SharedContext.defaultContext()
+        shared = ExtensionDelegate.sharedDelegate().sharedContext
         
         fetchController = FetchController(batchSize: 5)
         
@@ -53,9 +53,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
         
         if let note = PushNotification(localNotification: localNotification) {
             didReceiveCategoryNotification(note)
-            Queue.main.after(NotificationCompletionHandlerDelay) {
-                completionHandler(.Custom)
-            }
+            completionHandler(.Custom)
         } else {
             completionHandler(.Default)
         }
@@ -66,9 +64,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
         
         if let note = PushNotification(remoteNotification: remoteNotification) {
             didReceiveCategoryNotification(note)
-            Queue.main.after(NotificationCompletionHandlerDelay) {
-                completionHandler(.Custom)
-            }
+            completionHandler(.Custom)
         } else {
             completionHandler(.Default)
         }
@@ -86,7 +82,7 @@ class CategoryNotificationInterfaceController: WKUserNotificationInterfaceContro
         let response = shared.session.execute(request, cache: notification.responseCache)
         
         productsPromise.completeWith(response)
-        
+
         fetchController.loadNextBatch()
         
         if let location = BrowsingLocation.fromDeeplink(notification.deeplink) {

@@ -15,7 +15,7 @@ extension UIColor {
     static func fromHex(hex: String) -> UIColor? {
         let characterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet().mutableCopy() as! NSMutableCharacterSet
         characterSet.formUnionWithCharacterSet(NSCharacterSet(charactersInString: "#"))
-        var cString = hex.stringByTrimmingCharactersInSet(characterSet).uppercaseString
+        let cString = hex.stringByTrimmingCharactersInSet(characterSet).uppercaseString
         
         if (cString.characters.count != 6) {
             return nil

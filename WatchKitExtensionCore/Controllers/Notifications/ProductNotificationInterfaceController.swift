@@ -25,7 +25,7 @@ class ProductNotificationInterfaceController: WKUserNotificationInterfaceControl
     var productOutlineFragment: ProductOutlineFragment!
     
     override init() {
-        shared = SharedContext.defaultContext()
+        shared = ExtensionDelegate.sharedDelegate().sharedContext
     }
     
     /**

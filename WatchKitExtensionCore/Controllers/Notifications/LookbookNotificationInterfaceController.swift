@@ -21,7 +21,7 @@ class LookbookNotificationInterfaceController: WKUserNotificationInterfaceContro
     let shared: SharedContextType
     
     override init() {
-        shared = SharedContext.defaultContext()
+        shared = ExtensionDelegate.sharedDelegate().sharedContext
     }
     
     func setUp() {

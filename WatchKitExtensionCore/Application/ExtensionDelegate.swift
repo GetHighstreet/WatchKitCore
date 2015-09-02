@@ -32,6 +32,10 @@ public class ExtensionDelegate: NSObject, WCSessionDelegate {
 
 extension ExtensionDelegate: WKExtensionDelegate {
 
+    public static func sharedDelegate() -> ExtensionDelegate {
+        return WKExtension.sharedExtension().delegate! as! ExtensionDelegate
+    }
+    
     public func applicationDidFinishLaunching() {
         print("did finish launching")
     }

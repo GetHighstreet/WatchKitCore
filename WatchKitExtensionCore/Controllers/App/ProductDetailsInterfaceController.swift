@@ -160,7 +160,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
             addMenuItemWithImageNamed("menu_item_icon_favorite", title: "ProductDetails.menu.addFavorite".localizedInWatchKitExtension, action: Selector("addProductToFavorites"))
         }
         
-        imageSetPromise.future.onComplete(ImmediateOnMainExecutionContext, token:detailsChangeInvalidationToken) { [weak self] _ in
+        imageSetPromise.future.onComplete(detailsChangeInvalidationToken.validContext(ImmediateOnMainExecutionContext)) { [weak self] _ in
             if let controller = self {
                 controller.favoriteIconFragment.update(
                     controller.context.shared,
@@ -189,7 +189,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         try! changeFavoriteStateToken?.invalidate()
         changeFavoriteStateToken = InvalidationToken()
         
-        productDetailsAvailable.onSuccess(token: changeFavoriteStateToken!) { [weak self] details in
+        productDetailsAvailable.onSuccess(changeFavoriteStateToken!.validContext) { [weak self] details in
             if let controller = self {
                 controller.context.shared.session.execute(ChangeProductFavoriteStateRequest(productId: details.product.id, action: action)).onSuccess { [weak self] favorite in
                     if let controller = self {

@@ -79,7 +79,7 @@ class LaunchInterfaceControllerContext: InterfaceControllerContext {
     let shared: SharedContextType
     
     init() {
-        shared = SharedContext.defaultContext()
+        shared = ExtensionDelegate.sharedDelegate().sharedContext
     }
     
     func favoritesContext() -> ProductListInterfaceControllerContext {

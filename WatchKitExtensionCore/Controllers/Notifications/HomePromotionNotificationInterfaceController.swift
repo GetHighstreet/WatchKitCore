@@ -27,7 +27,7 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
     var tableController: TableController<Product>!
     
     override init() {
-        shared = SharedContext.defaultContext()
+        shared = ExtensionDelegate.sharedDelegate().sharedContext
         
         fetchController = FetchController(batchSize: 3)
         
