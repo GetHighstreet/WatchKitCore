@@ -10,20 +10,13 @@ import Foundation
 import WatchKit
 import BrightFutures
 import Result
-import Kingfisher
-
-typealias ImageAccessLog = [String]
-
-private let UserDefaultsImageAccessLogKey = "com.highstreet.watchkitextension.ImageCache.accessLog"
-private let AccessLogSaveDelay = 2.0;
 
 class ImageCache {
     
     private let device: WKInterfaceDevice
 
     private let fetcher: ImageFetcher
-    private let cache: Kingfisher.ImageCache
-    private var accessLog: ImageAccessLog = ImageAccessLog()
+    private let cache: KingfisherImageCache
     private var scheduleSafeAccessLogToken: InvalidationToken?
     
     convenience init() {
@@ -32,7 +25,7 @@ class ImageCache {
     
     init(device: WKInterfaceDevice, fetcher: ImageFetcher = ImageFetcher()) {
         self.device = device
-        self.cache = Kingfisher.ImageCache(name: "imageCache")
+        self.cache = KingfisherImageCache(name: "imageCache")
         self.cache.maxDiskCacheSize = 10 * 1024 * 1024
         self.cache.maxMemoryCost = 4 * 1024 * 1024
         self.fetcher = fetcher

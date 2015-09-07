@@ -55,13 +55,13 @@
 		E91AF4AF1AE8E7BB0076739B /* HomePromotionsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47B1AE8E7BB0076739B /* HomePromotionsRowController.swift */; };
 		E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47C1AE8E7BB0076739B /* ListRowController.swift */; };
 		E91AF4B11AE8E7BB0076739B /* SingleColumnRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */; };
+		E921DCF41B9D808300FE175D /* KingfisherImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */; settings = {ASSET_TAGS = (); }; };
 		E923C06C1B847267003DE5B9 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06B1B847267003DE5B9 /* Shared.framework */; };
 		E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */; };
 		E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06F1B847281003DE5B9 /* BrightFutures.framework */; };
 		E923C0911B847393003DE5B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C0901B847393003DE5B9 /* Result.framework */; };
 		E923C0931B84820A003DE5B9 /* WKInterfaceObject+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */; };
 		E92FB6EA1B8483AC001DB90D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4451AE8E7BB0076739B /* Image.swift */; };
-		E92FB7171B84918E001DB90D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92FB7161B84918E001DB90D /* Kingfisher.framework */; };
 		E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */; };
 		E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */; };
 /* End PBXBuildFile section */
@@ -120,6 +120,7 @@
 		E91AF47C1AE8E7BB0076739B /* ListRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowController.swift; sourceTree = "<group>"; };
 		E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleColumnRowController.swift; sourceTree = "<group>"; };
 		E91AF4B41AE8E9E30076739B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingfisherImageCache.swift; sourceTree = "<group>"; };
 		E923C06B1B847267003DE5B9 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = "../../../Shared/build/Debug-watchos/Shared.framework"; sourceTree = "<group>"; };
 		E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../Development/Projects/SwiftyJSON/build/Debug-watchos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		E923C06F1B847281003DE5B9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../../../../Development/Playground/BrightFutures/build/Debug-watchos/BrightFutures.framework"; sourceTree = "<group>"; };
@@ -138,7 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E92FB7171B84918E001DB90D /* Kingfisher.framework in Frameworks */,
 				E923C0911B847393003DE5B9 /* Result.framework in Frameworks */,
 				E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */,
 				E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */,
@@ -214,6 +214,7 @@
 				E91AF45C1AE8E7BB0076739B /* StoreTheme.swift */,
 				E91AF45D1AE8E7BB0076739B /* TableController.swift */,
 				E91AF45E1AE8E7BB0076739B /* UserActivity.swift */,
+				E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -468,6 +469,7 @@
 				E91AF4831AE8E7BB0076739B /* Notification.swift in Sources */,
 				E91AF4931AE8E7BB0076739B /* ProductListRequest.swift in Sources */,
 				E91AF49F1AE8E7BB0076739B /* WKInterfaceController.swift in Sources */,
+				E921DCF41B9D808300FE175D /* KingfisherImageCache.swift in Sources */,
 				E91AF4941AE8E7BB0076739B /* WarmUpRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
