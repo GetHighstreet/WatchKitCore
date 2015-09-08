@@ -1,0 +1,65 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BB9E5B700229248F5B07D567EBCA4E9AABDECD36",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : 0,
+    "17FB51EC7B87DC25DD21E28FDFD877B479CFFAC1" : 0,
+    "34C9C694268ED866A0A5AF8ACEDEE232459D23D8" : 0,
+    "4488F1A1D9F696D12B899F2DB0C8B38559EB073A" : 0,
+    "93608FFF008CD82ADDFA850BB9C1630FA754586F" : 0,
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : 0,
+    "BB9E5B700229248F5B07D567EBCA4E9AABDECD36" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "22972316-CA87-49E6-A6C3-DA186A2E9659",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : "WatchKitCore\/Carthage\/Checkouts\/Result\/",
+    "17FB51EC7B87DC25DD21E28FDFD877B479CFFAC1" : "..\/..\/..\/..\/Development\/Projects\/Kingfisher",
+    "34C9C694268ED866A0A5AF8ACEDEE232459D23D8" : "..\/..\/Shared",
+    "4488F1A1D9F696D12B899F2DB0C8B38559EB073A" : "",
+    "93608FFF008CD82ADDFA850BB9C1630FA754586F" : "..\/..\/..\/..\/Development\/Playground\/BrightFutures",
+    "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3" : "..\/..\/..\/..\/Development\/Projects\/SwiftyJSON",
+    "BB9E5B700229248F5B07D567EBCA4E9AABDECD36" : "WatchKitCore"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WatchKitExtensionCore",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "WatchKitExtensionCore.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/onevcat\/Kingfisher.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "17FB51EC7B87DC25DD21E28FDFD877B479CFFAC1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GetHighstreet\/Shared.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "34C9C694268ED866A0A5AF8ACEDEE232459D23D8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab:highstreet\/whitelabel.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4488F1A1D9F696D12B899F2DB0C8B38559EB073A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Thomvis\/BrightFutures.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "93608FFF008CD82ADDFA850BB9C1630FA754586F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "956D2B21DD155C49504BB67697A67F7C5351A353"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GetHighstreet\/WatchKitCore.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BB9E5B700229248F5B07D567EBCA4E9AABDECD36"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftyJSON\/SwiftyJSON.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C861FC00CEE0F6A6BE81FCFF6785FAA78C58EBB3"
+    }
+  ]
+}

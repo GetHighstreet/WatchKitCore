@@ -56,12 +56,12 @@
 		E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47C1AE8E7BB0076739B /* ListRowController.swift */; };
 		E91AF4B11AE8E7BB0076739B /* SingleColumnRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */; };
 		E921DCF41B9D808300FE175D /* KingfisherImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */; settings = {ASSET_TAGS = (); }; };
-		E923C06C1B847267003DE5B9 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06B1B847267003DE5B9 /* Shared.framework */; };
-		E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */; };
-		E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C06F1B847281003DE5B9 /* BrightFutures.framework */; };
-		E923C0911B847393003DE5B9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E923C0901B847393003DE5B9 /* Result.framework */; };
 		E923C0931B84820A003DE5B9 /* WKInterfaceObject+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */; };
 		E92FB6EA1B8483AC001DB90D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4451AE8E7BB0076739B /* Image.swift */; };
+		E997F9D11B9ED90400BFE900 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997F9CD1B9ED90400BFE900 /* BrightFutures.framework */; settings = {ASSET_TAGS = (); }; };
+		E997F9D21B9ED90400BFE900 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997F9CE1B9ED90400BFE900 /* Result.framework */; settings = {ASSET_TAGS = (); }; };
+		E997F9D31B9ED90400BFE900 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997F9CF1B9ED90400BFE900 /* Shared.framework */; settings = {ASSET_TAGS = (); }; };
+		E997F9D41B9ED90400BFE900 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E997F9D01B9ED90400BFE900 /* SwiftyJSON.framework */; settings = {ASSET_TAGS = (); }; };
 		E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */; };
 		E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */; };
 /* End PBXBuildFile section */
@@ -121,13 +121,12 @@
 		E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleColumnRowController.swift; sourceTree = "<group>"; };
 		E91AF4B41AE8E9E30076739B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingfisherImageCache.swift; sourceTree = "<group>"; };
-		E923C06B1B847267003DE5B9 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = "../../../Shared/build/Debug-watchos/Shared.framework"; sourceTree = "<group>"; };
-		E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../Development/Projects/SwiftyJSON/build/Debug-watchos/SwiftyJSON.framework"; sourceTree = "<group>"; };
-		E923C06F1B847281003DE5B9 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = "../../../../../Development/Playground/BrightFutures/build/Debug-watchos/BrightFutures.framework"; sourceTree = "<group>"; };
-		E923C0901B847393003DE5B9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "Carthage/Checkouts/Result/build/Debug-watchos/Result.framework"; sourceTree = "<group>"; };
 		E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKInterfaceObject+Image.swift"; sourceTree = "<group>"; };
-		E92FB7161B84918E001DB90D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../../../../Development/Projects/Kingfisher/build/Debug-iphoneos/Kingfisher.framework"; sourceTree = "<group>"; };
 		E953DC9C1B924A9A001D4814 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E997F9CD1B9ED90400BFE900 /* BrightFutures.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BrightFutures.framework; path = Carthage/Build/watchOS/BrightFutures.framework; sourceTree = "<group>"; };
+		E997F9CE1B9ED90400BFE900 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
+		E997F9CF1B9ED90400BFE900 /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = Carthage/Build/watchOS/Shared.framework; sourceTree = "<group>"; };
+		E997F9D01B9ED90400BFE900 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/watchOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchConnectivityParentAppSession.swift; sourceTree = "<group>"; };
 		E9D522A81B827086009DD847 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -139,10 +138,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E923C0911B847393003DE5B9 /* Result.framework in Frameworks */,
-				E923C0701B847281003DE5B9 /* BrightFutures.framework in Frameworks */,
-				E923C06E1B847272003DE5B9 /* SwiftyJSON.framework in Frameworks */,
-				E923C06C1B847267003DE5B9 /* Shared.framework in Frameworks */,
+				E997F9D41B9ED90400BFE900 /* SwiftyJSON.framework in Frameworks */,
+				E997F9D11B9ED90400BFE900 /* BrightFutures.framework in Frameworks */,
+				E997F9D31B9ED90400BFE900 /* Shared.framework in Frameworks */,
+				E997F9D21B9ED90400BFE900 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +317,10 @@
 		E949B32B1AEFA99400CA274E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E92FB7161B84918E001DB90D /* Kingfisher.framework */,
-				E923C0901B847393003DE5B9 /* Result.framework */,
-				E923C06F1B847281003DE5B9 /* BrightFutures.framework */,
-				E923C06D1B847272003DE5B9 /* SwiftyJSON.framework */,
-				E923C06B1B847267003DE5B9 /* Shared.framework */,
+				E997F9CD1B9ED90400BFE900 /* BrightFutures.framework */,
+				E997F9CE1B9ED90400BFE900 /* Result.framework */,
+				E997F9CF1B9ED90400BFE900 /* Shared.framework */,
+				E997F9D01B9ED90400BFE900 /* SwiftyJSON.framework */,
 				E9D522AA1B827093009DD847 /* CoreFoundation.framework */,
 				E9D522A81B827086009DD847 /* Foundation.framework */,
 			);
@@ -590,7 +588,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = WatchKitExtensionCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -611,7 +612,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = WatchKitExtensionCore/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
