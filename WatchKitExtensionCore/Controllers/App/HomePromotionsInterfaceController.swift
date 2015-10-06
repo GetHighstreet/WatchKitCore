@@ -44,7 +44,8 @@ class HomePromotionsInterfaceController: WKInterfaceController {
             fetchController: fetchController,
             table: table,
             rowAndColumnForObjectAtIndex: { i in (i, 0) },
-            rowType: HomePromotionsRowController.Identifier
+            rowType: HomePromotionsRowController.Identifier,
+            updateExecutionContext: ImmediateExecutionContext
         )
         
         tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (promotion, index) -> ListRowControllerContext in
@@ -71,7 +72,7 @@ class HomePromotionsInterfaceController: WKInterfaceController {
         promotionsPromise.completeWith(self.context.shared.session.execute(request))
     }
     
-    override func willActivate() {
+    override func didAppear() {
         self.updateUserActivity(.Home)
     }
     

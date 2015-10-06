@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BrightFutures
 
 /**
  * A fragment is a tiny controller for a recurring part of the interface
@@ -16,5 +17,5 @@ protocol InterfaceFragment {
     typealias DataType
     
     func setUp(context: SharedContextType)
-    mutating func update(context: SharedContextType, data: DataType)
+    mutating func update(context: SharedContextType, executionContext: ExecutionContext, data: DataType)
 }

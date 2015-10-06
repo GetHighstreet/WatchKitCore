@@ -48,7 +48,8 @@ class HomePromotionNotificationInterfaceController: WKUserNotificationInterfaceC
             fetchController: fetchController,
             table: table,
             rowAndColumnForObjectAtIndex: { i in (i, 0) },
-            rowType: SingleColumnRowController.Identifier
+            rowType: SingleColumnRowController.Identifier,
+            updateExecutionContext: ImmediateExecutionContext
         )
         
         tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { [shared] (promotion, index) -> ListRowControllerContext in

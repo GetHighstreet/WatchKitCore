@@ -60,11 +60,11 @@ class ImageCache {
         let p = Promise<LocalImageReference, Error>()
         cache.retrieveImageForKey(image.name, options: KingfisherManager.OptionsNone) { cachedImage, _ in
             guard let cachedImage = cachedImage else {
-                try! p.failure(.Unspecified)
+                p.failure(.Unspecified)
                 return
             }
             
-            try! p.success(.InMemory(name: image.name, image: cachedImage))
+            p.success(.InMemory(name: image.name, image: cachedImage))
         }
         return p.future
     }

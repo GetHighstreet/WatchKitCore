@@ -38,8 +38,7 @@ class ProductListInterfaceController: WKInterfaceController {
     var context: ProductListInterfaceControllerContext!
     var tableController: TableController<Product>!
     var fetchController: FetchController<Product>!
-    
-    var pendingUpdates = [Product]()
+    let updateQueue: Queue
     
     var contentState: ContentState {
         didSet {
@@ -49,6 +48,10 @@ class ProductListInterfaceController: WKInterfaceController {
     
     override init() {
         contentState = ContentState(numberOfProducts: nil, receivedFirstProducts: false)
+        
+        updateQueue = Queue(queueLabel: "updateQueue")
+        dispatch_set_target_queue(updateQueue.underlyingQueue, dispatch_get_main_queue())
+        dispatch_suspend(updateQueue.underlyingQueue)
     }
 
     override func awakeWithContext(context: AnyObject?) {
@@ -64,7 +67,8 @@ class ProductListInterfaceController: WKInterfaceController {
             fetchController: fetchController,
             table: table,
             rowAndColumnForObjectAtIndex: self.context.configuration.rowAndColumnForProductAtIndex,
-            rowType: self.context.configuration.rowType
+            rowType: self.context.configuration.rowType,
+            updateExecutionContext: updateQueue.context
         )
         
         tableController = TableController<Product>(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (product: Product, index: Int) -> ListRowControllerContext in
@@ -114,16 +118,13 @@ class ProductListInterfaceController: WKInterfaceController {
         }
     }
     
-    override func willActivate() {
+    override func didAppear() {
         self.updateUserActivity(self.context.configuration.activity)
-
-        // If we do this while the controller is not visible (i.e. because the detail view is visible)
-        // the changes are not visible
-        performPendingUpdates()
+        dispatch_resume(updateQueue.underlyingQueue)
     }
     
-    override func didDeactivate() {
-        
+    override func willDisappear() {
+        dispatch_suspend(updateQueue.underlyingQueue)
     }
     
     func pushProductDetailsForProduct(product: Product) {
@@ -132,20 +133,8 @@ class ProductListInterfaceController: WKInterfaceController {
     
     func contextForProductDetailsInterfaceControllerWithProduct(product: Product) -> ProductDetailsInterfaceControllerContext {
         return context.detailsContextForProduct(product) { [weak self] product in
-            if let controller = self {
-                controller.pendingUpdates.append(product)
-            }
+            self?.fetchController.updateObject(product)
         }
-    }
-    
-    func performPendingUpdates() {
-        for product in pendingUpdates {
-            let productRowIndex = fetchController.indexOfObjectWithIdentifier(product.identifier)
-            if let index = productRowIndex {
-                fetchController.setObject(product, atIndex: index)
-            }
-        }
-        pendingUpdates.removeAll()
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
@@ -164,15 +153,17 @@ class ProductListInterfaceController: WKInterfaceController {
             let token = InvalidationToken()
             
             // show the loading indicator after 0.5 seconds
-            Future<Void, Error>(value: (), delay: 0.5).onComplete(token.validContext) { [weak self] _ in
-                self?.loadMoreIndicator.setImageNamed("loading_indicator")
-                let range = NSMakeRange(0, 50)
-                self?.loadMoreIndicator.startAnimatingWithImagesInRange(range, duration: NSTimeInterval(range.length)/25.0, repeatCount: Int.max)
-                self?.loadMoreIndicator.setHidden(false)
+            Queue.main.after(.In(0.5)) {
+                token.validContext { [weak self] in
+                    self?.loadMoreIndicator.setImageNamed("loading_indicator")
+                    let range = NSMakeRange(0, 50)
+                    self?.loadMoreIndicator.startAnimatingWithImagesInRange(range, duration: NSTimeInterval(range.length)/25.0, repeatCount: Int.max)
+                    self?.loadMoreIndicator.setHidden(false)
+                }
             }
             
             fetchController.loadNextBatch().onComplete { [weak self] _ in
-                try! token.invalidate()
+                token.invalidate()
                 self?.loadMoreIndicator.setHidden(true)
                 self?.loadMoreIndicator.stopAnimating()
                 self?.showMoreButtonIfNeeded()

@@ -43,12 +43,12 @@ class ProductOutlineFragment: InterfaceFragment, Revealing {
         priceLabel.setTextColor(context.theme.tintColor2)
     }
     
-    func update(context: SharedContextType, data: Product) {
+    func update(context: SharedContextType, executionContext: ExecutionContext, data: Product) {
         
         if let image = data.image {
             revealDidSetImage(image).flatMap { _ in
                 context.imageCache.ensureCacheImage(image)
-            }.onSuccess { image in
+            }.onSuccess(executionContext) { image in
                 self.placeholderImageGroup.setBackgroundImageNamed(nil)
                 self.productImageGroup.setBackgroundImage(image)
             }.onComplete { _ in
@@ -59,22 +59,22 @@ class ProductOutlineFragment: InterfaceFragment, Revealing {
         }
         
         if let revealFragment = revealFragment {
-            revealFragment.onReveal.onComplete { _ in
-                self.updateTextWithProduct(data, context: context)
+            revealFragment.onReveal.onComplete(executionContext) { _ in
+                self.updateTextWithProduct(data, context: context, executionContext: executionContext)
             }
         } else {
-            updateTextWithProduct(data, context: context)
+            updateTextWithProduct(data, context: context, executionContext: executionContext)
         }
     }
     
-    func updateTextWithProduct(product: Product, context: SharedContextType) {
+    func updateTextWithProduct(product: Product, context: SharedContextType, executionContext: ExecutionContext) {
         priceLabel.setText(product.price)
         //brandLabel.setText(product.secondaryAttribute)
         
         priceLabel.setHidden(false)
         //brandLabel.setHidden(false)
         
-        favoriteIconFragment.update(context, data: ProductFavoriteIconFragmentData(isFavorite: product.isFavorite, animated: false))
+        favoriteIconFragment.update(context, executionContext: executionContext, data: ProductFavoriteIconFragmentData(isFavorite: product.isFavorite, animated: false))
     }
     
     func startRevealAnimation(context: SharedContextType) {

@@ -105,7 +105,7 @@ class RowRevealFragment: Revealing {
     }
     
     func didFinishLoading() {
-        try! self.imageSet?.success()
+        self.imageSet?.success()
     }
     
     

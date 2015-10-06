@@ -40,7 +40,7 @@ class LaunchInterfaceController: WKInterfaceController {
         homePromotionsButtonBackgroundGroup.setBackgroundColor(self.context.shared.theme.tintColor1)
     }
     
-    override func willActivate() {
+    override func didAppear() {
         self.updateUserActivity(.Home)
     }
     

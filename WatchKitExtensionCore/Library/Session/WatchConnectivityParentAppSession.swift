@@ -35,9 +35,9 @@ class WatchConnectivityParentAppSession: ParentAppSession {
         ]
         
         session.sendMessage(message, replyHandler: { response -> Void in
-            p.tryComplete(self.parseResponse(JSON(response), forRequest: request).flatten())
+            p.complete(self.parseResponse(JSON(response), forRequest: request).flatten())
         }, errorHandler: { error -> Void in
-            p.tryFailure(.External(error: error))
+            p.failure(.External(error: error))
         })
         
         return p.future

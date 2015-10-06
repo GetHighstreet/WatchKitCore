@@ -26,7 +26,7 @@ class HomePromotionsRowController: NSObject, ListRowController, Revealing {
         placeholderGroup.setBackgroundImageNamed("product_placeholder")
     }
     
-    func update(context: ListRowControllerContext, object: Any, inColumn column: Int) {
+    func update(context: ListRowControllerContext, executionContext: ExecutionContext, object: Any, inColumn column: Int) {
         let promotion = object as! HomePromotion
         
         if let image = promotion.image {

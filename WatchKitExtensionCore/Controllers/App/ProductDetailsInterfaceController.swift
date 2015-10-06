@@ -63,7 +63,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     var productDetails: ProductDetails? {
         didSet {
             if let token = detailsChangeInvalidationToken {
-                try! token.invalidate()
+                token.invalidate()
             }
             detailsChangeInvalidationToken = InvalidationToken()
             
@@ -119,7 +119,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         }
     }
     
-    override func willActivate() {
+    override func didAppear() {
         // user activity
         productDetailsAvailable.onSuccess { details in
             self.updateUserActivity(.Product(id: details.product.id))
@@ -164,6 +164,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
             if let controller = self {
                 controller.favoriteIconFragment.update(
                     controller.context.shared,
+                    executionContext: ImmediateExecutionContext,
                     data: ProductFavoriteIconFragmentData(
                         isFavorite:controller.productDetails?.product.isFavorite ?? false,
                         animated: true
@@ -186,7 +187,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
     func performProductFavoriteAction(action: ProductFavoriteAction) {
         updateProductDetailsSetFavorited(action == .Add)
         
-        try! changeFavoriteStateToken?.invalidate()
+        changeFavoriteStateToken?.invalidate()
         changeFavoriteStateToken = InvalidationToken()
         
         productDetailsAvailable.onSuccess(changeFavoriteStateToken!.validContext) { [weak self] details in

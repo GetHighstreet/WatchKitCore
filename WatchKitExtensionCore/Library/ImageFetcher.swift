@@ -33,11 +33,11 @@ class ImageFetcher {
         
         let task = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             if let error = error {
-                try! p.failure(.External(error: error))
+                p.failure(.External(error: error))
             } else if let data = data, img = UIImage(data: data) {
-                try! p.success(img)
+                p.success(img)
             } else {
-                try! p.failure(.DeserializationFailed(object:data))
+                p.failure(.DeserializationFailed(object:data))
             }
         })
         

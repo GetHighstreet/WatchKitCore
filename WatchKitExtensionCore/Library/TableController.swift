@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import BrightFutures
 
 struct TableControllerConfiguration<T: Identifiable> {
     
@@ -16,6 +17,8 @@ struct TableControllerConfiguration<T: Identifiable> {
     
     let rowAndColumnForObjectAtIndex: Int -> (Int, Int)
     let rowType: String
+    
+    let updateExecutionContext: ExecutionContext
 }
 
 // Connects a fetch controller and a WKInterfaceTable
@@ -29,12 +32,14 @@ class TableController<T: Identifiable> {
         self.contextForObjectAtIndex = contextForObjectAtIndex
         
         self.update = { object, index in
-            let (row, column) = configuration.rowAndColumnForObjectAtIndex(index)
-            let rowController = configuration.table.rowControllerAtIndex(row) as! ListRowController
-            
-            let context = contextForObjectAtIndex(object, index)
-            
-            rowController.update(context, object: object, inColumn: column)
+            configuration.updateExecutionContext {
+                let (row, column) = configuration.rowAndColumnForObjectAtIndex(index)
+                let rowController = configuration.table.rowControllerAtIndex(row) as! ListRowController
+                
+                let context = contextForObjectAtIndex(object, index)
+                
+                rowController.update(context, executionContext: configuration.updateExecutionContext, object: object, inColumn: column)
+            }
         }
         
         configuration.fetchController.addInsertionListener(self.fetchControllerDidInsertObject)
@@ -45,15 +50,7 @@ class TableController<T: Identifiable> {
     
     func fetchControllerDidInsertObject(object: T, atIndex index: Int) {
         ensureRowAvailabilityForIndex(index)
-     
-        // set-up
-        let (row, _) = configuration.rowAndColumnForObjectAtIndex(index)
-        let rowController = configuration.table.rowControllerAtIndex(row) as! ListRowController
-        let context = contextForObjectAtIndex(object, index)
-        rowController.setUp(context.shared)
-        
-        // first update
-        self.update(object, index)
+        updateObjectAtIndex(index)
     }
     
     func ensureRowAvailabilityForIndex(index: Int) {
@@ -74,4 +71,23 @@ class TableController<T: Identifiable> {
         return configuration.table.rowControllerAtIndex(index) as! ListRowController
     }
     
+    func updateObjectAtIndex(index: Int) {
+        if let object = configuration.fetchController.objectAtIndex(index) {
+            // set-up
+            let (row, _) = configuration.rowAndColumnForObjectAtIndex(index)
+            let rowController = configuration.table.rowControllerAtIndex(row) as! ListRowController
+            let context = contextForObjectAtIndex(object, index)
+            rowController.setUp(context.shared)
+            
+            // first update
+            self.update(object, index)
+        }
+    }
+    
+    func reloadData() {
+        for i in 0..<configuration.fetchController.numberOfObjects() {
+            ensureRowAvailabilityForIndex(i)
+            updateObjectAtIndex(i)
+        }
+    }
 }

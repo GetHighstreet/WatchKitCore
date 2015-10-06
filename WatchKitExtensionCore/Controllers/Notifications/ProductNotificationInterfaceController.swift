@@ -86,7 +86,7 @@ class ProductNotificationInterfaceController: WKUserNotificationInterfaceControl
         
         response.onSuccess(ImmediateOnMainExecutionContext) { [weak self] (product: Product) in
             if let controller = self {
-                controller.productOutlineFragment.update(controller.shared, data: product)
+                controller.productOutlineFragment.update(controller.shared, executionContext: ImmediateExecutionContext, data: product)
             }
         }.onFailure { err in
             print(err)

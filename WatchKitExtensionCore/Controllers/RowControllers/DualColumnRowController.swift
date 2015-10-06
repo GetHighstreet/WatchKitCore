@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import BrightFutures
 
 class DualColumnRowController: NSObject, ListRowController {
     static let Identifier = "dualcolumn"
@@ -44,7 +45,7 @@ class DualColumnRowController: NSObject, ListRowController {
 
     }
     
-    func update(context: ListRowControllerContext, object: Any, inColumn column: Int) {
+    func update(context: ListRowControllerContext, executionContext: ExecutionContext, object: Any, inColumn column: Int) {
         // we need to do this, unfortunately, because ListRowController can't have an associated type
         // I run into a limitation of Swift 1.2 if I try to do that
         let product = object as! Product

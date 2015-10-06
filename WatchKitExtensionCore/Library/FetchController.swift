@@ -121,6 +121,16 @@ class FetchController<T: Identifiable> {
         }
     }
     
+    // Updates the first object that this fetch controller has that
+    // matches the identifier of the given object
+    func updateObject(object: T) -> Bool {
+        if let index = indexOfObjectWithIdentifier(object.identifier) {
+            setObject(object, atIndex: index)
+            return true
+        }
+        return false
+    }
+    
     func ensureCapacityOfDataArrayForIndex(index: Int) {
         if index >= data.count {
             for _ in data.count...index {
@@ -134,6 +144,10 @@ class FetchController<T: Identifiable> {
             return data[index]
         }
         return nil
+    }
+    
+    func numberOfObjects() -> Int {
+        return data.count
     }
     
     func indexOfObjectWithIdentifier(identifier: T.Identifier) -> Int? {

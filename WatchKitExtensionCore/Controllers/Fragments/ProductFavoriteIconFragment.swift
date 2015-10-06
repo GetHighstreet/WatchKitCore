@@ -8,6 +8,7 @@
 
 import Foundation
 import WatchKit
+import BrightFutures
 
 struct ProductFavoriteIconFragmentData {
     let isFavorite: Bool
@@ -27,7 +28,7 @@ struct ProductFavoriteIconFragment: InterfaceFragment {
         image.setHidden(true)
     }
     
-    mutating func update(context: SharedContextType, data: ProductFavoriteIconFragmentData) {
+    mutating func update(context: SharedContextType, executionContext: ExecutionContext, data: ProductFavoriteIconFragmentData) {
         if data.isFavorite == displayingFavorite {
             return
         }

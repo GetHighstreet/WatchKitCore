@@ -17,7 +17,7 @@ protocol ListRowController {
     
     func setUp(context: SharedContextType)
     
-    func update(context: ListRowControllerContext, object: Any, inColumn column: Int)
+    func update(context: ListRowControllerContext, executionContext: ExecutionContext, object: Any, inColumn column: Int)
 }
 
 struct ListRowControllerContext {

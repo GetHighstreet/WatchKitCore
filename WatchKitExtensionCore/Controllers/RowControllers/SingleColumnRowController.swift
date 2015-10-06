@@ -43,14 +43,14 @@ class SingleColumnRowController: NSObject, ListRowController, Revealing {
         }
     }
     
-    func update(context: ListRowControllerContext, object: Any, inColumn column: Int) {
+    func update(context: ListRowControllerContext, executionContext: ExecutionContext, object: Any, inColumn column: Int) {
         let product = object as! Product
         
         if productOutlineFragment == nil {
             setUp(context.shared)
         }
         
-        productOutlineFragment.update(context.shared, data: product)
+        productOutlineFragment.update(context.shared, executionContext: executionContext, data: product)
     }
 
     func startRevealAnimation(context: SharedContextType) {
