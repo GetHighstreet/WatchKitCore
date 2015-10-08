@@ -71,9 +71,9 @@ class ProductListInterfaceController: WKInterfaceController {
             updateExecutionContext: updateQueue.context
         )
         
-        tableController = TableController<Product>(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (product: Product, index: Int) -> ListRowControllerContext in
-            return ListRowControllerContext(shared: self.context.shared) { [unowned self] in
-                self.pushProductDetailsForProduct(product)
+        tableController = TableController<Product>(configuration: tableConf, contextForObjectAtIndex: { [context = self.context] (product: Product, index: Int) -> ListRowControllerContext in
+            return ListRowControllerContext(shared: context.shared) { [weak self] in
+                self?.pushProductDetailsForProduct(product)
             }
         })
         
