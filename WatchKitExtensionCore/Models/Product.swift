@@ -19,7 +19,7 @@ public protocol Identifiable {
 }
 
 public struct Product: Identifiable {
-    public let id: Int
+    public let id: String
     public let name: String?
     public let secondaryAttribute: String?
     public let price: String?
@@ -28,7 +28,7 @@ public struct Product: Identifiable {
     let image: Image?
     
     private init?(json: JSON) {
-        if let id = json[HSWatchKitResponseIdKey].int {
+        if let id = json[HSWatchKitResponseIdKey].string {
             self.id = id
             name = json[HSWatchKitResponseNameKey].string
             secondaryAttribute = json[HSWatchKitResponseSecondaryAttributeKey].string
@@ -41,7 +41,7 @@ public struct Product: Identifiable {
         }
     }
     
-    public init(id: Int, name: String? = nil, secondaryAttribute: String? = nil, price: String? = nil, image: Image? = nil, isFavorite: Bool = false) {
+    public init(id: String, name: String? = nil, secondaryAttribute: String? = nil, price: String? = nil, image: Image? = nil, isFavorite: Bool = false) {
         self.id = id
         self.name = name
         self.secondaryAttribute = secondaryAttribute
@@ -58,7 +58,7 @@ public struct Product: Identifiable {
         return .Add
     }
 
-    public var identifier: Int {
+    public var identifier: String {
         return id
     }
 }

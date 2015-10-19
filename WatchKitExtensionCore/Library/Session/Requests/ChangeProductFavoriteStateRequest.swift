@@ -31,11 +31,11 @@ public struct ChangeProductFavoriteStateRequest: ParentAppRequest, Serializable 
     public typealias ResponseType = Bool
     
     public let action: ProductFavoriteAction
-    public let productId: Int
+    public let productId: String
     
     public let identifier = HSWatchKitChangeProductFavoriteStateRequestIdentifier
     
-    init(productId: Int, action: ProductFavoriteAction) {
+    init(productId: String, action: ProductFavoriteAction) {
         self.productId = productId
         self.action = action
     }

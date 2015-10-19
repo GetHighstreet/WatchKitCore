@@ -31,9 +31,9 @@ enum UserActivity {
 
 enum BrowsingLocation {
     case Home
-    case Category(id: Int)
-    case Product(id: Int)
-    case ProductInCategory(categoryId: Int, productId: Int)
+    case Category(id: String)
+    case Product(id: String)
+    case ProductInCategory(categoryId: String, productId: String)
     case Favorites
     case Lookbook(id: Int)
     case HomePromotion(id: Int)
@@ -45,11 +45,11 @@ enum BrowsingLocation {
         case .Home:
             return "\(scheme)://home"
         case .Category(let id):
-            return "\(scheme)://categories/\(id)"
+            return "\(scheme)://categories/\(id.escapedForDeeplink)"
         case .Product(let id):
-            return "\(scheme)://products/\(id)"
+            return "\(scheme)://products/\(id.escapedForDeeplink)"
         case ProductInCategory(let cid, let pid):
-            return "\(scheme)://categories/\(cid)/products/\(pid)"
+            return "\(scheme)://categories/\(cid.escapedForDeeplink)/products/\(pid.escapedForDeeplink)"
         case Favorites:
             return "\(scheme)://favorites"
         case .HomePromotion(let id):

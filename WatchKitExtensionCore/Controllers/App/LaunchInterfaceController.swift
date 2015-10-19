@@ -59,12 +59,12 @@ class LaunchInterfaceController: WKInterfaceController {
         }
     }
     
-    func showProductDetails(productId: Int, actionIdentifier: String?) {
+    func showProductDetails(productId: String, actionIdentifier: String?) {
         let context = ProductDetailsInterfaceControllerContext(context: self.context, productId:productId, action: actionIdentifier)
         self.pushControllerWithName("productDetails", context: context)
     }
     
-    func showCategory(categoryId: Int, promotionHeaderImage: Image? = nil) {
+    func showCategory(categoryId: String, promotionHeaderImage: Image? = nil) {
         let configuration = CategoryProductsConfiguration(categoryId: categoryId)
         self.pushControllerWithName(
             ProductListInterfaceController.Identifier,

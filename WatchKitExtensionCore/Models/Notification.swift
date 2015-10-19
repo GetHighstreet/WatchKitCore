@@ -24,8 +24,8 @@ public struct PushNotification {
     let responseCache: JSONResponseCache?
     
     // the id of the subject (often the last part of the deeplink)
-    var subjectId: Int? {
-        return Int((deeplink as NSString).lastPathComponent)
+    var subjectId: String? {
+        return (deeplink as NSString).lastPathComponent
     }
     
     init?(localNotification: UILocalNotification) {

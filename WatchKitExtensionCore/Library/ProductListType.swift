@@ -10,7 +10,7 @@ import Foundation
 import Shared
 
 public enum ProductListType {
-    case Category(id: Int)
+    case Category(id: String)
     case Favorites
 }
 

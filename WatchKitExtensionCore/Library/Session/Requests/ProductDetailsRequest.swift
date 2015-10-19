@@ -14,11 +14,11 @@ import Shared
 public struct ProductDetailsRequest: ParentAppRequest, Serializable {
     public typealias ResponseType = ProductDetails
     
-    public let productId: Int
+    public let productId: String
     
     public let identifier = HSWatchKitProductDetailsRequestIdentifier
     
-    init(productId: Int) {
+    init(productId: String) {
         self.productId = productId
     }
     

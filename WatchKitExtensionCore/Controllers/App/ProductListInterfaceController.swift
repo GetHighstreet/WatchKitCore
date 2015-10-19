@@ -321,7 +321,7 @@ struct CategoryProductsConfiguration: ProductListInterfaceControllerConfiguratio
     
     let activity: UserActivity
     
-    init(categoryId: Int) {
+    init(categoryId: String) {
         self.fetchProductsInRange = { (context:SharedContextType) -> Range<Int> -> Future<(Int, [Product]), Error> in
                 return { range -> Future<(Int, [Product]), Error> in
                     let request = ProductListRequest(type: .Category(id: categoryId), range: range)

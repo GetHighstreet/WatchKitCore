@@ -28,6 +28,10 @@ extension String {
     var localizedInWatchKitExtension: String {
         return NSLocalizedString(self, bundle: NSBundle(forClass: LaunchInterfaceController.self), comment: "")
     }
+    
+    var escapedForDeeplink: String? {
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
+    }
 }
 
 //

@@ -260,7 +260,7 @@ class ProductDetailsInterfaceController: WKInterfaceController {
 class ProductDetailsInterfaceControllerContext: InterfaceControllerContext {
     
     let shared: SharedContextType
-    let productId: Int
+    let productId: String
     let product: Product?
     let productDidChange: (Product -> ())?
     let action: String?
@@ -273,7 +273,7 @@ class ProductDetailsInterfaceControllerContext: InterfaceControllerContext {
         self.action = action
     }
     
-    init(context: InterfaceControllerContext, productId: Int, changeHandler: (Product -> ())? = nil, action: String? = nil) {
+    init(context: InterfaceControllerContext, productId: String, changeHandler: (Product -> ())? = nil, action: String? = nil) {
         shared = context.shared
         self.productId = productId
         self.product = nil

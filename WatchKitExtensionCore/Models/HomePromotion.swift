@@ -14,21 +14,21 @@ import Result
 
 public struct HomePromotion: Identifiable {
     public let id: Int
-    public let categoryId: Int
+    public let categoryId: String
     public let image: Image?
     
     public var identifier: Int {
         return id
     }
     
-    public init(id: Int, categoryId: Int, image: Image) {
+    public init(id: Int, categoryId: String, image: Image) {
         self.id = id
         self.categoryId = categoryId
         self.image = image
     }
     
     init?(json: JSON) {
-        if let id = json[HSWatchKitResponseIdKey].int, categoryId = json[HSWatchKitResponseCategoryIdKey].int {
+        if let id = json[HSWatchKitResponseIdKey].int, categoryId = json[HSWatchKitResponseCategoryIdKey].string {
             self.id = id
             self.categoryId = categoryId
             
