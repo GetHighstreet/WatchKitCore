@@ -88,7 +88,9 @@ class FetchController<T: Identifiable> {
                 
                 return Future(error: .Unspecified)
             }.onFailure { [weak self] err in
-                self?.loadingRange = loadingRange.startIndex..<range.startIndex
+                if let controller = self {
+                    controller.loadingRange = controller.loadingRange.startIndex..<range.startIndex
+                }
             }
         }
         

@@ -61,8 +61,8 @@ class HomePromotionsInterfaceController: WKInterfaceController {
             rowController.showDownArrow()
             
             // only after the reveal animation started looping, we load the other promotions
-            rowController.revealFragment!.onReveal.onComplete { _ in
-                fetchController.loadNextObjects(4)
+            rowController.revealFragment!.onReveal.onComplete { [weak self] _ in
+                self?.fetchController.loadNextObjects(4)
             }
         } else {
             fetchController.loadNextObjects(4)
