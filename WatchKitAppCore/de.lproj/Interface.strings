@@ -3,7 +3,7 @@
 "1SD-Qh-1eE.text" = "#secondary";
 
 /* Class = "WKInterfaceController"; title = "Products"; ObjectID = "Eb4-WQ-ZLd"; */
-"Eb4-WQ-ZLd.title" = "Produkten";
+"Eb4-WQ-ZLd.title" = "Produkte";
 
 /* Class = "WKInterfaceController"; title = "Details"; ObjectID = "ErA-js-gqd"; */
 "ErA-js-gqd.title" = "Details";
@@ -24,10 +24,7 @@
 "KqO-61-5UQ.text" = "#price";
 
 /* Class = "WKInterfaceLabel"; text = "Promotions"; ObjectID = "MH4-p8-W8y"; */
-"MH4-p8-W8y.text" = "Promotionen";
-
-/* Class = "WKInterfaceButton"; title = "#favoButton"; ObjectID = "OKO-1n-qf8"; */
-"OKO-1n-qf8.title" = "#favoButton";
+"MH4-p8-W8y.text" = "Werbeangebote";
 
 /* Class = "WKInterfaceLabel"; text = "#favorites"; ObjectID = "Ppi-2E-NRY"; */
 "Ppi-2E-NRY.text" = "#favorites";
@@ -36,7 +33,7 @@
 "QPL-bW-E5r.title" = "Mehr";
 
 /* Class = "WKInterfaceController"; title = "Promotions"; ObjectID = "Rar-fs-u7Z"; */
-"Rar-fs-u7Z.title" = "Promotionen";
+"Rar-fs-u7Z.title" = "Werbeangebote";
 
 /* Class = "WKInterfaceLabel"; text = "#price"; ObjectID = "Sm9-m3-Eod"; */
 "Sm9-m3-Eod.text" = "#price";

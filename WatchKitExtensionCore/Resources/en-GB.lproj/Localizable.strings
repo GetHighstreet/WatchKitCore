@@ -1,0 +1,6 @@
+
+"Favorites.header.rightLabel.plural" = "favourites";
+"Favorites.header.rightLabel.singular" = "favourite";
+
+"ProductDetails.menu.removeFavorite" = "Remove";
+"ProductDetails.menu.addFavorite" = "Add";
