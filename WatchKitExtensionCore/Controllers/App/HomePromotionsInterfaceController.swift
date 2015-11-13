@@ -29,7 +29,8 @@ class HomePromotionsInterfaceController: WKInterfaceController {
     }
     
     override func awakeWithContext(context: AnyObject?) {
-        self.context = context as! HomePromotionsInterfaceControllerContext
+        let promotionsContext = context as! HomePromotionsInterfaceControllerContext
+        self.context = promotionsContext
         
         fetchController = FetchController(batchSize: 5)
         fetchController.dataSource = { [promotionsPromise] range in
@@ -48,8 +49,8 @@ class HomePromotionsInterfaceController: WKInterfaceController {
             updateExecutionContext: ImmediateExecutionContext
         )
         
-        tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { [unowned self] (promotion, index) -> ListRowControllerContext in
-            return ListRowControllerContext(shared: self.context.shared, didSelectColumn: nil)
+        tableController = TableController(configuration: tableConf, contextForObjectAtIndex: { [promotionsContext] (promotion, index) -> ListRowControllerContext in
+            return ListRowControllerContext(shared: promotionsContext.shared, didSelectColumn: nil)
         })
         
         // we delay the loading of the products after the first one so we don't swamp
