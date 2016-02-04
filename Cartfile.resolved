@@ -1,4 +1,4 @@
-github "antitypical/Result" "0.6.0-beta.6"
+github "antitypical/Result" "1.0.2"
 github "GetHighstreet/Shared" "dde80e59ec6ec00086dbb7ac5d5f5858d3b35936"
 github "thomvis/SwiftyJSON" "aade0fd6a0a8b26b95c8457520449a234c4ea4e2"
-github "thomvis/BrightFutures" "v3.1.2"
+github "thomvis/BrightFutures" "v3.3.0"
