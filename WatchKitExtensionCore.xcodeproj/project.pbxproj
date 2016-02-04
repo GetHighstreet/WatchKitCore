@@ -47,7 +47,6 @@
 		E91AF4A71AE8E7BB0076739B /* ProductOutlineFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4711AE8E7BB0076739B /* ProductOutlineFragment.swift */; };
 		E91AF4A81AE8E7BB0076739B /* RowRevealFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4721AE8E7BB0076739B /* RowRevealFragment.swift */; };
 		E91AF4A91AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4741AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift */; };
-		E91AF4AA1AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4751AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift */; };
 		E91AF4AB1AE8E7BB0076739B /* LookbookNotificationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4761AE8E7BB0076739B /* LookbookNotificationInterfaceController.swift */; };
 		E91AF4AC1AE8E7BB0076739B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4771AE8E7BB0076739B /* Notifications.swift */; };
 		E91AF4AD1AE8E7BB0076739B /* ProductNotificationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4781AE8E7BB0076739B /* ProductNotificationInterfaceController.swift */; };
@@ -55,13 +54,13 @@
 		E91AF4AF1AE8E7BB0076739B /* HomePromotionsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47B1AE8E7BB0076739B /* HomePromotionsRowController.swift */; };
 		E91AF4B01AE8E7BB0076739B /* ListRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47C1AE8E7BB0076739B /* ListRowController.swift */; };
 		E91AF4B11AE8E7BB0076739B /* SingleColumnRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF47D1AE8E7BB0076739B /* SingleColumnRowController.swift */; };
-		E921DCF41B9D808300FE175D /* KingfisherImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */; settings = {ASSET_TAGS = (); }; };
+		E921DCF41B9D808300FE175D /* KingfisherImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921DCF31B9D808300FE175D /* KingfisherImageCache.swift */; };
 		E923C0931B84820A003DE5B9 /* WKInterfaceObject+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923C0921B84820A003DE5B9 /* WKInterfaceObject+Image.swift */; };
 		E92FB6EA1B8483AC001DB90D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91AF4451AE8E7BB0076739B /* Image.swift */; };
-		E978CB441BC3DD8900F47319 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB401BC3DD8900F47319 /* BrightFutures.framework */; settings = {ASSET_TAGS = (); }; };
-		E978CB451BC3DD8900F47319 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB411BC3DD8900F47319 /* Result.framework */; settings = {ASSET_TAGS = (); }; };
-		E978CB461BC3DD8900F47319 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB421BC3DD8900F47319 /* Shared.framework */; settings = {ASSET_TAGS = (); }; };
-		E978CB471BC3DD8900F47319 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB431BC3DD8900F47319 /* SwiftyJSON.framework */; settings = {ASSET_TAGS = (); }; };
+		E978CB441BC3DD8900F47319 /* BrightFutures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB401BC3DD8900F47319 /* BrightFutures.framework */; };
+		E978CB451BC3DD8900F47319 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB411BC3DD8900F47319 /* Result.framework */; };
+		E978CB461BC3DD8900F47319 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB421BC3DD8900F47319 /* Shared.framework */; };
+		E978CB471BC3DD8900F47319 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E978CB431BC3DD8900F47319 /* SwiftyJSON.framework */; };
 		E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E821B827214009E3CBD /* ExtensionDelegate.swift */; };
 		E9CF2E871B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CF2E861B832EAA009E3CBD /* WatchConnectivityParentAppSession.swift */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 		E91AF4711AE8E7BB0076739B /* ProductOutlineFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductOutlineFragment.swift; sourceTree = "<group>"; };
 		E91AF4721AE8E7BB0076739B /* RowRevealFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowRevealFragment.swift; sourceTree = "<group>"; };
 		E91AF4741AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryNotificationInterfaceController.swift; sourceTree = "<group>"; };
-		E91AF4751AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePromotionNotificationInterfaceController.swift; sourceTree = "<group>"; };
 		E91AF4761AE8E7BB0076739B /* LookbookNotificationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookbookNotificationInterfaceController.swift; sourceTree = "<group>"; };
 		E91AF4771AE8E7BB0076739B /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		E91AF4781AE8E7BB0076739B /* ProductNotificationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductNotificationInterfaceController.swift; sourceTree = "<group>"; };
@@ -295,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				E91AF4741AE8E7BB0076739B /* CategoryNotificationInterfaceController.swift */,
-				E91AF4751AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift */,
 				E91AF4761AE8E7BB0076739B /* LookbookNotificationInterfaceController.swift */,
 				E91AF4771AE8E7BB0076739B /* Notifications.swift */,
 				E91AF4781AE8E7BB0076739B /* ProductNotificationInterfaceController.swift */,
@@ -422,7 +419,6 @@
 				E9CF2E831B827214009E3CBD /* ExtensionDelegate.swift in Sources */,
 				E91AF4811AE8E7BB0076739B /* HomePromotion.swift in Sources */,
 				E91AF4981AE8E7BB0076739B /* UserActivity.swift in Sources */,
-				E91AF4AA1AE8E7BB0076739B /* HomePromotionNotificationInterfaceController.swift in Sources */,
 				E91AF4AF1AE8E7BB0076739B /* HomePromotionsRowController.swift in Sources */,
 				E91AF48E1AE8E7BB0076739B /* ChangeProductFavoriteStateRequest.swift in Sources */,
 				E91AF4A01AE8E7BB0076739B /* Errors.swift in Sources */,
