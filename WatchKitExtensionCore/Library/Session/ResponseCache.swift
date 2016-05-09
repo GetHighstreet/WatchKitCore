@@ -12,7 +12,7 @@ import SwiftyJSON
 import Shared
 
 protocol ResponseCacheType {
-    typealias CacheValueType
+    associatedtype CacheValueType
     
     func responseForRequest<R: ParentAppRequest>(request: R) -> CacheValueType?
 }

@@ -14,7 +14,7 @@ import BrightFutures
  * Upon creation, it should be bound to the appropriate IBOutlets.
  */
 protocol InterfaceFragment {
-    typealias DataType
+    associatedtype DataType
     
     func setUp(context: SharedContextType)
     mutating func update(context: SharedContextType, executionContext: ExecutionContext, data: DataType)

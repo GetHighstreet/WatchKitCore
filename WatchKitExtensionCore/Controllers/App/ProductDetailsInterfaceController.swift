@@ -155,9 +155,9 @@ class ProductDetailsInterfaceController: WKInterfaceController {
         // update the menu
         clearAllMenuItems()
         if productDetails?.product.isFavorite ?? false {
-            addMenuItemWithImageNamed("menu_item_icon_unfavorite", title: "ProductDetails.menu.removeFavorite".localizedInWatchKitExtension, action: Selector("removeProductFromFavorites"))
+            addMenuItemWithImageNamed("menu_item_icon_unfavorite", title: "ProductDetails.menu.removeFavorite".localizedInWatchKitExtension, action: #selector(ProductDetailsInterfaceController.removeProductFromFavorites))
         } else {
-            addMenuItemWithImageNamed("menu_item_icon_favorite", title: "ProductDetails.menu.addFavorite".localizedInWatchKitExtension, action: Selector("addProductToFavorites"))
+            addMenuItemWithImageNamed("menu_item_icon_favorite", title: "ProductDetails.menu.addFavorite".localizedInWatchKitExtension, action: #selector(ProductDetailsInterfaceController.addProductToFavorites))
         }
         
         imageSetPromise.future.onComplete(detailsChangeInvalidationToken.validContext(ImmediateOnMainExecutionContext)) { [weak self] _ in

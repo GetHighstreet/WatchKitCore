@@ -13,7 +13,8 @@ public func validRange<E>(array: [E]) -> Range<Int> {
     return array.startIndex..<array.endIndex
 }
 
-func +<T>(var lhs: [T], rhs: T) -> [T] {
-    lhs.append(rhs)
-    return lhs
+func +<T>(lhs: [T], rhs: T) -> [T] {
+    var res = lhs;
+    res.append(rhs)
+    return res
 }

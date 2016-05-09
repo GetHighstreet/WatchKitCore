@@ -12,7 +12,7 @@ import BrightFutures
 import Result
 
 public protocol ParentAppRequest: Serializable {
-    typealias ResponseType
+    associatedtype ResponseType
     
     var identifier: String { get }
     

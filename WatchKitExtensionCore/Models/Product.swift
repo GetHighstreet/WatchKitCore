@@ -13,7 +13,7 @@ import Shared
 import Result
 
 public protocol Identifiable {
-    typealias Identifier: Equatable
+    associatedtype Identifier: Equatable
     
     var identifier: Identifier { get }
 }
